@@ -2,32 +2,24 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HomeScroll } from './features/home/HomeScroll';
 import { ProjectCaseStudy } from './features/projects/ProjectCaseStudy';
-import { Text } from './components/Text';
-import { Button } from './components/Button';
+import { ProjectsArchive } from './features/projects/ProjectsArchive';
+import { AeroFindCaseStudy } from './features/projects/AeroFindCaseStudy';
+import { ProgramEnergyCaseStudy } from './features/projects/ProgramEnergyCaseStudy';
+import { PeerBridgeCaseStudy } from './features/projects/PeerBridgeCaseStudy';
+import { PortfolioCaseStudy } from './features/projects/PortfolioCaseStudy';
 
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<HomeScroll />} />
       <Route path="/projects/flowsync" element={<ProjectCaseStudy />} />
+      <Route path="/projects/aerofind" element={<AeroFindCaseStudy />} />
+      <Route path="/projects/programenergy" element={<ProgramEnergyCaseStudy />} />
+      <Route path="/projects/peerbridge" element={<PeerBridgeCaseStudy />} />
+      <Route path="/projects/portfolio" element={<PortfolioCaseStudy />} />
       
-      {/* 404 Page */}
-      <Route
-        path="*"
-        element={
-          <div className="flex-1 flex flex-col items-center justify-center p-12 text-center select-none bg-surface-bg">
-            <Text variant="subheading" className="text-lg font-bold">
-              [ 404 // ROUTE_NOT_FOUND ]
-            </Text>
-            <Text variant="body" className="text-xs text-text-muted mt-2 max-w-xs leading-relaxed">
-              The requested route is outside the active systems schematic.
-            </Text>
-            <Button variant="primary" to="/" className="mt-6">
-              Return to Hub
-            </Button>
-          </div>
-        }
-      />
+      {/* Fallback archive list for undocumented routes */}
+      <Route path="*" element={<ProjectsArchive />} />
     </Routes>
   );
 };

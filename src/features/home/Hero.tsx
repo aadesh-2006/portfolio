@@ -1,6 +1,6 @@
 import React from 'react';
 import { Cpu, ArrowRight } from 'lucide-react';
-import { SkillsSphere } from '../../components/SkillsSphere';
+import { AiCoreOrbit } from '../../components/AiCoreOrbit';
 import { portfolioData } from '../../content/portfolioData';
 
 export const Hero: React.FC = () => {
@@ -73,7 +73,7 @@ export const Hero: React.FC = () => {
 
         {/* Right Column (55% / Redesigned for visual balance and centered centerpiece) */}
         <div className="lg:col-span-7 w-full h-[450px] md:h-[520px] lg:h-[580px] xl:h-[620px] flex items-center justify-center relative overflow-hidden">
-          <SkillsSphere radius={210} maxCanvasSize={580} />
+          <AiCoreOrbit radius={210} maxCanvasSize={580} />
         </div>
 
       </div>
