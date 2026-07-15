@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Hero } from './Hero';
 import { ThreeDCard } from '../../components/ThreeDCard';
 import { Text } from '../../components/Text';
@@ -9,29 +9,10 @@ import {
   Cpu, 
   Code, 
   Award, 
-  Terminal, 
-  Send
+  Terminal
 } from 'lucide-react';
 
 export const HomeScroll: React.FC = () => {
-  // Contact Form state variables
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState<string | null>(null);
-
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !message) {
-      setStatus('ERROR: EMAIL_AND_MESSAGE_REQUIRED');
-      return;
-    }
-    setStatus('TRANSMITTING...');
-    setTimeout(() => {
-      setStatus('TRANSMISSION_SUCCESSFUL // LOGGED_TO_SYSTEM');
-      setEmail('');
-      setMessage('');
-    }, 1500);
-  };
 
   return (
     <div className="w-full flex-1 flex flex-col divide-y divide-border-grid bg-canvas-bg/30 relative">
@@ -247,102 +228,20 @@ export const HomeScroll: React.FC = () => {
             <span className="text-[10px] font-mono text-text-muted">PORT:_8080 TCP</span>
           </div>
 
-          {/* Cyber Terminal block form */}
-          <div className="border border-border-grid bg-canvas-bg/90 rounded-[4px] overflow-hidden shadow-2xl glass-panel relative scanlines">
-            
-            {/* Terminal Header header */}
-            <div className="bg-surface-bg border-b border-border-grid/80 px-4 py-2 flex items-center justify-between font-mono text-[10px] text-text-muted select-none">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
-                <span className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
-                <span className="ml-1 text-accent-cyan font-bold">AADESH_TERMINAL // SECURE_LINE</span>
-              </div>
-              <span>TTY // 004</span>
+          {/* Terminal lives at /connect — prompt the user to navigate there */}
+          <div className="border border-border-grid bg-[#08051a]/80 rounded-[6px] p-8 flex flex-col items-center gap-5 glass-panel text-center">
+            <div className="flex items-center gap-2 font-mono text-xs text-text-muted">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
+              <span>AadeshOS Terminal v2.0 — System Online</span>
             </div>
-
-            {/* Terminal Body */}
-            <form onSubmit={handleSendMessage} className="p-6 font-mono text-xs space-y-4">
-              
-              <div className="space-y-1">
-                <div className="text-text-muted font-bold">// INITIALIZE TRANSMISSION DIRECTIVE</div>
-                <div className="text-text-muted">GUEST@AADESH_SYS:~# cd /sys/network/ports/connect</div>
-              </div>
-
-              {/* Email Input prompt */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-accent-cyan font-bold">GUEST@AADESH_SYS:/connect$</span>
-                  <span>input_email --verify</span>
-                </div>
-                <input 
-                  type="email" 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@company.com" 
-                  required
-                  className="w-full bg-surface-bg/40 border border-border-grid px-3 py-2 text-text-main rounded-[2px] focus:outline-none focus:border-accent-cyan/80 font-mono text-xs transition-colors"
-                />
-              </div>
-
-              {/* Message Textarea prompt */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-accent-cyan font-bold">GUEST@AADESH_SYS:/connect$</span>
-                  <span>write_buffer --log-message</span>
-                </div>
-                <textarea 
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Enter message details for systems operator..."
-                  required
-                  rows={4}
-                  className="w-full bg-surface-bg/40 border border-border-grid px-3 py-2 text-text-main rounded-[2px] focus:outline-none focus:border-accent-cyan/80 font-mono text-xs transition-colors resize-none"
-                />
-              </div>
-
-              {/* System response logs */}
-              {status && (
-                <div className="border border-accent-cobalt/35 bg-surface-bg/35 p-3 rounded-[2px] text-[10px] text-accent-cyan font-bold">
-                  <span className="text-accent-purple font-semibold">STATUS_LOG:</span> {status}
-                </div>
-              )}
-
-              {/* Submit / Transmit Button */}
-              <div className="pt-2 flex justify-end">
-                <button
-                  type="submit"
-                  className="flex items-center gap-2 px-5 py-2.5 bg-accent-cyan hover:bg-accent-cobalt text-white font-mono text-xs font-bold uppercase tracking-wider rounded-[2px] cursor-pointer transition-colors focus:outline-none"
-                >
-                  TRANSMIT PING <Send className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-            </form>
-          </div>
-
-          {/* Social connections pill */}
-          <div className="flex justify-center gap-6 font-mono text-xs text-text-muted">
-            <a 
-              href={portfolioData.linkedin} 
-              target="_blank" 
-              rel="noreferrer" 
-              className="flex items-center gap-1.5 hover:text-accent-cyan transition-colors"
+            <p className="font-mono text-[10px] text-text-muted max-w-sm">
+              Access the interactive developer console to explore skills, projects, and establish a connection.
+            </p>
+            <a
+              href="/connect"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-text-main text-canvas-bg hover:bg-accent-cyan hover:text-white font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300"
             >
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg> LINKEDIN
-            </a>
-            <span className="text-border-grid/40 select-none">|</span>
-            <a 
-              href={portfolioData.github} 
-              target="_blank" 
-              rel="noreferrer" 
-              className="flex items-center gap-1.5 hover:text-accent-cyan transition-colors"
-            >
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg> GITHUB
+              Launch Terminal <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
 

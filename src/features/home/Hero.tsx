@@ -57,13 +57,13 @@ export const Hero: React.FC = () => {
           {/* Home floating controls capsule */}
           <div className="flex flex-wrap gap-4 pt-2">
             <a 
-              href="#projects" 
+              href="/projects" 
               className="flex items-center gap-2 px-5 py-2.5 bg-text-main text-canvas-bg hover:bg-accent-cyan hover:text-white font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300 shadow-md focus:outline-none"
             >
               EXPLORE SCHEMATICS <ArrowRight className="w-3.5 h-3.5" />
             </a>
             <a 
-              href="#contact" 
+              href="/connect" 
               className="flex items-center gap-2 px-5 py-2.5 border border-border-grid hover:border-accent-cyan bg-surface-bg/60 text-text-main font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300 focus:outline-none"
             >
               ESTABLISH LINK
