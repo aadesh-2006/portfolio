@@ -4,6 +4,8 @@ import { ThreeDCard } from '../../components/ThreeDCard';
 import { Text } from '../../components/Text';
 import { portfolioData } from '../../content/portfolioData';
 import type { Project } from '../../content/portfolioData';
+import { AiSkillMatrix } from '../../components/AiSkillMatrix';
+import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   Cpu, 
@@ -119,12 +121,12 @@ export const HomeScroll: React.FC = () => {
                   ) : <div />}
 
                   {project.links.caseStudy ? (
-                    <a 
-                      href={`#${project.links.caseStudy}`}
+                    <Link 
+                      to={project.links.caseStudy}
                       className="inline-flex items-center gap-1 font-mono text-[10px] text-accent-cyan hover:text-text-main hover:translate-x-1 transition-all"
                     >
                       DIAGNOSE CASE <ArrowRight className="w-3 h-3" />
-                    </a>
+                    </Link>
                   ) : (
                     <span className="text-[9px] font-mono text-text-muted uppercase italic">
                       [ COMPILED_SUCCESS ]
@@ -151,30 +153,9 @@ export const HomeScroll: React.FC = () => {
             <span className="text-[10px] font-mono text-text-muted">SKILL MATRIX DISTRIBUTION</span>
           </div>
 
-          {/* Detailed structured skills cards (Full-Width Grid) */}
+          {/* Detailed structured skills cards (AI Skill Matrix) */}
           <div className="w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {portfolioData.skills.map((cat, idx) => (
-                <div 
-                  key={idx} 
-                  className="border border-border-grid bg-canvas-bg/30 p-4 rounded-[4px] space-y-3 hover:border-accent-cyan/30 transition-all duration-300"
-                >
-                  <span className="text-[10px] font-mono text-accent-cyan uppercase tracking-widest font-bold block border-b border-border-grid/30 pb-1">
-                    // {cat.category.toUpperCase()}
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {cat.skills.map((skill, i) => (
-                      <span 
-                        key={i} 
-                        className="text-[10px] font-mono bg-surface-bg border border-border-grid px-2 py-0.5 rounded-[2px] text-text-main"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <AiSkillMatrix skills={portfolioData.skills} />
           </div>
 
         </div>
@@ -237,12 +218,12 @@ export const HomeScroll: React.FC = () => {
             <p className="font-mono text-[10px] text-text-muted max-w-sm">
               Access the interactive developer console to explore skills, projects, and establish a connection.
             </p>
-            <a
-              href="/connect"
+            <Link
+              to="/connect"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-text-main text-canvas-bg hover:bg-accent-cyan hover:text-white font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300"
             >
               Launch Terminal <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
 
         </div>

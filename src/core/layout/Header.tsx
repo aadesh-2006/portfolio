@@ -1,15 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { portfolioData } from '../../content/portfolioData';
+
+// Key used in sessionStorage to pass a pending scroll target across route transitions
+const SCROLL_TARGET_KEY = 'navbar_scroll_target';
+
+/**
+ * Smoothly scrolls to a section on the current page by element id.
+ * Returns true if the element was found, false if not (i.e. wrong route).
+ */
+function scrollToSection(id: string): boolean {
+  const el = document.getElementById(id);
+  if (!el) return false;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return true;
+}
 
 export const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
-  const location = useLocation();
   const [time, setTime] = useState<string>('');
-
-  const isHome = location.pathname === '/';
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Live futuristic clock updater
   useEffect(() => {
@@ -26,25 +39,45 @@ export const Header: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const NavLink = ({ to, href, label }: { to?: string; href?: string; label: string }) => {
-    const classes = "text-[11px] font-mono uppercase tracking-wider text-text-muted hover:text-accent-cyan transition-colors duration-150 px-2.5 py-1 rounded-[2px] focus:outline-none relative group";
-    
-    if (href) {
-      return (
-        <a href={href} className={classes}>
-          {label}
-          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
-        </a>
-      );
+  // After every route change, check if there is a pending scroll target.
+  // This fires after HomeScroll mounts and the section elements are in the DOM.
+  useEffect(() => {
+    const pending = sessionStorage.getItem(SCROLL_TARGET_KEY);
+    if (pending && location.pathname === '/') {
+      sessionStorage.removeItem(SCROLL_TARGET_KEY);
+      // Small delay so the home page DOM is fully painted before scrolling
+      const timer = setTimeout(() => scrollToSection(pending), 80);
+      return () => clearTimeout(timer);
     }
-    
-    return (
-      <Link to={to || '/'} className={classes}>
-        {label}
-        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
-      </Link>
-    );
-  };
+  }, [location.pathname]);
+
+  /**
+   * Handle clicks on section-scroll items (Skills, Credentials).
+   * - If already on "/", scroll immediately.
+   * - If on another route, store the target and navigate home first.
+   *   The useEffect above will fire the scroll once the home page mounts.
+   */
+  const handleSectionNav = useCallback(
+    (sectionId: string) => {
+      if (location.pathname === '/') {
+        scrollToSection(sectionId);
+      } else {
+        sessionStorage.setItem(SCROLL_TARGET_KEY, sectionId);
+        navigate('/');
+      }
+    },
+    [location.pathname, navigate]
+  );
+
+  // Derive active state for visual highlighting
+  const isHome = location.pathname === '/';
+  const isProjects = location.pathname === '/projects' || location.pathname.startsWith('/projects/');
+  const isConnect = location.pathname === '/connect';
+
+  const baseClasses =
+    'text-[11px] font-mono uppercase tracking-wider transition-colors duration-150 px-2.5 py-1 rounded-[2px] focus:outline-none relative group';
+  const activeClasses = 'text-accent-cyan';
+  const inactiveClasses = 'text-text-muted hover:text-accent-cyan';
 
   return (
     <header className="sticky top-0 z-50 w-full flex items-center justify-between app-container py-4 border-b border-border-grid bg-canvas-bg/75 backdrop-blur-md select-none">
@@ -64,10 +97,43 @@ export const Header: React.FC = () => {
 
       {/* Floating style Navigation links */}
       <nav className="flex items-center gap-3 sm:gap-6 bg-surface-bg border border-border-grid px-4 py-1.5 rounded-full shadow-[0_8px_32px_0_rgba(99,102,241,0.03)] glass-panel">
-        <NavLink to="/" href={isHome ? "#projects" : "/#projects"} label="Projects" />
-        <NavLink to="/" href={isHome ? "#skills" : "/#skills"} label="Skills" />
-        <NavLink to="/" href={isHome ? "#certifications" : "/#certifications"} label="Credentials" />
-        <NavLink to="/" href={isHome ? "#contact" : "/#contact"} label="Ping" />
+
+        {/* PROJECTS → navigates to /projects route */}
+        <Link
+          to="/projects"
+          className={`${baseClasses} ${isProjects ? activeClasses : inactiveClasses}`}
+        >
+          Projects
+          <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1.5px] bg-accent-cyan transition-all duration-300 ${isProjects ? 'w-3/4' : 'w-0 group-hover:w-3/4'}`} />
+        </Link>
+
+        {/* SKILLS → smooth-scroll to #skills on home page */}
+        <button
+          onClick={() => handleSectionNav('skills')}
+          className={`${baseClasses} ${isHome ? inactiveClasses : inactiveClasses} cursor-pointer`}
+        >
+          Skills
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
+        </button>
+
+        {/* CREDENTIALS → smooth-scroll to #certifications on home page */}
+        <button
+          onClick={() => handleSectionNav('certifications')}
+          className={`${baseClasses} ${inactiveClasses} cursor-pointer`}
+        >
+          Credentials
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
+        </button>
+
+        {/* PING → navigates to /connect terminal page */}
+        <Link
+          to="/connect"
+          className={`${baseClasses} ${isConnect ? activeClasses : inactiveClasses}`}
+        >
+          Ping
+          <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1.5px] bg-accent-cyan transition-all duration-300 ${isConnect ? 'w-3/4' : 'w-0 group-hover:w-3/4'}`} />
+        </Link>
+
       </nav>
 
       {/* Futuristic telemetry / status */}
