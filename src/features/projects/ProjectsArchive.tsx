@@ -89,6 +89,38 @@ const ARCHIVE_PROJECTS: ProjectCardData[] = [
     link: '/projects/aerofind',
     statusText: 'COMPILED_SUCCESS',
     github: 'https://github.com/AadeshGund'
+  },
+  {
+    sysId: '● WEALTHTRACK_SYS',
+    title: 'WealthTrack',
+    subtitle: 'PERSONAL FINANCE & INVESTMENT TRACKER',
+    description: 'An individual-user personal finance and investment portfolio management web application where users can track daily finances, holdings, and investment performance from transaction history and live market data.',
+    tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Groww API', 'MERN'],
+    highlights: [
+      'Automated portfolio value, realized/unrealized P&L, return %, and asset allocation tracking from transaction history.',
+      'Integrated Groww API for syncing holdings, trades, transactions, and live market prices.',
+      'Historical performance charts, income & expense monitoring, and transaction search with secure authentication.'
+    ],
+    metricLabel: 'SYNC SYSTEM',
+    metricValue: 'Groww API Sync',
+    link: '',
+    statusText: 'BUILDING // IN_DEVELOPMENT'
+  },
+  {
+    sysId: '● INTELLIRAG_SYS',
+    title: 'IntelliRAG',
+    subtitle: 'DOCUMENT QUESTION ANSWERING SYSTEM',
+    description: 'A document question-answering system using Retrieval-Augmented Generation (RAG). Extracts, chunks, embeds, and retrieves document content to generate answers grounded in retrieved document context.',
+    tags: ['Python', 'FastAPI', 'React', 'Vector DB', 'LLM', 'Embeddings', 'RAG'],
+    highlights: [
+      'PDF text extraction, intelligent document chunking, and vector embedding storage for semantic similarity retrieval.',
+      'Grounded LLM-based answer generation with source/citation references and conversational document context.',
+      'Modular RAG pipeline architecture engineered for future hybrid retrieval and reranking extensions.'
+    ],
+    metricLabel: 'PIPELINE',
+    metricValue: 'Retrieval-Augmented Gen',
+    link: '',
+    statusText: 'BUILDING // IN_DEVELOPMENT'
   }
 ];
 
@@ -127,7 +159,7 @@ export const ProjectsArchive: React.FC = () => {
             <div className="flex gap-6 font-mono text-xs text-right mt-1 bg-surface-bg border border-border-grid p-4 rounded-[4px]">
               <div>
                 <span className="text-text-muted uppercase tracking-wider block text-[10px]">TOTAL_CASES</span>
-                <span className="text-lg font-bold text-accent-purple text-glow-purple">4</span>
+                <span className="text-lg font-bold text-accent-purple text-glow-purple">{ARCHIVE_PROJECTS.length}</span>
               </div>
               <div className="border-l border-border-grid pl-6">
                 <span className="text-text-muted uppercase tracking-wider block text-[10px]">STATUS</span>

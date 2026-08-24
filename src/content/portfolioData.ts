@@ -11,6 +11,7 @@ export interface Project {
     caseStudy?: string;
   };
   metrics?: { label: string; value: string }[];
+  statusText?: string;
 }
 
 export interface SkillCategory {
@@ -166,6 +167,42 @@ export const portfolioData: PortfolioData = {
         { label: "SIGNALING PROTOCOL", value: "Socket.io / WebRTC" },
         { label: "SYNC LATENCY", value: "Sub-50ms P2P" }
       ]
+    },
+    {
+      id: "wealthtrack",
+      title: "WealthTrack",
+      tagline: "Personal Finance & Investment Tracker",
+      description: "An individual-user personal finance and investment portfolio management web application where users can track daily finances, holdings, and investment performance from transaction history and live market data.",
+      technologies: ["MongoDB", "Express.js", "React", "Node.js", "Groww API", "MERN"],
+      bullets: [
+        "Automated portfolio value, realized/unrealized P&L, return %, and asset allocation tracking from transaction history.",
+        "Integrated Groww API for syncing holdings, trades, transactions, and live market prices.",
+        "Historical performance charts, income & expense monitoring, and transaction search with secure authentication."
+      ],
+      links: {},
+      metrics: [
+        { label: "SYNC SYSTEM", value: "Groww API Sync" },
+        { label: "STACK", value: "MERN Architecture" }
+      ],
+      statusText: "BUILDING // IN_DEVELOPMENT"
+    },
+    {
+      id: "intellirag",
+      title: "IntelliRAG",
+      tagline: "Document Question Answering System",
+      description: "A document question-answering system using Retrieval-Augmented Generation (RAG). Extracts, chunks, embeds, and retrieves document content to generate answers grounded in retrieved document context.",
+      technologies: ["Python", "FastAPI", "React", "Vector DB", "LLM", "Embeddings", "RAG"],
+      bullets: [
+        "PDF text extraction, intelligent document chunking, and vector embedding storage for semantic similarity retrieval.",
+        "Grounded LLM-based answer generation with source/citation references and conversational document context.",
+        "Modular RAG pipeline architecture engineered for future hybrid retrieval and reranking extensions."
+      ],
+      links: {},
+      metrics: [
+        { label: "PIPELINE", value: "Retrieval-Augmented Gen" },
+        { label: "SEARCH ENGINE", value: "Semantic Vector Search" }
+      ],
+      statusText: "BUILDING // IN_DEVELOPMENT"
     }
   ],
   certifications: [
