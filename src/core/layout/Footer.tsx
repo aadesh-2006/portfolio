@@ -184,8 +184,9 @@ export const Footer: React.FC = () => {
           {/* Resume Button */}
           <div className="pt-2">
             <a 
-              href="/resume.pdf" 
+              href={portfolioData.resume} 
               target="_blank" 
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 bg-[#0a071d] border border-accent-cyan/40 hover:border-accent-cyan text-accent-cyan font-mono text-xs uppercase tracking-[0.2em] font-bold rounded-[3px] transition-all duration-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.35)] group relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-accent-cyan/5 w-0 group-hover:w-full transition-all duration-500 ease-out" />

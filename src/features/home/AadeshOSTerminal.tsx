@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { portfolioData } from '../../content/portfolioData';
 
 interface TerminalLine {
   type: 'prompt' | 'output' | 'system';
@@ -135,7 +136,7 @@ export const AadeshOSTerminal: React.FC = () => {
       case 'resume':
         setHistory((prev) => [...prev, { type: 'system', text: 'Opening Resume...' }]);
         setTimeout(() => {
-          window.open('https://aadeshgund.github.io/resume/resume.pdf', '_blank');
+          window.open(portfolioData.resume, '_blank');
         }, 1000);
         break;
 

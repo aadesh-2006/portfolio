@@ -37,6 +37,7 @@ export interface PortfolioData {
   leetcode: string;
   github: string;
   email: string;
+  resume: string;
   skills: SkillCategory[];
   projects: Project[];
   certifications: Certification[];
@@ -56,6 +57,7 @@ export const portfolioData: PortfolioData = {
   leetcode: "https://leetcode.com/u/Aadesh_2006/",
   github: "https://github.com/AadeshGund", // Custom inferred based on standard github names
   email: "contact@aadesh.dev", // A professional forwarding developer email
+  resume: "https://drive.google.com/file/d/1GdTcoSkrARVUdOOrpKRTbG1JMsLTuIXd/view?usp=sharing",
   skills: [
     {
       category: "Data Science & ML",
