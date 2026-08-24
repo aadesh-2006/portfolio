@@ -126,49 +126,6 @@ export const portfolioData: PortfolioData = {
       ]
     },
     {
-      id: "programenergy",
-      title: "ProgramEnergy",
-      tagline: "MERN Productivity & Competitive Coding Platform",
-      description: "A full-stack developer productivity suite featuring modular project management tools and custom backend systems, including real-time competitive coding battles and progress tracking.",
-      technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "Socket.io", "JWT"],
-      bullets: [
-        "Created a full-stack, comprehensive developer productivity suite featuring modular project management tools and custom backend system design.",
-        "Architected 'DevTrack', a module utilizing custom data tracking and secure JWT authentication to protect and monitor individual coding progress, time blocks, and milestones.",
-        "Developed 'CodeBattle', an interactive competitive coding environment supporting real-time socket-based challenge synchronization.",
-        "Designed a scalable, decoupled MERN architecture ensuring seamless data synchronization and low-latency database queries."
-      ],
-      links: {
-        github: "https://github.com/AadeshGund",
-        caseStudy: "/projects/programenergy"
-      },
-      metrics: [
-        { label: "AUTHENTICATION", value: "Secure JWT Token" },
-        { label: "SYNC LATENCY", value: "Socket.io <50ms" },
-        { label: "STACK", value: "MERN Decoupled" }
-      ]
-    },
-    {
-      id: "peerbridge",
-      title: "PeerBridge",
-      tagline: "Secure Peer-To-Peer Data Sync Pipeline",
-      description: "A decentralized WebRTC-based communication application enabling direct peer-to-peer audio, video, and text synchronization over local networks and internet tunnels without centralized data servers.",
-      technologies: ["WebRTC", "React", "Node.js", "Express", "MongoDB", "Socket.io"],
-      bullets: [
-        "Built secure, low-latency peer-to-peer data channels using WebRTC peer connections.",
-        "Created a signaling server in Node.js (Express) with Socket.io for peer handshakes and room discovery.",
-        "Developed React client interface showcasing peer state, connection stability, and real-time messaging.",
-        "Stored signaling credentials and user session variables in MongoDB database."
-      ],
-      links: {
-        github: "https://github.com/AadeshGund",
-        caseStudy: "/projects/peerbridge"
-      },
-      metrics: [
-        { label: "SIGNALING PROTOCOL", value: "Socket.io / WebRTC" },
-        { label: "SYNC LATENCY", value: "Sub-50ms P2P" }
-      ]
-    },
-    {
       id: "wealthtrack",
       title: "WealthTrack",
       tagline: "Personal Finance & Investment Tracker",

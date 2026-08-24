@@ -38,42 +38,6 @@ const ARCHIVE_PROJECTS: ProjectCardData[] = [
     github: 'https://github.com/AadeshGund'
   },
   {
-    sysId: '● PROGENERGY_SYS',
-    title: 'ProgramEnergy',
-    subtitle: 'RENEWABLE MICROGRID LOAD BALANCER',
-    description: 'A distributed energy management system designed to balance local renewable energy production and load profiles. Manages solar generator output, local battery arrays, and main grid power schedules.',
-    tags: ['React', 'Spring Boot', 'MongoDB', 'Java', 'REST APIs'],
-    highlights: [
-      'Developed a full-stack dashboard in React and Java (Spring Boot) to monitor battery state of charge (SoC) and solar production.',
-      'Implemented REST APIs for low-latency telemetry acquisition and grid power schedule delivery.',
-      'Created a scheduling algorithm to optimize battery storage usage based on time-of-use tariffs.',
-      'Stored timeseries load profiles and telemetry logs in MongoDB for historic performance audits.'
-    ],
-    metricLabel: 'DATABASE SCHEMA',
-    metricValue: 'MongoDB / Timeseries',
-    link: '/projects/programenergy',
-    statusText: 'ONLINE_SUCCESS',
-    github: 'https://github.com/AadeshGund'
-  },
-  {
-    sysId: '● PEERBRIDGE_SYS',
-    title: 'PeerBridge',
-    subtitle: 'SECURE PEER-TO-PEER DATA SYNC PIPELINE',
-    description: 'A decentralized WebRTC-based communication application enabling direct peer-to-peer audio, video, and text synchronization over local networks and internet tunnels without centralized data servers.',
-    tags: ['WebRTC', 'React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'JavaScript'],
-    highlights: [
-      'Built secure, low-latency peer-to-peer data channels using WebRTC peer connections.',
-      'Created a signaling server in Node.js (Express) with Socket.io for peer handshakes and room discovery.',
-      'Developed React client interface showcasing peer state, connection stability, and real-time messaging.',
-      'Stored signaling credentials and user session variables in MongoDB database.'
-    ],
-    metricLabel: 'SIGNALING PROTOCOL',
-    metricValue: 'Socket.io / WebRTC',
-    link: '/projects/peerbridge',
-    statusText: 'TUNNEL_ESTABLISHED',
-    github: 'https://github.com/AadeshGund'
-  },
-  {
     sysId: '● AEROFIND_SYS',
     title: 'AeroFind',
     subtitle: 'PHYSICS-INFORMED ML SATELLITE TRACKING',

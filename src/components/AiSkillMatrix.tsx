@@ -10,23 +10,21 @@ const projectMap: Record<string, string[]> = {
   "PyTorch": ["AeroFind"],
   "YOLOv8": ["FlowSync"],
   "Physics-Informed Neural Networks (PINN)": ["AeroFind"],
-  "React.js": ["FlowSync", "ProgramEnergy", "Portfolio", "PeerBridge"],
-  "FastAPI": ["FlowSync"],
-  "MongoDB": ["ProgramEnergy"],
-  "Express.js": ["ProgramEnergy"],
-  "Node.js": ["ProgramEnergy", "PeerBridge"],
-  "Socket.io": ["ProgramEnergy"],
-  "JWT": ["ProgramEnergy"],
-  "Python": ["AeroFind", "FlowSync"],
+  "React.js": ["FlowSync", "WealthTrack", "IntelliRAG", "Portfolio"],
+  "FastAPI": ["FlowSync", "IntelliRAG"],
+  "MongoDB": ["WealthTrack"],
+  "Express.js": ["WealthTrack"],
+  "Node.js": ["WealthTrack"],
+  "Python": ["AeroFind", "FlowSync", "IntelliRAG"],
   "Pandas": ["AeroFind"],
   "NumPy": ["AeroFind"],
   "Scikit-learn": ["AeroFind"],
   "SUMO": ["FlowSync"],
   "TraCI": ["FlowSync"],
-  "Java": ["PeerBridge"],
-  "Spring Boot": ["PeerBridge"],
-  "SQL": ["PeerBridge"],
-  "MySQL": ["PeerBridge"]
+  "RAG": ["IntelliRAG"],
+  "Vector DB": ["IntelliRAG"],
+  "LLM": ["IntelliRAG"],
+  "Groww API": ["WealthTrack"]
 };
 
 const SkillPill: React.FC<{ skill: string }> = ({ skill }) => {

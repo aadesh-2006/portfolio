@@ -5,8 +5,6 @@ import { ConnectPage } from './features/home/ConnectPage';
 import { ProjectCaseStudy } from './features/projects/ProjectCaseStudy';
 import { ProjectsArchive } from './features/projects/ProjectsArchive';
 import { AeroFindCaseStudy } from './features/projects/AeroFindCaseStudy';
-import { ProgramEnergyCaseStudy } from './features/projects/ProgramEnergyCaseStudy';
-import { PeerBridgeCaseStudy } from './features/projects/PeerBridgeCaseStudy';
 import { PortfolioCaseStudy } from './features/projects/PortfolioCaseStudy';
 
 export const AppRoutes: React.FC = () => {
@@ -17,8 +15,6 @@ export const AppRoutes: React.FC = () => {
       <Route path="/projects" element={<ProjectsArchive />} />
       <Route path="/projects/flowsync" element={<ProjectCaseStudy />} />
       <Route path="/projects/aerofind" element={<AeroFindCaseStudy />} />
-      <Route path="/projects/programenergy" element={<ProgramEnergyCaseStudy />} />
-      <Route path="/projects/peerbridge" element={<PeerBridgeCaseStudy />} />
       <Route path="/projects/portfolio" element={<PortfolioCaseStudy />} />
       
       {/* Fallback archive list for undocumented routes */}

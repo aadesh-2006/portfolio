@@ -264,8 +264,8 @@ export const AadeshOSTerminal: React.FC = () => {
             }
             if (line.isProjectList) {
               return (
-                <div key={idx} className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-1 select-none">
-                  {['FlowSync', 'ProgramEnergy', 'PeerBridge', 'AeroFind', 'Portfolio'].map((proj) => (
+                <div key={idx} className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1 select-none">
+                  {['FlowSync', 'AeroFind', 'Portfolio'].map((proj) => (
                     <button
                       key={proj}
                       onClick={() => navigate(`/projects/${proj.toLowerCase()}`)}
