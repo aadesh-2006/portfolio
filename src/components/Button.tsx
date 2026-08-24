@@ -5,7 +5,7 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'link';
   to?: string; // For react-router Link
   href?: string; // For outbound links
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
   className?: string;
   children: React.ReactNode;
   disabled?: boolean;
@@ -33,7 +33,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (to) {
     return (
-      <Link to={to} className={combinedClasses}>
+      <Link to={to} onClick={onClick} className={combinedClasses}>
         {children}
       </Link>
     );
@@ -41,7 +41,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={combinedClasses}>
+      <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick} className={combinedClasses}>
         {children}
       </a>
     );

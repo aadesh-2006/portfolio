@@ -94,6 +94,7 @@ export const portfolioData: PortfolioData = {
       ],
       links: {
         github: "https://github.com/AadeshGund",
+        caseStudy: "/projects/aerofind"
       },
       metrics: [
         { label: "FRAMEWORK", value: "DeepXDE / PINN" },
@@ -137,11 +138,33 @@ export const portfolioData: PortfolioData = {
       ],
       links: {
         github: "https://github.com/AadeshGund",
+        caseStudy: "/projects/programenergy"
       },
       metrics: [
         { label: "AUTHENTICATION", value: "Secure JWT Token" },
         { label: "SYNC LATENCY", value: "Socket.io <50ms" },
         { label: "STACK", value: "MERN Decoupled" }
+      ]
+    },
+    {
+      id: "peerbridge",
+      title: "PeerBridge",
+      tagline: "Secure Peer-To-Peer Data Sync Pipeline",
+      description: "A decentralized WebRTC-based communication application enabling direct peer-to-peer audio, video, and text synchronization over local networks and internet tunnels without centralized data servers.",
+      technologies: ["WebRTC", "React", "Node.js", "Express", "MongoDB", "Socket.io"],
+      bullets: [
+        "Built secure, low-latency peer-to-peer data channels using WebRTC peer connections.",
+        "Created a signaling server in Node.js (Express) with Socket.io for peer handshakes and room discovery.",
+        "Developed React client interface showcasing peer state, connection stability, and real-time messaging.",
+        "Stored signaling credentials and user session variables in MongoDB database."
+      ],
+      links: {
+        github: "https://github.com/AadeshGund",
+        caseStudy: "/projects/peerbridge"
+      },
+      metrics: [
+        { label: "SIGNALING PROTOCOL", value: "Socket.io / WebRTC" },
+        { label: "SYNC LATENCY", value: "Sub-50ms P2P" }
       ]
     }
   ],
