@@ -223,7 +223,7 @@ export const AadeshOSTerminal: React.FC = () => {
       <div className="flex justify-start">
         <button
           onClick={handleReturnToPortfolio}
-          className="inline-flex items-center gap-2 font-mono text-xs text-text-muted hover:text-accent-cyan cursor-pointer transition-colors duration-200 border border-border-grid bg-surface-bg/40 px-3 py-1.5 rounded-[4px] focus:outline-none"
+          className="inline-flex items-center gap-2 font-mono text-xs text-text-muted hover:text-accent-cyan cursor-pointer transition-colors duration-200 border border-border-grid bg-[#080808] px-3 py-1.5 rounded-[4px] focus:outline-none"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           ← Return to Portfolio
@@ -233,10 +233,10 @@ export const AadeshOSTerminal: React.FC = () => {
       {/* Interactive OS Terminal Panel */}
       <div 
         onClick={focusInput}
-        className="border border-border-grid bg-[#08051a]/95 rounded-[6px] overflow-hidden shadow-2xl glass-panel relative scanlines cursor-text"
+        className="border border-border-grid bg-[#080808] rounded-[6px] overflow-hidden shadow-2xl glass-panel relative scanlines cursor-text"
       >
         {/* macOS traffic light window bars */}
-        <div className="bg-surface-bg/80 border-b border-border-grid/50 px-4 py-3 flex items-center justify-between select-none">
+        <div className="bg-[#0c0c0c] border-b border-border-grid/50 px-4 py-3 flex items-center justify-between select-none">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
             <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
@@ -269,7 +269,7 @@ export const AadeshOSTerminal: React.FC = () => {
                     <button
                       key={proj}
                       onClick={() => navigate(`/projects/${proj.toLowerCase()}`)}
-                      className="border border-border-grid bg-surface-bg/30 hover:border-accent-cyan/80 hover:text-accent-cyan px-2.5 py-1.5 rounded-[3px] text-center font-mono text-[10px] text-text-muted uppercase font-bold transition-all cursor-pointer"
+                      className="border border-border-grid bg-[#0a0a0a] hover:border-accent-cyan/80 hover:text-accent-cyan px-2.5 py-1.5 rounded-[3px] text-center font-mono text-[10px] text-text-muted uppercase font-bold transition-all cursor-pointer"
                     >
                       {proj}
                     </button>

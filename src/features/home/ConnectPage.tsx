@@ -12,10 +12,10 @@ export const ConnectPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-canvas-bg/30">
+    <div className="w-full flex-1 flex flex-col bg-black">
 
       {/* Section Header — matches the existing section header pattern */}
-      <section className="py-20 bg-surface-bg/35 scroll-mt-12 text-left app-container flex-1">
+      <section className="py-20 bg-black scroll-mt-12 text-left app-container flex-1">
         <div className="max-w-5xl mx-auto space-y-10">
 
           <div className="flex items-center justify-between border-b border-border-grid/50 pb-4">

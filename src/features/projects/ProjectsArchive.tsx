@@ -96,9 +96,9 @@ export const ProjectsArchive: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen flex flex-col bg-[#030014] text-text-main select-text pb-24">
+    <div className="w-full min-h-screen flex flex-col bg-black text-text-main select-text pb-24">
       {/* Back to Hub Nav */}
-      <div className="border-b border-border-grid px-6 py-4 flex items-center bg-canvas-bg/10 select-none">
+      <div className="border-b border-border-grid px-6 py-4 flex items-center bg-black select-none">
         <Button variant="link" to="/" className="inline-flex items-center gap-2">
           <ArrowLeft className="w-3.5 h-3.5" />
           Back to Hub
@@ -110,7 +110,7 @@ export const ProjectsArchive: React.FC = () => {
         <div className="border-b border-border-grid pb-6">
           <div className="flex justify-between items-start flex-wrap gap-4">
             <div>
-              <span className="text-[10px] font-mono text-accent-cyan tracking-[0.2em] font-semibold uppercase text-glow-cyan block mb-2">
+              <span className="text-[10px] font-mono text-accent-cyan tracking-[0.2em] font-semibold uppercase block mb-2">
                 [ PROJECT_ARCHIVE ]
               </span>
               <h1 className="text-3xl md:text-4xl font-mono font-bold tracking-tight text-text-main">
@@ -120,14 +120,14 @@ export const ProjectsArchive: React.FC = () => {
                 Browse documented engineering systems, AI experiments, backend infrastructures, and software architectures.
               </p>
             </div>
-            <div className="flex gap-6 font-mono text-xs text-right mt-1 bg-surface-bg border border-border-grid p-4 rounded-[4px]">
+            <div className="flex gap-6 font-mono text-xs text-right mt-1 bg-[#080808] border border-border-grid p-4 rounded-[4px]">
               <div>
                 <span className="text-text-muted uppercase tracking-wider block text-[10px]">TOTAL_CASES</span>
-                <span className="text-lg font-bold text-accent-purple text-glow-purple">{ARCHIVE_PROJECTS.length}</span>
+                <span className="text-lg font-bold text-white">{ARCHIVE_PROJECTS.length}</span>
               </div>
               <div className="border-l border-border-grid pl-6">
                 <span className="text-text-muted uppercase tracking-wider block text-[10px]">STATUS</span>
-                <span className="text-lg font-bold text-accent-cyan text-glow-cyan">ONLINE</span>
+                <span className="text-lg font-bold text-accent-cyan">ONLINE</span>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@ export const ProjectsArchive: React.FC = () => {
         {ARCHIVE_PROJECTS.map((proj, pIdx) => (
           <div
             key={proj.title}
-            className="group block border border-border-grid rounded-[4px] bg-surface-bg hover:border-accent-cyan/40 hover:-translate-y-1 transition-all duration-300 ease-damping p-6 md:p-8 space-y-6 text-left cursor-pointer"
+            className="group block border border-border-grid rounded-[4px] bg-[#080808] hover:border-accent-cyan/40 hover:-translate-y-1 transition-all duration-300 ease-damping p-6 md:p-8 space-y-6 text-left cursor-pointer"
             onClick={() => navigate(proj.link)}
           >
             {/* Top Bar with System ID */}
@@ -170,10 +170,10 @@ export const ProjectsArchive: React.FC = () => {
 
             {/* Title & Subtitle */}
             <div className="space-y-1">
-              <h2 className="text-2xl md:text-3xl font-mono font-bold tracking-tight text-text-main group-hover:text-glow-cyan transition-all duration-300">
+              <h2 className="text-2xl md:text-3xl font-mono font-bold tracking-tight text-text-main group-hover:text-accent-cyan transition-all duration-300">
                 {proj.title}
               </h2>
-              <h3 className="text-xs font-mono font-semibold text-accent-purple uppercase tracking-wider">
+              <h3 className="text-xs font-mono font-semibold text-accent-cyan uppercase tracking-wider">
                 {proj.subtitle}
               </h3>
             </div>
@@ -188,7 +188,7 @@ export const ProjectsArchive: React.FC = () => {
               {proj.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] font-mono bg-canvas-bg border border-border-grid px-2.5 py-1 rounded-[2px] text-text-muted group-hover:border-accent-cyan/25 group-hover:text-text-main transition-colors duration-300"
+                  className="text-[10px] font-mono bg-[#050505] border border-border-grid px-2.5 py-1 rounded-[2px] text-text-muted group-hover:border-accent-cyan/25 group-hover:text-text-main transition-colors duration-300"
                 >
                   {tag}
                 </span>

@@ -36,7 +36,7 @@ export const FlowSyncDiagram: React.FC = () => {
           <rect width="120" height="60" rx="2" className="fill-surface-bg stroke-border-grid" />
           <text x="60" y="22" textAnchor="middle" className="fill-text-main text-[10px] font-bold font-mono">YOLOv8 NANO</text>
           <text x="60" y="36" textAnchor="middle" className="fill-text-muted text-[8px] font-mono">ROI SECTOR</text>
-          <text x="60" y="48" textAnchor="middle" className="fill-accent-cobalt text-[8px] font-bold font-mono">30 FPS TARGET</text>
+          <text x="60" y="48" textAnchor="middle" className="fill-accent-cyan text-[8px] font-bold font-mono">30 FPS TARGET</text>
         </g>
 
         {/* Arrow 2 */}

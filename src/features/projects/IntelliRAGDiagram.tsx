@@ -49,7 +49,7 @@ export const IntelliRAGDiagram: React.FC = () => {
           <rect width="135" height="60" rx="2" className="fill-surface-bg stroke-border-grid" />
           <text x="67" y="22" textAnchor="middle" className="fill-text-main text-[10px] font-bold font-mono">SIMILARITY SEARCH</text>
           <text x="67" y="36" textAnchor="middle" className="fill-text-muted text-[8px] font-mono">TOP-K CHUNKS</text>
-          <text x="67" y="48" textAnchor="middle" className="fill-accent-purple text-[8px] font-mono">CONTEXT SYNTHESIS</text>
+          <text x="67" y="48" textAnchor="middle" className="fill-accent-cyan text-[8px] font-mono">CONTEXT SYNTHESIS</text>
         </g>
 
         {/* Arrow 3 */}

@@ -96,7 +96,7 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Floating style Navigation links */}
-      <nav className="flex items-center gap-3 sm:gap-6 bg-surface-bg border border-border-grid px-4 py-1.5 rounded-full shadow-[0_8px_32px_0_rgba(99,102,241,0.03)] glass-panel">
+      <nav className="flex items-center gap-3 sm:gap-6 bg-[#080808]/90 border border-border-grid px-4 py-1.5 rounded-full shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] glass-panel">
 
         {/* PROJECTS → navigates to /projects route */}
         <Link

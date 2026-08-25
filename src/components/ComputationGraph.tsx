@@ -401,10 +401,10 @@ const GraphScene: React.FC = () => {
       let vertexIdx = 0;
       let colorIdx = 0;
 
-      // Theme Colors
-      const bgVoidColor = { r: 0.01, g: 0.0, b: 0.08 }; // Space void background
-      const normalEdgeColor = { r: 0.06, g: 0.09, b: 0.22 }; // Subtle indigo lines
-      const activeEdgeColor = { r: 0.39, g: 0.42, b: 0.95 }; // Cobalt blue highlights
+      // Theme Colors (True OLED Black + Subtle Dark Gray + Cyan Highlight)
+      const bgVoidColor = { r: 0.0, g: 0.0, b: 0.0 }; // True OLED black background
+      const normalEdgeColor = { r: 0.12, g: 0.12, b: 0.14 }; // Subtle dark gray lines
+      const activeEdgeColor = { r: 0.02, g: 0.71, b: 0.83 }; // Cyan highlights
 
       edges.forEach(e => {
         const sNode = nodes[e.source];
@@ -458,9 +458,9 @@ const GraphScene: React.FC = () => {
       const nodeColor = new THREE.Color();
 
       // Theme Colors
-      const baseNodeColor = new THREE.Color('#3B82F6'); // Muted cobalt blue
-      const bgVoidColor = new THREE.Color('#030014');   // Background void black
-      const flashColor = new THREE.Color('#FFFFFF');    // Pure white active flash
+      const baseNodeColor = new THREE.Color('#3f3f46'); // Zinc gray nodes
+      const bgVoidColor = new THREE.Color('#000000');   // Background true black
+      const flashColor = new THREE.Color('#06B6D4');    // Cyan active flash
 
       nodes.forEach((n, idx) => {
         // Set coordinates & sizes
@@ -554,8 +554,8 @@ export const ComputationGraph: React.FC = () => {
   return (
     <div className="w-full h-full flex items-center justify-center relative overflow-hidden select-none">
       
-      {/* Ambient background depth lights */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.06),transparent_65%)] pointer-events-none" />
+      {/* Ambient subtle depth lights */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.03),transparent_70%)] pointer-events-none" />
 
       {/* 3D Canvas */}
       <Canvas

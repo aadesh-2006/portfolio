@@ -41,7 +41,7 @@ const SkillPill: React.FC<{ skill: string }> = ({ skill }) => {
       
       {/* Contextual Hover Tooltip */}
       {projects && projects.length > 0 && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-[#08051a]/95 border border-accent-purple/50 px-3 py-2 rounded-[2px] opacity-0 group-hover/pill:opacity-100 pointer-events-none transition-opacity duration-200 z-50 shadow-xl backdrop-blur-md">
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-[#0a0a0a] border border-border-grid px-3 py-2 rounded-[2px] opacity-0 group-hover/pill:opacity-100 pointer-events-none transition-opacity duration-200 z-50 shadow-xl backdrop-blur-md">
           <span className="text-[8px] font-mono text-text-muted block mb-1 uppercase tracking-wider border-b border-border-grid/50 pb-0.5">
             Module Activity
           </span>
@@ -151,13 +151,13 @@ export const AiSkillMatrix: React.FC<AiSkillMatrixProps> = ({ skills }) => {
 
         {/* Central Core (Desktop) */}
         <div className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-20">
-          <div className="relative w-44 h-44 rounded-full border border-accent-cyan/60 bg-[#08051a]/90 flex items-center justify-center overflow-hidden shadow-[0_0_35px_rgba(6,182,212,0.25)] group">
+          <div className="relative w-44 h-44 rounded-full border border-accent-cyan/60 bg-[#050505] flex items-center justify-center overflow-hidden shadow-[0_0_35px_rgba(6,182,212,0.20)] group">
             
             {/* Inner Rotating Ring */}
             <motion.div 
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-              className="absolute inset-2 rounded-full border border-dashed border-accent-purple/30"
+              className="absolute inset-2 rounded-full border border-dashed border-accent-cyan/20"
             />
             
             {/* Core Scanning Line */}
@@ -173,7 +173,7 @@ export const AiSkillMatrix: React.FC<AiSkillMatrixProps> = ({ skills }) => {
           </div>
 
           {/* Telemetry Readout */}
-          <div className="mt-8 flex flex-col items-center font-mono text-[10px] text-text-muted space-y-1.5 bg-surface-bg/60 px-6 py-3 rounded-[4px] border border-border-grid backdrop-blur-md shadow-lg">
+          <div className="mt-8 flex flex-col items-center font-mono text-[10px] text-text-muted space-y-1.5 bg-[#080808] px-6 py-3 rounded-[4px] border border-border-grid backdrop-blur-md shadow-lg">
             <span className="text-accent-cyan font-bold tracking-[0.2em] mb-1">SYSTEM ONLINE</span>
             <div className="flex gap-4 opacity-80">
                <span className="flex flex-col items-center">

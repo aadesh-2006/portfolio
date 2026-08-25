@@ -45,10 +45,10 @@
 
 @keyframes neon-pulse {
   0% {
-    text-shadow: 0 0 4px rgba(99, 102, 241, 0.2), 0 0 10px rgba(99, 102, 241, 0.2), 0 0 20px rgba(99, 102, 241, 0.1);
+    text-shadow: 0 0 4px rgba(6, 182, 212, 0.2), 0 0 10px rgba(6, 182, 212, 0.2);
   }
   100% {
-    text-shadow: 0 0 8px rgba(99, 102, 241, 0.6), 0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.2);
+    text-shadow: 0 0 8px rgba(6, 182, 212, 0.5), 0 0 16px rgba(6, 182, 212, 0.3);
   }
 }
 
@@ -80,15 +80,15 @@
 }
 
 :root {
-  /* Default to Futuristic Cyber Space Theme (Dark by default) */
-  --bg-canvas: #030014;        /* Space Void Black */
-  --bg-surface: rgba(10, 7, 28, 0.45);   /* Indigo Glassmorphic Surface */
-  --text-main: #F8FAFC;        /* Clear White */
-  --text-muted: #94A3B8;       /* Slate Grey */
-  --border-grid: rgba(99, 102, 241, 0.12); /* Subtle Cyber Grid Borders */
-  --accent-cobalt: #6366F1;    /* Vibrant Indigo */
-  --accent-cyan: #06B6D4;      /* Cyber Cyan */
-  --accent-purple: #A855F7;    /* Nebula Purple */
+  /* True OLED-Black Minimal Engineering Theme */
+  --bg-canvas: #000000;                  /* Pure True Black */
+  --bg-surface: #080808;                 /* Near-Black Surface */
+  --text-main: #F4F4F5;                  /* Crisp Off-White */
+  --text-muted: #A1A1AA;                 /* Zinc Muted Gray */
+  --border-grid: rgba(255, 255, 255, 0.08); /* Subtle Dark Gray Grid Borders */
+  --accent-cobalt: #06B6D4;              /* Cyan */
+  --accent-cyan: #06B6D4;                /* Cyber Cyan Accent */
+  --accent-purple: #38BDF8;              /* Sky Cyan Accent */
 }
 
 /* Maintain light mode just in case toggle is pressed, but style it elegantly */
@@ -97,10 +97,10 @@
   --bg-surface: rgba(245, 245, 243, 0.7);
   --text-main: #0F172A;        /* Deep Slate */
   --text-muted: #475569;       /* Muted Grey */
-  --border-grid: rgba(99, 102, 241, 0.1);
-  --accent-cobalt: #3B82F6;
+  --border-grid: rgba(0, 0, 0, 0.08);
+  --accent-cobalt: #0891B2;
   --accent-cyan: #0891B2;
-  --accent-purple: #8B5CF6;
+  --accent-purple: #0284C7;
 }
 
 html, body, #root {
@@ -124,42 +124,42 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-canvas);
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.25);
+  background: #27272a;
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.5);
+  background: #3f3f46;
 }
 
 /* Glassmorphism containers */
 .glass-panel {
-  background: rgba(10, 7, 28, 0.5);
+  background: rgba(8, 8, 8, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.7);
 }
 
 .glass-panel:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.05);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 4px 24px 0 rgba(6, 182, 212, 0.05);
 }
 
 /* Glowing text */
 .text-glow-indigo {
-  text-shadow: 0 0 10px rgba(99, 102, 241, 0.3), 0 0 20px rgba(99, 102, 241, 0.1);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
 }
 
 .text-glow-cyan {
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.3), 0 0 20px rgba(6, 182, 212, 0.1);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
 }
 
 .text-glow-purple {
-  text-shadow: 0 0 10px rgba(168, 85, 247, 0.3), 0 0 20px rgba(168, 85, 247, 0.1);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
 }
 
 /* Grid pattern */

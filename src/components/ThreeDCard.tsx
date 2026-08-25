@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 interface ThreeDCardProps {
   children: React.ReactNode;
   className?: string;
-  glowColor?: string; // e.g. rgba(99,102,241,0.15)
+  glowColor?: string; // e.g. rgba(6, 182, 212, 0.12)
   onClick?: () => void;
   interactive?: boolean;
 }
@@ -11,7 +11,7 @@ interface ThreeDCardProps {
 export const ThreeDCard: React.FC<ThreeDCardProps> = ({
   children,
   className = '',
-  glowColor = 'rgba(99, 102, 241, 0.15)',
+  glowColor = 'rgba(6, 182, 212, 0.12)',
   onClick,
   interactive = true,
 }) => {
@@ -94,7 +94,7 @@ export const ThreeDCard: React.FC<ThreeDCardProps> = ({
       {/* Cyber ambient glow border indicator */}
       {interactive && isHovered && (
         <div
-          className="absolute inset-0 border border-accent-cobalt/35 rounded-[4px] pointer-events-none transition-colors duration-300"
+          className="absolute inset-0 border border-accent-cyan/30 rounded-[4px] pointer-events-none transition-colors duration-300"
           style={{ zIndex: 2 }}
         />
       )}

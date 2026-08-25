@@ -18,7 +18,7 @@ export const HomeScroll: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full flex-1 flex flex-col divide-y divide-border-grid bg-canvas-bg/30 relative">
+    <div className="w-full flex-1 flex flex-col divide-y divide-border-grid bg-black relative">
       
       {/* 3D Nebula particle background */}
       {/* (Rendered underneath all content) */}
@@ -27,7 +27,7 @@ export const HomeScroll: React.FC = () => {
       <Hero />
 
       {/* 2. PROJECTS SECTION */}
-      <section id="projects" className="py-20 scroll-mt-12 text-left app-container">
+      <section id="projects" className="py-20 scroll-mt-12 text-left app-container bg-black">
         <div className="space-y-10">
           
           {/* Section Header */}
@@ -45,7 +45,7 @@ export const HomeScroll: React.FC = () => {
               <ThreeDCard
                 key={project.id}
                 className="h-full flex flex-col justify-between p-6 group glass-panel cursor-pointer"
-                glowColor="rgba(6, 182, 212, 0.15)"
+                glowColor="rgba(6, 182, 212, 0.12)"
                 onClick={() => {
                   if (project.links.caseStudy) {
                     navigate(project.links.caseStudy);
@@ -82,7 +82,7 @@ export const HomeScroll: React.FC = () => {
                     <Text variant="subheading" className="text-xl font-bold text-text-main group-hover:text-accent-cyan transition-colors">
                       {project.title}
                     </Text>
-                    <span className="text-[10px] font-mono text-accent-purple tracking-wide block uppercase font-bold">
+                    <span className="text-[10px] font-mono text-accent-cyan tracking-wide block uppercase font-bold">
                       {project.tagline}
                     </span>
                   </div>
@@ -97,7 +97,7 @@ export const HomeScroll: React.FC = () => {
                     {project.technologies.map((tech, i) => (
                       <span 
                         key={i} 
-                        className="text-[9px] font-mono border border-border-grid/50 bg-canvas-bg/30 px-1.5 py-0.5 rounded-[2px] text-text-muted"
+                        className="text-[9px] font-mono border border-border-grid/50 bg-[#080808] px-1.5 py-0.5 rounded-[2px] text-text-muted"
                       >
                         {tech}
                       </span>
@@ -149,7 +149,7 @@ export const HomeScroll: React.FC = () => {
       </section>
 
       {/* 3. SKILLS SECTION */}
-      <section id="skills" className="py-20 bg-surface-bg/35 scroll-mt-12 text-left app-container">
+      <section id="skills" className="py-20 bg-black scroll-mt-12 text-left app-container">
         <div className="space-y-10">
           
           {/* Section Header */}
@@ -170,7 +170,7 @@ export const HomeScroll: React.FC = () => {
       </section>
 
       {/* 4. CERTIFICATIONS SECTION */}
-      <section id="certifications" className="py-20 scroll-mt-12 text-left app-container">
+      <section id="certifications" className="py-20 bg-black scroll-mt-12 text-left app-container">
         <div className="space-y-10">
           
           {/* Section Header */}
@@ -187,7 +187,7 @@ export const HomeScroll: React.FC = () => {
             {portfolioData.certifications.map((cert, idx) => (
               <div 
                 key={idx}
-                className="flex items-start justify-between border border-border-grid/60 bg-surface-bg/40 p-4 rounded-[4px] hover:border-accent-cyan/20 transition-all font-mono"
+                className="flex items-start justify-between border border-border-grid bg-[#080808] p-4 rounded-[4px] hover:border-accent-cyan/30 transition-all font-mono"
               >
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-1.5">
@@ -196,7 +196,7 @@ export const HomeScroll: React.FC = () => {
                   </div>
                   <span className="text-[9px] text-text-muted block">{cert.issuer.toUpperCase()}</span>
                 </div>
-                <span className="text-[9px] text-accent-purple font-bold tracking-widest">{cert.date.toUpperCase()}</span>
+                <span className="text-[9px] text-accent-cyan font-bold tracking-widest">{cert.date.toUpperCase()}</span>
               </div>
             ))}
           </div>
@@ -205,7 +205,7 @@ export const HomeScroll: React.FC = () => {
       </section>
 
       {/* 5. CONTACT SECTION (Interactive Terminal Theme) */}
-      <section id="contact" className="py-20 bg-surface-bg/35 scroll-mt-12 text-left app-container">
+      <section id="contact" className="py-20 bg-black scroll-mt-12 text-left app-container">
         <div className="max-w-5xl mx-auto space-y-10">
           
           {/* Section Header */}
@@ -218,7 +218,7 @@ export const HomeScroll: React.FC = () => {
           </div>
 
           {/* Terminal lives at /connect — prompt the user to navigate there */}
-          <div className="border border-border-grid bg-[#08051a]/80 rounded-[6px] p-8 flex flex-col items-center gap-5 glass-panel text-center">
+          <div className="border border-border-grid bg-[#080808] rounded-[6px] p-8 flex flex-col items-center gap-5 glass-panel text-center">
             <div className="flex items-center gap-2 font-mono text-xs text-text-muted">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
               <span>AadeshOS Terminal v2.0 — System Online</span>
@@ -228,7 +228,7 @@ export const HomeScroll: React.FC = () => {
             </p>
             <Link
               to="/connect"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-text-main text-canvas-bg hover:bg-accent-cyan hover:text-white font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black hover:bg-accent-cyan hover:text-black font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300"
             >
               Launch Terminal <ArrowRight className="w-3.5 h-3.5" />
             </Link>

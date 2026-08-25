@@ -8,7 +8,7 @@ import * as THREE from 'three';
 const ORBIT_CONFIG = [
   {
     name: 'ML STACK',
-    color: '#6366F1', // Indigo
+    color: '#06B6D4', // Cyan
     radius: 3.2,
     tiltX: 0.08,
     tiltZ: 0.04,
@@ -17,7 +17,7 @@ const ORBIT_CONFIG = [
   },
   {
     name: 'BACKEND',
-    color: '#A855F7', // Purple
+    color: '#38BDF8', // Sky Cyan
     radius: 5.2,
     tiltX: -0.06,
     tiltZ: -0.06,
@@ -35,7 +35,7 @@ const ORBIT_CONFIG = [
   },
   {
     name: 'INFRA',
-    color: '#3B82F6', // Blue
+    color: '#A1A1AA', // Zinc
     radius: 9.2,
     tiltX: -0.08,
     tiltZ: 0.08,
@@ -90,15 +90,15 @@ const createChipTexture = (text: string, color: string, isCategory = false): THR
       accentH = 16;
     }
 
-    // 1. Draw rounded rectangle background (semi-transparent glass)
+    // 1. Draw rounded rectangle background (semi-transparent near-black glass)
     ctx.beginPath();
     ctx.roundRect(x, y, w, h, r);
-    ctx.fillStyle = isCategory ? 'rgba(15, 23, 42, 0.85)' : 'rgba(8, 12, 32, 0.68)';
+    ctx.fillStyle = isCategory ? 'rgba(8, 8, 8, 0.95)' : 'rgba(5, 5, 5, 0.85)';
     ctx.fill();
 
     // 2. Draw thin border
     ctx.lineWidth = isCategory ? 1.5 : 1.0;
-    ctx.strokeStyle = isCategory ? color : 'rgba(255, 255, 255, 0.12)';
+    ctx.strokeStyle = isCategory ? color : 'rgba(255, 255, 255, 0.10)';
     ctx.stroke();
 
     if (isCategory) {
@@ -821,10 +821,10 @@ export const AiCoreOrbit: React.FC<AiCoreOrbitProps> = ({
       
       // Glass/plasma central core gradient
       const grad = ctx.createRadialGradient(64, 64, 18, 64, 64, 62);
-      grad.addColorStop(0, 'rgba(10, 15, 36, 0.98)');   // Deep glass center
-      grad.addColorStop(0.45, 'rgba(99, 102, 241, 0.65)'); // Indigo halo
-      grad.addColorStop(0.72, 'rgba(6, 182, 212, 0.38)');  // Cyan edge glow
-      grad.addColorStop(1, 'rgba(8, 12, 32, 0)');
+      grad.addColorStop(0, 'rgba(0, 0, 0, 0.98)');   // Deep true black center
+      grad.addColorStop(0.55, 'rgba(6, 182, 212, 0.25)'); // Subtle cyan halo
+      grad.addColorStop(0.85, 'rgba(6, 182, 212, 0.12)');  // Soft cyan edge
+      grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = grad;
       ctx.beginPath();
       ctx.arc(64, 64, 64, 0, Math.PI * 2);
@@ -833,7 +833,7 @@ export const AiCoreOrbit: React.FC<AiCoreOrbitProps> = ({
       // Thin outer boundary circle representing core border
       ctx.beginPath();
       ctx.arc(64, 64, 46, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(6, 182, 212, 0.3)';
+      ctx.strokeStyle = 'rgba(6, 182, 212, 0.4)';
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
@@ -842,8 +842,8 @@ export const AiCoreOrbit: React.FC<AiCoreOrbitProps> = ({
       ctx.fillStyle = '#FFFFFF';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = '#6366F1';
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = '#06B6D4';
       ctx.fillText('SKILLS', 64, 64);
     }
     const tex = new THREE.CanvasTexture(canvas);
@@ -875,12 +875,12 @@ export const AiCoreOrbit: React.FC<AiCoreOrbitProps> = ({
         const pulse1 = (time * 0.22) % 1.0;
         ring1Ref.current.scale.setScalar(0.8 + pulse1 * 2.8);
         const mat1 = ring1Ref.current.material as THREE.MeshBasicMaterial;
-        if (mat1) mat1.opacity = (1.0 - pulse1) * 0.25;
+        if (mat1) mat1.opacity = (1.0 - pulse1) * 0.20;
 
         const pulse2 = (time * 0.22 + 0.5) % 1.0;
         ring2Ref.current.scale.setScalar(0.8 + pulse2 * 2.8);
         const mat2 = ring2Ref.current.material as THREE.MeshBasicMaterial;
-        if (mat2) mat2.opacity = (1.0 - pulse2) * 0.25;
+        if (mat2) mat2.opacity = (1.0 - pulse2) * 0.15;
       }
     });
     return null;
@@ -888,8 +888,8 @@ export const AiCoreOrbit: React.FC<AiCoreOrbitProps> = ({
 
   return (
     <div className="w-full h-full flex items-center justify-center relative overflow-hidden select-none">
-      {/* Subtle radial overlay ambient background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.035),transparent_75%)] pointer-events-none" />
+      {/* Subtle radial overlay ambient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.03),transparent_75%)] pointer-events-none" />
 
       {/* R3F 3D Canvas */}
       <Canvas
@@ -920,11 +920,11 @@ export const AiCoreOrbit: React.FC<AiCoreOrbitProps> = ({
           {/* Concentric Aura Energy Rings */}
           <mesh ref={ring1Ref}>
             <ringGeometry args={[0.5, 0.51, 64]} />
-            <meshBasicMaterial color="#06B6D4" transparent opacity={0.25} side={THREE.DoubleSide} />
+            <meshBasicMaterial color="#06B6D4" transparent opacity={0.20} side={THREE.DoubleSide} />
           </mesh>
           <mesh ref={ring2Ref}>
             <ringGeometry args={[0.5, 0.51, 64]} />
-            <meshBasicMaterial color="#6366F1" transparent opacity={0.25} side={THREE.DoubleSide} />
+            <meshBasicMaterial color="#38BDF8" transparent opacity={0.15} side={THREE.DoubleSide} />
           </mesh>
 
           {/* Glowing central core billboard sprite */}

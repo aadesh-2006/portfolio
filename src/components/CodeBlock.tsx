@@ -23,9 +23,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   };
 
   return (
-    <div className={`border border-border-grid rounded-[4px] overflow-hidden bg-surface-bg font-mono text-sm ${className}`}>
+    <div className={`border border-border-grid rounded-[4px] overflow-hidden bg-[#080808] font-mono text-sm ${className}`}>
       {/* Title bar */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-border-grid bg-canvas-bg/30 select-none">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-border-grid bg-[#0c0c0c] select-none">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-border-grid" />
           {filename && <span className="text-xs text-text-muted">{filename}</span>}
@@ -36,7 +36,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           className="p-1 rounded-[2px] hover:bg-border-grid text-text-muted hover:text-text-main transition-colors focus:outline-none"
           title="Copy Code"
         >
-          {copied ? <Check className="w-3.5 h-3.5 text-accent-cobalt" /> : <Copy className="w-3.5 h-3.5" />}
+          {copied ? <Check className="w-3.5 h-3.5 text-accent-cyan" /> : <Copy className="w-3.5 h-3.5" />}
         </button>
       </div>
       {/* Code window */}

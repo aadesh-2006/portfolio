@@ -106,12 +106,11 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="w-full bg-[#03010a] border-t border-border-grid/40 relative select-none">
+    <footer className="w-full bg-black border-t border-border-grid/40 relative select-none">
       
-      {/* Subtle Background Glows */}
+      {/* Subtle Ambient Background Highlight */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden flex justify-between">
-        <div className="w-[30%] h-full bg-accent-cyan/5 blur-[120px] rounded-full -translate-x-1/2" />
-        <div className="w-[30%] h-full bg-accent-purple/5 blur-[120px] rounded-full translate-x-1/2" />
+        <div className="w-[20%] h-full bg-accent-cyan/[0.02] blur-[100px] rounded-full -translate-x-1/2" />
       </div>
 
       <div className="app-container py-24 relative z-10 flex flex-col lg:flex-row gap-16 xl:gap-24">
@@ -139,8 +138,8 @@ export const Footer: React.FC = () => {
             {socialLinks.map((link, idx) => {
               const content = (
                 <>
-                  {/* Neon edge glow on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-[inset_0_0_20px_rgba(6,182,212,0.15)]" />
+                  {/* Subtle edge glow on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-[inset_0_0_20px_rgba(6,182,212,0.12)]" />
                   
                   <div className="text-text-muted group-hover:text-accent-cyan transition-colors duration-300 drop-shadow-[0_0_8px_rgba(6,182,212,0)] group-hover:drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]">
                     {link.icon}
@@ -151,7 +150,7 @@ export const Footer: React.FC = () => {
                 </>
               );
               
-              const baseClasses = "group relative glass-panel border border-border-grid hover:border-accent-cyan/60 bg-surface-bg/30 p-5 rounded-[4px] flex items-center gap-4 transition-colors duration-300 backdrop-blur-sm overflow-hidden w-full text-left focus:outline-none focus:ring-1 focus:ring-accent-cyan";
+              const baseClasses = "group relative glass-panel border border-border-grid hover:border-accent-cyan/60 bg-[#080808] p-5 rounded-[4px] flex items-center gap-4 transition-colors duration-300 backdrop-blur-sm overflow-hidden w-full text-left focus:outline-none focus:ring-1 focus:ring-accent-cyan";
 
               if (link.name === 'Email') {
                 return (
@@ -187,7 +186,7 @@ export const Footer: React.FC = () => {
               href={portfolioData.resume} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 bg-[#0a071d] border border-accent-cyan/40 hover:border-accent-cyan text-accent-cyan font-mono text-xs uppercase tracking-[0.2em] font-bold rounded-[3px] transition-all duration-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.35)] group relative overflow-hidden"
+              className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 bg-[#080808] border border-accent-cyan/40 hover:border-accent-cyan text-accent-cyan font-mono text-xs uppercase tracking-[0.2em] font-bold rounded-[3px] transition-all duration-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.25)] group relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-accent-cyan/5 w-0 group-hover:w-full transition-all duration-500 ease-out" />
               <Download className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" /> 
@@ -200,10 +199,10 @@ export const Footer: React.FC = () => {
             RIGHT COLUMN: CONTACT TERMINAL
         ========================================= */}
         <div className="w-full lg:w-1/2">
-          <div className="border border-border-grid bg-[#08051a]/70 backdrop-blur-xl rounded-[6px] flex flex-col shadow-2xl relative overflow-hidden group/terminal">
+          <div className="border border-border-grid bg-[#080808] backdrop-blur-xl rounded-[6px] flex flex-col shadow-2xl relative overflow-hidden group/terminal">
             
             {/* Terminal Top Bar */}
-            <div className="bg-[#0b0821] border-b border-border-grid/60 p-5 rounded-t-[5px]">
+            <div className="bg-[#0d0d0d] border-b border-border-grid/60 p-5 rounded-t-[5px]">
               <div className="text-[10px] font-mono text-text-muted/70 tracking-[0.25em] border-b border-border-grid/40 pb-3 mb-3 font-semibold">
                 CONNECTION STATUS
               </div>
@@ -214,7 +213,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="flex justify-between pl-5 border-l border-border-grid/50">
                   <span className="text-text-muted">ENCRYPTION</span>
-                  <span className="text-accent-purple font-bold drop-shadow-[0_0_3px_#8b5cf6]">ACTIVE</span>
+                  <span className="text-accent-cyan font-bold drop-shadow-[0_0_3px_#06b6d4]">ACTIVE</span>
                 </div>
                 <div className="flex justify-between pr-5">
                   <span className="text-text-muted">CHANNEL</span>
@@ -239,7 +238,7 @@ export const Footer: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-[#05030f]/60 border border-border-grid rounded-[3px] p-3 font-mono text-xs text-text-main focus:outline-none focus:border-accent-cyan/80 focus:bg-[#0a071d] transition-all shadow-inner focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]" 
+                    className="w-full bg-[#050505] border border-border-grid rounded-[3px] p-3 font-mono text-xs text-text-main focus:outline-none focus:border-accent-cyan/80 focus:bg-[#080808] transition-all shadow-inner focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]" 
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -250,7 +249,7 @@ export const Footer: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-[#05030f]/60 border border-border-grid rounded-[3px] p-3 font-mono text-xs text-text-main focus:outline-none focus:border-accent-cyan/80 focus:bg-[#0a071d] transition-all shadow-inner focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]" 
+                    className="w-full bg-[#050505] border border-border-grid rounded-[3px] p-3 font-mono text-xs text-text-main focus:outline-none focus:border-accent-cyan/80 focus:bg-[#080808] transition-all shadow-inner focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]" 
                   />
                 </div>
               </div>
@@ -262,7 +261,7 @@ export const Footer: React.FC = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full bg-[#05030f]/60 border border-border-grid rounded-[3px] p-3 font-mono text-xs text-text-main focus:outline-none focus:border-accent-cyan/80 focus:bg-[#0a071d] transition-all shadow-inner focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]" 
+                  className="w-full bg-[#050505] border border-border-grid rounded-[3px] p-3 font-mono text-xs text-text-main focus:outline-none focus:border-accent-cyan/80 focus:bg-[#080808] transition-all shadow-inner focus:shadow-[0_0_15px_rgba(6,182,212,0.15)]" 
                 />
               </div>
 
@@ -273,14 +272,14 @@ export const Footer: React.FC = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-[#05030f]/60 border border-border-grid rounded-[3px] p-3 font-mono text-xs text-text-main focus:outline-none focus:border-accent-cyan/80 focus:bg-[#0a071d] transition-all shadow-inner focus:shadow-[0_0_15px_rgba(6,182,212,0.15)] resize-none h-32" 
+                  className="w-full bg-[#050505] border border-border-grid rounded-[3px] p-3 font-mono text-xs text-text-main focus:outline-none focus:border-accent-cyan/80 focus:bg-[#080808] transition-all shadow-inner focus:shadow-[0_0_15px_rgba(6,182,212,0.15)] resize-none h-32" 
                 />
               </div>
 
               <button 
                 disabled={status !== 'idle'} 
                 type="submit" 
-                className="w-full py-4 mt-2 bg-text-main text-[#03010a] hover:bg-accent-cyan hover:text-[#03010a] font-mono text-xs font-bold tracking-[0.2em] rounded-[3px] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-text-main relative overflow-hidden flex items-center justify-center h-[52px]"
+                className="w-full py-4 mt-2 bg-white text-black hover:bg-accent-cyan hover:text-black font-mono text-xs font-bold tracking-[0.2em] rounded-[3px] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-text-main relative overflow-hidden flex items-center justify-center h-[52px]"
               >
                 <AnimatePresence mode="wait">
                   {status === 'idle' && (
@@ -313,7 +312,7 @@ export const Footer: React.FC = () => {
       {/* =========================================
           BOTTOM TELEMETRY BAR
       ========================================= */}
-      <div className="w-full border-t border-border-grid/50 bg-[#020108] py-8">
+      <div className="w-full border-t border-border-grid/50 bg-black py-8">
         <div className="app-container flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           
           {/* Coordinates & Status */}
@@ -323,7 +322,7 @@ export const Footer: React.FC = () => {
               <span>COORD: {portfolioData.coordinates}</span>
             </span>
             <span className="flex items-center justify-center md:justify-start gap-2">
-              <span className="text-accent-purple font-bold">&gt;</span> 
+              <span className="text-accent-cyan font-bold">&gt;</span> 
               <span>STATUS: {portfolioData.role}</span>
             </span>
             <span className="flex items-center justify-center md:justify-start gap-2">
@@ -335,7 +334,7 @@ export const Footer: React.FC = () => {
           {/* Copyright & Architecture */}
           <div className="flex flex-col text-[9px] font-mono tracking-[0.15em] uppercase text-text-muted/60 items-center md:items-end gap-1.5">
             <span>© {currentYear} {portfolioData.name}. ALL RIGHTS SECURITY PROTOCOLS INTACT.</span>
-            <span className="text-accent-purple/60 font-semibold tracking-[0.2em]">CORE_ARCH // REACT + THREE_D_ACCELERATION</span>
+            <span className="text-text-muted/80 font-semibold tracking-[0.2em]">CORE_ARCH // REACT + THREE_D_ACCELERATION</span>
           </div>
         </div>
       </div>
@@ -350,7 +349,7 @@ export const Footer: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-[#03010a]/80 backdrop-blur-md cursor-pointer"
+              className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer"
               onClick={() => setIsEmailModalOpen(false)}
             />
             {/* Modal Content */}
@@ -358,9 +357,9 @@ export const Footer: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="relative w-full max-w-md bg-[#08051a] border border-border-grid rounded-[6px] shadow-[0_0_50px_rgba(6,182,212,0.1)] overflow-hidden glass-panel"
+              className="relative w-full max-w-md bg-[#0a0a0a] border border-border-grid rounded-[6px] shadow-[0_0_50px_rgba(6,182,212,0.1)] overflow-hidden glass-panel"
             >
-              <div className="border-b border-border-grid/50 p-4 flex justify-between items-center bg-[#0b0821]">
+              <div className="border-b border-border-grid/50 p-4 flex justify-between items-center bg-[#0d0d0d]">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse shadow-[0_0_8px_#06b6d4]" />
                   <span className="font-mono text-[10px] tracking-widest text-text-muted uppercase">SYSTEM_CONTACT</span>
@@ -374,26 +373,26 @@ export const Footer: React.FC = () => {
                 </button>
               </div>
               <div className="p-8 flex flex-col items-center text-center space-y-6">
-                <div className="w-12 h-12 rounded-full bg-surface-bg border border-accent-cyan/30 flex items-center justify-center text-accent-cyan shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+                <div className="w-12 h-12 rounded-full bg-[#080808] border border-accent-cyan/30 flex items-center justify-center text-accent-cyan shadow-[0_0_15px_rgba(6,182,212,0.15)]">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="space-y-1 w-full relative">
                   <span className="text-[10px] font-mono text-text-muted uppercase tracking-widest block">EMAIL ADDRESS</span>
-                  <div className="mt-2 py-3 px-4 bg-surface-bg/50 border border-border-grid rounded-[3px] select-all">
+                  <div className="mt-2 py-3 px-4 bg-[#050505] border border-border-grid rounded-[3px] select-all">
                     <span className="text-sm font-mono text-text-main font-bold tracking-wide">aadeshgund.2006@gmail.com</span>
                   </div>
                 </div>
                 <div className="flex gap-4 w-full pt-4">
                   <button 
                     onClick={handleCopyEmail}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-surface-bg border border-border-grid hover:border-accent-cyan text-text-main hover:text-accent-cyan font-mono text-[10px] uppercase tracking-widest rounded-[3px] transition-all"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#080808] border border-border-grid hover:border-accent-cyan text-text-main hover:text-accent-cyan font-mono text-[10px] uppercase tracking-widest rounded-[3px] transition-all"
                   >
                     {hasCopied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
                     {hasCopied ? 'COPIED' : 'COPY EMAIL'}
                   </button>
                   <button 
                     onClick={() => setIsEmailModalOpen(false)}
-                    className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-text-main text-[#03010a] hover:bg-accent-cyan hover:text-white font-mono text-[10px] uppercase tracking-widest font-bold rounded-[3px] transition-all"
+                    className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-white text-black hover:bg-accent-cyan hover:text-black font-mono text-[10px] uppercase tracking-widest font-bold rounded-[3px] transition-all"
                   >
                     CLOSE
                   </button>

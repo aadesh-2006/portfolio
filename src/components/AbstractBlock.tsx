@@ -22,9 +22,9 @@ export const AbstractBlock: React.FC<AbstractBlockProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`border border-border-grid rounded-[4px] bg-surface-bg font-mono text-sm ${className}`}>
+    <div className={`border border-border-grid rounded-[4px] bg-[#080808] font-mono text-sm ${className}`}>
       {/* Abstract Header */}
-      <div className="px-4 py-2 border-b border-border-grid bg-canvas-bg/30 select-none">
+      <div className="px-4 py-2 border-b border-border-grid bg-[#0c0c0c] select-none">
         <Text variant="label" className="text-text-main font-semibold">
           [ PROJECT ABSTRACT // {title.toUpperCase()} ]
         </Text>
@@ -40,7 +40,7 @@ export const AbstractBlock: React.FC<AbstractBlockProps> = ({
             <span className="text-xs text-text-muted block uppercase tracking-wider">TAXONOMY</span>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {tags.map((tag, i) => (
-                <span key={i} className="text-[10px] bg-canvas-bg border border-border-grid px-1.5 py-0.5 rounded-[2px] text-text-main font-mono">
+                <span key={i} className="text-[10px] bg-[#050505] border border-border-grid px-1.5 py-0.5 rounded-[2px] text-text-main font-mono">
                   {tag}
                 </span>
               ))}
@@ -50,9 +50,9 @@ export const AbstractBlock: React.FC<AbstractBlockProps> = ({
         {/* Metrics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {metrics.map((metric, i) => (
-            <div key={i} className="border border-border-grid/50 p-2.5 rounded-[2px] bg-canvas-bg/10">
+            <div key={i} className="border border-border-grid/50 p-2.5 rounded-[2px] bg-[#050505]">
               <span className="text-[10px] text-text-muted block uppercase tracking-wider">{metric.label}</span>
-              <span className="text-base font-bold text-accent-cobalt mt-0.5 block">{metric.value}</span>
+              <span className="text-base font-bold text-accent-cyan mt-0.5 block">{metric.value}</span>
             </div>
           ))}
         </div>

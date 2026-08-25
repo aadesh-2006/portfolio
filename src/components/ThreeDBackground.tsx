@@ -37,11 +37,11 @@ export const ThreeDBackground: React.FC = () => {
     let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     let scrollY = 0;
 
-    // Colors matched to the theme (indigo, cyan, violet)
+    // Colors matched to the minimal OLED black theme
     const colors = [
-      'rgba(99, 102, 241, 0.45)', // Indigo
-      'rgba(6, 182, 212, 0.45)',  // Cyan
-      'rgba(168, 85, 247, 0.45)', // Purple
+      'rgba(255, 255, 255, 0.35)', // Crisp White
+      'rgba(6, 182, 212, 0.40)',  // Cyan Highlight
+      'rgba(161, 161, 170, 0.25)', // Muted Zinc
     ];
 
     // Initialize particles in a 3D box
@@ -80,8 +80,8 @@ export const ThreeDBackground: React.FC = () => {
 
     // Render loop
     const render = () => {
-      // Clear canvas with space void color
-      ctx.fillStyle = '#030014';
+      // Clear canvas with pure OLED black
+      ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, width, height);
 
       // Expo ease mouse smoothing
@@ -125,7 +125,7 @@ export const ThreeDBackground: React.FC = () => {
         if (projX >= 0 && projX <= width && projY >= 0 && projY <= height) {
           ctx.beginPath();
           ctx.arc(projX, projY, finalSize, 0, Math.PI * 2);
-          ctx.fillStyle = p.color.replace('0.45', opacity.toFixed(2));
+          ctx.fillStyle = p.color.replace(/0\.\d+/, opacity.toFixed(2));
           ctx.fill();
         }
       });
@@ -163,12 +163,12 @@ export const ThreeDBackground: React.FC = () => {
               const projX2 = x2 * scale2 + centerX;
               const projY2 = y2 * scale2 + centerY;
 
-              const alpha = (1 - distance / 110) * 0.15;
+              const alpha = (1 - distance / 110) * 0.12;
 
               ctx.beginPath();
               ctx.moveTo(projX1, projY1);
               ctx.lineTo(projX2, projY2);
-              ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+              ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
               ctx.lineWidth = 0.5;
               ctx.stroke();
             }
