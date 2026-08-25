@@ -136,7 +136,9 @@ export const portfolioData: PortfolioData = {
         "Integrated Groww API for syncing holdings, trades, transactions, and live market prices.",
         "Historical performance charts, income & expense monitoring, and transaction search with secure authentication."
       ],
-      links: {},
+      links: {
+        caseStudy: "/projects/wealthtrack"
+      },
       metrics: [
         { label: "SYNC SYSTEM", value: "Groww API Sync" },
         { label: "STACK", value: "MERN Architecture" }
@@ -154,7 +156,9 @@ export const portfolioData: PortfolioData = {
         "Grounded LLM-based answer generation with source/citation references and conversational document context.",
         "Modular RAG pipeline architecture engineered for future hybrid retrieval and reranking extensions."
       ],
-      links: {},
+      links: {
+        caseStudy: "/projects/intellirag"
+      },
       metrics: [
         { label: "PIPELINE", value: "Retrieval-Augmented Gen" },
         { label: "SEARCH ENGINE", value: "Semantic Vector Search" }

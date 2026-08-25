@@ -67,7 +67,7 @@ const ARCHIVE_PROJECTS: ProjectCardData[] = [
     ],
     metricLabel: 'SYNC SYSTEM',
     metricValue: 'Groww API Sync',
-    link: '',
+    link: '/projects/wealthtrack',
     statusText: 'BUILDING // IN_DEVELOPMENT'
   },
   {
@@ -83,7 +83,7 @@ const ARCHIVE_PROJECTS: ProjectCardData[] = [
     ],
     metricLabel: 'PIPELINE',
     metricValue: 'Retrieval-Augmented Gen',
-    link: '',
+    link: '/projects/intellirag',
     statusText: 'BUILDING // IN_DEVELOPMENT'
   }
 ];
