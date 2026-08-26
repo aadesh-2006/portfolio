@@ -39,7 +39,7 @@ export const ProjectCaseStudy: React.FC = () => {
             <div className="border border-border-grid rounded-[4px] bg-surface-bg p-4 space-y-4">
               <span className="text-xs font-mono text-text-muted uppercase tracking-wider block">RESOURCES</span>
               <div className="flex flex-col gap-2">
-                <Button variant="secondary" href="https://github.com/AadeshGund" className="w-full text-center">
+                <Button variant="secondary" href="https://github.com/aadesh-2006" className="w-full text-center">
                   CODE REPOSITORY
                 </Button>
                 <Button variant="secondary" href="#" className="w-full text-center" disabled>

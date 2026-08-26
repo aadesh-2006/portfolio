@@ -35,7 +35,7 @@ const ARCHIVE_PROJECTS: ProjectCardData[] = [
     metricValue: 'YOLOv8 Nano',
     link: '/projects/flowsync',
     statusText: 'COMPILED_SUCCESS',
-    github: 'https://github.com/AadeshGund'
+    github: 'https://github.com/aadesh-2006'
   },
   {
     sysId: '● AEROFIND_SYS',
@@ -52,7 +52,7 @@ const ARCHIVE_PROJECTS: ProjectCardData[] = [
     metricValue: 'DeepXDE / PINN',
     link: '/projects/aerofind',
     statusText: 'COMPILED_SUCCESS',
-    github: 'https://github.com/AadeshGund'
+    github: 'https://github.com/aadesh-2006'
   },
   {
     sysId: '● WEALTHTRACK_SYS',

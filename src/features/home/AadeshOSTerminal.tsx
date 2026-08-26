@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Mail, X, Copy, Check, AlertCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData } from '../../content/portfolioData';
 
 interface TerminalLine {
@@ -31,6 +32,8 @@ export const AadeshOSTerminal: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [bootStep, setBootStep] = useState<number>(() => (sessionBootCompleted ? 2 : 0)); // 0: typing "boot", 1: boot lines, 2: ready
   const [typedBootText, setTypedBootText] = useState<string>(() => (sessionBootCompleted ? 'boot' : ''));
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'error'>('idle');
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -173,11 +176,11 @@ export const AadeshOSTerminal: React.FC = () => {
       case 'github':
         setHistory((prev) => [
           ...prev,
-          { type: 'system', text: 'Opening GitHub Repository...' },
+          { type: 'system', text: 'Opening GitHub Profile...' },
           { type: 'system', text: 'Connection established. Launching...' }
         ]);
         setTimeout(() => {
-          window.open('https://github.com/AadeshGund', '_blank');
+          window.open('https://github.com/aadesh-2006', '_blank');
         }, 1200);
         break;
 
@@ -205,14 +208,16 @@ export const AadeshOSTerminal: React.FC = () => {
 
       case 'mail':
       case 'email':
-        setHistory((prev) => [
-          ...prev,
-          { type: 'system', text: 'Launching mail client...' },
-          { type: 'system', text: 'Redirecting to mail client...' }
-        ]);
-        setTimeout(() => {
-          window.location.href = 'mailto:aadeshgund.2006@gmail.com';
-        }, 1200);
+        setHistory((prev) => {
+          const next: TerminalLine[] = [
+            ...prev,
+            { type: 'system', text: 'Initializing secure transmission channel...' },
+            { type: 'system', text: 'Opening communication console modal...' }
+          ];
+          sessionTerminalHistory = next;
+          return next;
+        });
+        setIsEmailModalOpen(true);
         break;
 
       default:
@@ -221,6 +226,36 @@ export const AadeshOSTerminal: React.FC = () => {
           { type: 'system', text: `Command not recognized: "${cmd}". Type "help" for a list of valid commands.` }
         ]);
     }
+  };
+
+  const handleCopyEmail = async () => {
+    const targetEmail = 'aadeshgund.2006@gmail.com';
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(targetEmail);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = targetEmail;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (!successful) throw new Error('Copy command failed');
+      }
+      setCopyStatus('copied');
+      setTimeout(() => setCopyStatus('idle'), 2500);
+    } catch {
+      setCopyStatus('error');
+      setTimeout(() => setCopyStatus('idle'), 2500);
+    }
+  };
+
+  const handleCloseEmailModal = () => {
+    setIsEmailModalOpen(false);
+    setCopyStatus('idle');
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -241,7 +276,7 @@ export const AadeshOSTerminal: React.FC = () => {
 
   const focusInput = () => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus({ preventScroll: true });
     }
   };
 
@@ -341,7 +376,6 @@ export const AadeshOSTerminal: React.FC = () => {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                autoFocus
                 autoComplete="off"
                 autoCorrect="off"
                 autoCapitalize="off"
@@ -372,6 +406,112 @@ export const AadeshOSTerminal: React.FC = () => {
           </button>
         ))}
       </div>
+
+      {/* =========================================
+          EMAIL TRANSMISSION MODAL (Terminal Action)
+      ========================================= */}
+      <AnimatePresence>
+        {isEmailModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/85 backdrop-blur-md cursor-pointer"
+              onClick={handleCloseEmailModal}
+            />
+            {/* Modal Box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 12 }}
+              className="relative w-full max-w-md bg-[#0a0a0a] border border-border-grid rounded-[6px] shadow-[0_0_50px_rgba(6,182,212,0.15)] overflow-hidden glass-panel select-none"
+            >
+              {/* Modal Header */}
+              <div className="border-b border-border-grid/50 p-4 flex justify-between items-center bg-[#0d0d0d]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse shadow-[0_0_8px_#06b6d4]" />
+                  <span className="font-mono text-[10px] tracking-widest text-text-muted uppercase">SYSTEM_MAIL_COMM</span>
+                </div>
+                <button 
+                  onClick={handleCloseEmailModal}
+                  className="text-text-muted hover:text-accent-cyan transition-colors focus:outline-none p-1"
+                  aria-label="Close modal"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-8 flex flex-col items-center text-center space-y-6">
+                <div className="w-12 h-12 rounded-full bg-[#080808] border border-accent-cyan/30 flex items-center justify-center text-accent-cyan shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+                  <Mail className="w-5 h-5" />
+                </div>
+
+                <div className="space-y-1.5 w-full relative">
+                  <span className="text-[10px] font-mono text-text-muted uppercase tracking-widest block">EMAIL ADDRESS</span>
+                  <div className="mt-2 py-3 px-4 bg-[#050505] border border-border-grid rounded-[3px] select-all">
+                    <span className="text-sm font-mono text-text-main font-bold tracking-wide">aadeshgund.2006@gmail.com</span>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 w-full pt-2">
+                  <button 
+                    onClick={handleCopyEmail}
+                    className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 border font-mono text-[10px] uppercase tracking-widest rounded-[3px] transition-all font-bold ${
+                      copyStatus === 'copied'
+                        ? 'border-green-500/60 bg-green-950/20 text-green-400'
+                        : copyStatus === 'error'
+                        ? 'border-red-500/60 bg-red-950/20 text-red-400'
+                        : 'border-border-grid hover:border-accent-cyan bg-[#080808] text-text-main hover:text-accent-cyan'
+                    }`}
+                  >
+                    {copyStatus === 'copied' && (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-green-400" />
+                        <span>COPIED ✓</span>
+                      </>
+                    )}
+                    {copyStatus === 'error' && (
+                      <>
+                        <AlertCircle className="w-3.5 h-3.5 text-red-400" />
+                        <span>COPY FAILED</span>
+                      </>
+                    )}
+                    {copyStatus === 'idle' && (
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        <span>COPY EMAIL</span>
+                      </>
+                    )}
+                  </button>
+
+                  <button 
+                    onClick={handleCloseEmailModal}
+                    className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-white text-black hover:bg-accent-cyan hover:text-black font-mono text-[10px] uppercase tracking-widest font-bold rounded-[3px] transition-all"
+                  >
+                    CLOSE
+                  </button>
+                </div>
+
+                <AnimatePresence>
+                  {copyStatus === 'copied' && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -5 }} 
+                      animate={{ opacity: 1, y: -12 }} 
+                      exit={{ opacity: 0, y: -5 }}
+                      className="text-[10px] font-mono text-green-400 tracking-widest"
+                    >
+                      Email copied to clipboard.
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

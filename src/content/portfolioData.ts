@@ -56,7 +56,7 @@ export const portfolioData: PortfolioData = {
   coordinates: "28.6139° N, 77.2090° E",
   linkedin: "https://www.linkedin.com/in/aadesh-gund-83b19a225/",
   leetcode: "https://leetcode.com/u/Aadesh_2006/",
-  github: "https://github.com/AadeshGund", // Custom inferred based on standard github names
+  github: "https://github.com/aadesh-2006",
   email: "contact@aadesh.dev", // A professional forwarding developer email
   resume: "https://drive.google.com/file/d/1GdTcoSkrARVUdOOrpKRTbG1JMsLTuIXd/view?usp=sharing",
   skills: [
@@ -94,7 +94,7 @@ export const portfolioData: PortfolioData = {
         "Engineered an automated data pipeline using Pandas and NumPy to preprocess large-scale satellite telemetry data, predicting future coordinates with high precision."
       ],
       links: {
-        github: "https://github.com/AadeshGund",
+        github: "https://github.com/aadesh-2006",
         caseStudy: "/projects/aerofind"
       },
       metrics: [
@@ -116,7 +116,7 @@ export const portfolioData: PortfolioData = {
         "Developed a high-performance FastAPI backend and a responsive React dashboard to visualize real-time traffic metrics and system efficiency."
       ],
       links: {
-        github: "https://github.com/AadeshGund",
+        github: "https://github.com/aadesh-2006",
         caseStudy: "/projects/flowsync"
       },
       metrics: [
