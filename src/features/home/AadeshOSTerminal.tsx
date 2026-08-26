@@ -19,16 +19,35 @@ const STARTUP_LINES: TerminalLine[] = [
   { type: 'system', text: 'System Ready. Type "help" for a list of commands.' }
 ];
 
+// Module-level in-memory session store.
+// Persists across component unmount/remount during the client session (route changes),
+// and resets only on explicit clear or full site reload.
+let sessionTerminalHistory: TerminalLine[] | null = null;
+let sessionBootCompleted = false;
+
 export const AadeshOSTerminal: React.FC = () => {
   const navigate = useNavigate();
-  const [history, setHistory] = useState<TerminalLine[]>([]);
+  const [history, setHistory] = useState<TerminalLine[]>(() => sessionTerminalHistory ?? []);
   const [inputValue, setInputValue] = useState('');
-  const [bootStep, setBootStep] = useState(0); // 0: typing "boot", 1: boot lines, 2: ready
-  const [typedBootText, setTypedBootText] = useState('');
+  const [bootStep, setBootStep] = useState<number>(() => (sessionBootCompleted ? 2 : 0)); // 0: typing "boot", 1: boot lines, 2: ready
+  const [typedBootText, setTypedBootText] = useState<string>(() => (sessionBootCompleted ? 'boot' : ''));
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 1. Startup Experience - auto typing "boot" and booting log sequence
+  // Sync state changes to module session store
+  useEffect(() => {
+    if (history.length > 0) {
+      sessionTerminalHistory = history;
+    }
+  }, [history]);
+
+  useEffect(() => {
+    if (bootStep === 2) {
+      sessionBootCompleted = true;
+    }
+  }, [bootStep]);
+
+  // 1. Startup Experience - auto typing "boot" and booting log sequence (only if not booted yet)
   useEffect(() => {
     if (bootStep === 0) {
       const fullText = 'boot';
@@ -48,23 +67,29 @@ export const AadeshOSTerminal: React.FC = () => {
     }
   }, [bootStep]);
 
-  // 2. Play boot loading lines sequentially
+  // 2. Play boot loading lines sequentially (only if not booted yet)
   useEffect(() => {
     if (bootStep === 1) {
       let currentLineIdx = 0;
-      setHistory([
-        { type: 'prompt', text: 'boot' }
-      ]);
+      const initialHistory: TerminalLine[] = [{ type: 'prompt', text: 'boot' }];
+      setHistory(initialHistory);
+      sessionTerminalHistory = initialHistory;
+
       const interval = setInterval(() => {
         if (currentLineIdx < STARTUP_LINES.length) {
           const line = STARTUP_LINES[currentLineIdx];
           if (line) {
-            setHistory((prev) => [...prev, line]);
+            setHistory((prev) => {
+              const next = [...prev, line];
+              sessionTerminalHistory = next;
+              return next;
+            });
           }
           currentLineIdx++;
         } else {
           clearInterval(interval);
           setBootStep(2);
+          sessionBootCompleted = true;
         }
       }, 350);
       return () => clearInterval(interval);
@@ -86,12 +111,17 @@ export const AadeshOSTerminal: React.FC = () => {
     if (!trimmedCmd) return;
 
     // Append user prompt entry to history
-    setHistory((prev) => [...prev, { type: 'prompt', text: cmd }]);
+    setHistory((prev) => {
+      const next: TerminalLine[] = [...prev, { type: 'prompt', text: cmd }];
+      sessionTerminalHistory = next;
+      return next;
+    });
 
     switch (trimmedCmd) {
       case 'clear':
         // Smoothly clear terminal history back to the startup lines
         setHistory([...STARTUP_LINES]);
+        sessionTerminalHistory = [...STARTUP_LINES];
         break;
 
       case 'help':
