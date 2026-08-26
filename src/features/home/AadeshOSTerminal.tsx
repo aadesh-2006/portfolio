@@ -99,7 +99,7 @@ export const AadeshOSTerminal: React.FC = () => {
           ...prev,
           {
             type: 'output',
-            text: 'Available commands: about, skills, projects, resume, github, linkedin, leetcode, email, clear'
+            text: 'Available commands: about, skills, projects, resume, github, linkedin, leetcode, mail, clear'
           }
         ]);
         break;
@@ -173,6 +173,7 @@ export const AadeshOSTerminal: React.FC = () => {
         }, 1200);
         break;
 
+      case 'mail':
       case 'email':
         setHistory((prev) => [
           ...prev,
@@ -180,7 +181,7 @@ export const AadeshOSTerminal: React.FC = () => {
           { type: 'system', text: 'Redirecting to mail client...' }
         ]);
         setTimeout(() => {
-          window.location.href = 'mailto:contact@aadesh.dev';
+          window.location.href = 'mailto:aadeshgund.2006@gmail.com';
         }, 1200);
         break;
 
@@ -201,8 +202,11 @@ export const AadeshOSTerminal: React.FC = () => {
   };
 
   const handleReturnToPortfolio = () => {
-    // Navigate back to the Hero section via React Router
-    navigate('/');
+    if (window.location.pathname === '/' || window.location.pathname === '') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
   };
 
   const focusInput = () => {
@@ -323,7 +327,7 @@ export const AadeshOSTerminal: React.FC = () => {
 
       {/* Quick click command shortcut buttons bar */}
       <div className="flex flex-wrap gap-2.5 justify-center select-none pt-2">
-        {['about', 'skills', 'projects', 'resume', 'github', 'linkedin', 'leetcode', 'email', 'clear'].map((cmd) => (
+        {['about', 'skills', 'projects', 'resume', 'github', 'linkedin', 'leetcode', 'mail', 'clear'].map((cmd) => (
           <button
             key={cmd}
             onClick={() => handleQuickCommandClick(cmd)}

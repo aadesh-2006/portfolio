@@ -5,6 +5,7 @@ import { Text } from '../../components/Text';
 import { portfolioData } from '../../content/portfolioData';
 import type { Project } from '../../content/portfolioData';
 import { AiSkillMatrix } from '../../components/AiSkillMatrix';
+import { AadeshOSTerminal } from './AadeshOSTerminal';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
   ArrowRight, 
@@ -217,22 +218,8 @@ export const HomeScroll: React.FC = () => {
             <span className="text-[10px] font-mono text-text-muted">PORT:_8080 TCP</span>
           </div>
 
-          {/* Terminal lives at /connect — prompt the user to navigate there */}
-          <div className="border border-border-grid bg-[#080808] rounded-[6px] p-8 flex flex-col items-center gap-5 glass-panel text-center">
-            <div className="flex items-center gap-2 font-mono text-xs text-text-muted">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
-              <span>AadeshOS Terminal v2.0 — System Online</span>
-            </div>
-            <p className="font-mono text-[10px] text-text-muted max-w-sm">
-              Access the interactive developer console to explore skills, projects, and establish a connection.
-            </p>
-            <Link
-              to="/connect"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black hover:bg-accent-cyan hover:text-black font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300"
-            >
-              Launch Terminal <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
+          {/* Interactive Terminal rendered directly */}
+          <AadeshOSTerminal />
 
         </div>
       </section>
