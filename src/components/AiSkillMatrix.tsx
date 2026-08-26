@@ -1,5 +1,16 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { 
+  Code2, 
+  Server, 
+  Layout, 
+  BrainCircuit, 
+  Database, 
+  Cpu, 
+  Layers, 
+  Zap,
+  Sparkles
+} from 'lucide-react';
 import type { SkillCategory } from '../content/portfolioData';
 
 interface AiSkillMatrixProps {
@@ -10,7 +21,7 @@ const projectMap: Record<string, string[]> = {
   "PyTorch": ["AeroFind"],
   "YOLOv8": ["FlowSync"],
   "Physics-Informed Neural Networks (PINN)": ["AeroFind"],
-  "React.js": ["FlowSync", "WealthTrack", "IntelliRAG", "Portfolio"],
+  "React": ["FlowSync", "WealthTrack", "IntelliRAG", "Portfolio"],
   "FastAPI": ["FlowSync", "IntelliRAG"],
   "MongoDB": ["WealthTrack"],
   "Express.js": ["WealthTrack"],
@@ -21,32 +32,65 @@ const projectMap: Record<string, string[]> = {
   "Scikit-learn": ["AeroFind"],
   "SUMO": ["FlowSync"],
   "TraCI": ["FlowSync"],
-  "RAG": ["IntelliRAG"],
-  "Vector DB": ["IntelliRAG"],
-  "LLM": ["IntelliRAG"],
   "Groww API": ["WealthTrack"]
+};
+
+// Metadata for category cards
+const categoryConfig: Record<string, { icon: React.ReactNode; strength: string; subtext: string }> = {
+  "Languages": {
+    icon: <Code2 className="w-4 h-4 text-emerald-400" />,
+    strength: "Strength: Strong",
+    subtext: "Core Languages & Scripting"
+  },
+  "Backend": {
+    icon: <Server className="w-4 h-4 text-emerald-400" />,
+    strength: "Strength: Strong",
+    subtext: "APIs & Distributed Architecture"
+  },
+  "Frontend": {
+    icon: <Layout className="w-4 h-4 text-emerald-400" />,
+    strength: "Strength: Strong",
+    subtext: "Interactive Web Interfaces"
+  },
+  "Data Science & ML": {
+    icon: <BrainCircuit className="w-4 h-4 text-emerald-400" />,
+    strength: "Strength: Advanced",
+    subtext: "Neural Networks & Physics-ML"
+  },
+  "Databases & Tools": {
+    icon: <Database className="w-4 h-4 text-emerald-400" />,
+    strength: "Strength: Proficient",
+    subtext: "Storage, DevOps & Tooling"
+  },
+  "Core Concepts": {
+    icon: <Cpu className="w-4 h-4 text-emerald-400" />,
+    strength: "Strength: Solid",
+    subtext: "Algorithms & System Design"
+  }
 };
 
 const SkillPill: React.FC<{ skill: string }> = ({ skill }) => {
   const projects = projectMap[skill];
-  
+
   return (
     <div className="relative group/pill z-10">
-      <motion.div 
-        whileHover={{ scale: 1.05 }}
-        className="px-2.5 py-1 text-[10px] font-mono text-text-main border border-border-grid/50 rounded-[2px] bg-canvas-bg/50 group-hover/pill:border-accent-cyan group-hover/pill:text-accent-cyan group-hover/pill:shadow-[0_0_12px_rgba(6,182,212,0.4)] transition-colors duration-300 cursor-default"
+      <motion.div
+        whileHover={{ scale: 1.03 }}
+        transition={{ duration: 0.15 }}
+        className="px-3 py-1.5 text-[11px] sm:text-xs font-mono text-zinc-300 border border-white/[0.08] rounded-[4px] bg-[#0c0c0c] hover:border-emerald-400/50 hover:text-emerald-300 hover:bg-emerald-950/20 transition-all duration-200 cursor-default flex items-center gap-1.5 shadow-sm"
       >
-        {skill}
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/60 group-hover/pill:bg-emerald-400 transition-colors" />
+        <span>{skill}</span>
       </motion.div>
-      
+
       {/* Contextual Hover Tooltip */}
       {projects && projects.length > 0 && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-[#0a0a0a] border border-border-grid px-3 py-2 rounded-[2px] opacity-0 group-hover/pill:opacity-100 pointer-events-none transition-opacity duration-200 z-50 shadow-xl backdrop-blur-md">
-          <span className="text-[8px] font-mono text-text-muted block mb-1 uppercase tracking-wider border-b border-border-grid/50 pb-0.5">
-            Module Activity
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[220px] bg-[#0a0a0a] border border-emerald-500/30 px-3 py-2 rounded-[3px] opacity-0 group-hover/pill:opacity-100 pointer-events-none transition-opacity duration-200 z-50 shadow-2xl backdrop-blur-md">
+          <span className="text-[8px] font-mono text-zinc-400 block mb-0.5 uppercase tracking-wider border-b border-white/[0.08] pb-1">
+            PROJECT INTEGRATION
           </span>
-          <span className="text-[9px] font-mono text-accent-cyan leading-tight block">
-            Integrated in: {projects.join(", ")}
+          <span className="text-[9px] font-mono text-emerald-400 font-semibold leading-tight block">
+            Used in: {projects.join(", ")}
           </span>
         </div>
       )}
@@ -54,166 +98,155 @@ const SkillPill: React.FC<{ skill: string }> = ({ skill }) => {
   );
 };
 
-const SkillModule: React.FC<{ category: SkillCategory; className?: string }> = ({ category, className = "" }) => {
-  return (
-    <div className={`glass-panel p-5 rounded-[4px] border border-border-grid hover:border-accent-cyan/40 transition-colors duration-500 bg-surface-bg/30 backdrop-blur-md relative group ${className}`}>
-      {/* Active/Loaded Badge */}
-      <div className="absolute top-3 right-3 flex items-center gap-1.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan/80 animate-pulse" />
-        <span className="text-[8px] font-mono text-accent-cyan tracking-widest opacity-80">ACTIVE</span>
-      </div>
-      
-      <h3 className="font-mono text-[11px] uppercase text-text-main font-bold mb-4 tracking-widest group-hover:text-accent-cyan transition-colors">
-        {category.category}
-      </h3>
-      
-      <div className="flex flex-wrap gap-2">
-        {category.skills.map((skill, idx) => (
-          <SkillPill key={idx} skill={skill} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
 export const AiSkillMatrix: React.FC<AiSkillMatrixProps> = ({ skills }) => {
   const totalTech = useMemo(() => skills.reduce((acc, cat) => acc + cat.skills.length, 0), [skills]);
-  const totalProjects = 4; // Based on portfolio data
-
-  // For the desktop radial layout, we assign specific absolute positions to each of the 5 categories.
-  // We assume skills array has 5 items.
-  const desktopPositions = [
-    { left: '2%', top: '5%', width: '30%' },         // Top Left (AI/ML)
-    { right: '2%', top: '5%', width: '30%' },        // Top Right (Programming)
-    { left: '2%', bottom: '5%', width: '30%' },      // Bottom Left (Full Stack)
-    { right: '2%', bottom: '5%', width: '30%' },     // Bottom Right (DB/Tools)
-    { left: '50%', bottom: '5%', width: '36%', transform: 'translateX(-50%)' } // Bottom Center (CS Core)
-  ];
-
-  // SVG lines connecting the center core to the modules on desktop
-  const connectionLines = [
-    { x1: '50%', y1: '40%', x2: '17%', y2: '15%' }, // to Top Left
-    { x1: '50%', y1: '40%', x2: '83%', y2: '15%' }, // to Top Right
-    { x1: '50%', y1: '40%', x2: '17%', y2: '80%' }, // to Bottom Left
-    { x1: '50%', y1: '40%', x2: '83%', y2: '80%' }, // to Bottom Right
-    { x1: '50%', y1: '40%', x2: '50%', y2: '85%' }, // to Bottom Center
-  ];
 
   return (
-    <div className="w-full relative">
+    <div className="w-full space-y-10 text-left select-none">
       
-      {/* MOBILE LAYOUT (Stack) */}
-      <div className="flex lg:hidden flex-col gap-8 relative z-10">
-        {/* Central Core (Mobile) */}
-        <div className="flex flex-col items-center justify-center my-6">
-          <div className="relative w-32 h-32 rounded-full border border-accent-cyan/50 bg-surface-bg/80 flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.2)]">
-            <motion.div 
-              animate={{ top: ['-20%', '120%'] }} 
-              transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
-              className="absolute left-0 w-full h-[2px] bg-accent-cyan shadow-[0_0_12px_#06B6D4]" 
-            />
-            <span className="font-syncopate text-[10px] text-text-main tracking-widest text-center leading-tight">
-              SKILL<br/>MATRIX
-            </span>
-          </div>
-          <div className="mt-5 flex flex-col items-center font-mono text-[9px] text-text-muted space-y-1 bg-surface-bg/40 px-4 py-2.5 rounded-[4px] border border-border-grid/50 backdrop-blur-sm">
-            <span className="text-accent-cyan font-bold tracking-widest mb-1">SYSTEM ONLINE</span>
-            <span>MODULES: {skills.length < 10 ? `0${skills.length}` : skills.length}</span>
-            <span>TECHNOLOGIES: {totalTech}</span>
-            <span>PROJECTS: 0{totalProjects}</span>
-          </div>
+      {/* 1. SECTION HEADER */}
+      <div className="space-y-4 max-w-3xl">
+        {/* Tracker badge */}
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+          <span className="font-mono text-xs text-emerald-400 font-semibold tracking-widest uppercase">
+            // SKILLS
+          </span>
         </div>
 
-        {/* Modules (Mobile) */}
-        {skills.map((cat, idx) => (
-          <SkillModule key={idx} category={cat} />
-        ))}
+        {/* Main Heading & Subtitle */}
+        <div className="space-y-3">
+          <h2 className="font-syncopate text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+            Skills That Power <br />
+            <span className="text-emerald-400 drop-shadow-[0_0_25px_rgba(52,211,153,0.35)]">
+              Real-World Impact.
+            </span>
+          </h2>
+          <p className="font-sans text-sm sm:text-base text-zinc-400 font-light leading-relaxed max-w-2xl">
+            A diverse set of technologies, frameworks and tools I use to build scalable, high-performance and impactful solutions.
+          </p>
+        </div>
       </div>
 
-      {/* DESKTOP LAYOUT (Radial Matrix) */}
-      <div className="hidden lg:block relative w-full h-[750px] xl:h-[800px] z-10">
-        
-        {/* SVG Connection Lines */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-          {connectionLines.map((line, idx) => (
-            <motion.line 
-              key={idx}
-              x1={line.x1} y1={line.y1} 
-              x2={line.x2} y2={line.y2}
-              className="stroke-accent-cyan/20" 
-              strokeWidth="1.5"
-              strokeDasharray="4 4"
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ repeat: Infinity, duration: 3, delay: idx * 0.5 }}
-            />
-          ))}
-        </svg>
-
-        {/* Central Core (Desktop) */}
-        <div className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-20">
-          <div className="relative w-44 h-44 rounded-full border border-accent-cyan/60 bg-[#050505] flex items-center justify-center overflow-hidden shadow-[0_0_35px_rgba(6,182,212,0.20)] group">
-            
-            {/* Inner Rotating Ring */}
-            <motion.div 
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-              className="absolute inset-2 rounded-full border border-dashed border-accent-cyan/20"
-            />
-            
-            {/* Core Scanning Line */}
-            <motion.div 
-              animate={{ top: ['-20%', '120%'] }} 
-              transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
-              className="absolute left-0 w-full h-[2px] bg-accent-cyan shadow-[0_0_15px_#06B6D4]" 
-            />
-            
-            <span className="font-syncopate text-[11px] text-text-main tracking-[0.2em] text-center leading-loose z-10 group-hover:text-accent-cyan transition-colors">
-              SKILL<br/>MATRIX
-            </span>
+      {/* 2. SKILLS OVERVIEW PANEL (3 Compact Balanced Metrics) */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+        {/* Metric 1 */}
+        <div className="bg-[#080808] border border-white/[0.08] hover:border-emerald-500/40 p-4 sm:p-5 rounded-[6px] transition-all duration-300 group shadow-lg">
+          <div className="flex items-center justify-between mb-3">
+            <Code2 className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+            <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">SYS_METRIC</span>
           </div>
-
-          {/* Telemetry Readout */}
-          <div className="mt-8 flex flex-col items-center font-mono text-[10px] text-text-muted space-y-1.5 bg-[#080808] px-6 py-3 rounded-[4px] border border-border-grid backdrop-blur-md shadow-lg">
-            <span className="text-accent-cyan font-bold tracking-[0.2em] mb-1">SYSTEM ONLINE</span>
-            <div className="flex gap-4 opacity-80">
-               <span className="flex flex-col items-center">
-                 <span className="text-[8px]">MODULES</span>
-                 <span className="text-text-main">{skills.length < 10 ? `0${skills.length}` : skills.length}</span>
-               </span>
-               <span className="flex flex-col items-center border-l border-r border-border-grid/50 px-4">
-                 <span className="text-[8px]">TECH</span>
-                 <span className="text-text-main">{totalTech}</span>
-               </span>
-               <span className="flex flex-col items-center">
-                 <span className="text-[8px]">PROJECTS</span>
-                 <span className="text-text-main">0{totalProjects}</span>
-               </span>
-            </div>
+          <div className="font-mono text-xl sm:text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+            {totalTech > 0 ? `${totalTech}+` : '20+'}
+          </div>
+          <div className="font-mono text-[10px] text-zinc-400 uppercase tracking-wider mt-0.5 font-medium">
+            Technologies
           </div>
         </div>
 
-        {/* Surrounding Modules (Desktop) */}
-        {skills.map((cat, idx) => {
-          const pos = desktopPositions[idx] || { left: '0', top: '0' };
+        {/* Metric 2 */}
+        <div className="bg-[#080808] border border-white/[0.08] hover:border-emerald-500/40 p-4 sm:p-5 rounded-[6px] transition-all duration-300 group shadow-lg">
+          <div className="flex items-center justify-between mb-3">
+            <Layers className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+            <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">SYS_METRIC</span>
+          </div>
+          <div className="font-mono text-xl sm:text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+            {skills.length > 0 ? `${skills.length}+` : '8+'}
+          </div>
+          <div className="font-mono text-[10px] text-zinc-400 uppercase tracking-wider mt-0.5 font-medium">
+            Categories
+          </div>
+        </div>
+
+        {/* Metric 3 */}
+        <div className="bg-[#080808] border border-white/[0.08] hover:border-emerald-500/40 p-4 sm:p-5 rounded-[6px] transition-all duration-300 group shadow-lg">
+          <div className="flex items-center justify-between mb-3">
+            <Zap className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+            <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">SYS_METRIC</span>
+          </div>
+          <div className="font-mono text-xl sm:text-2xl font-bold text-emerald-400">
+            ∞
+          </div>
+          <div className="font-mono text-[10px] text-zinc-400 uppercase tracking-wider mt-0.5 font-medium">
+            Learning
+          </div>
+        </div>
+      </div>
+
+      {/* 3. SKILL CATEGORY GRID (Responsive 1/2/3 Columns) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {skills.map((category, idx) => {
+          const meta = categoryConfig[category.category] || {
+            icon: <Sparkles className="w-4 h-4 text-emerald-400" />,
+            strength: "Strength: Strong",
+            subtext: "Technical Capabilities"
+          };
+
           return (
-            <div 
-              key={idx} 
-              className="absolute z-10" 
-              style={{ 
-                left: pos.left, 
-                right: pos.right, 
-                top: pos.top, 
-                bottom: pos.bottom, 
-                width: pos.width,
-                transform: pos.transform 
-              }}
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              className="bg-[#080808] border border-white/[0.08] hover:border-emerald-500/40 p-5 sm:p-6 rounded-[6px] transition-all duration-300 flex flex-col justify-between group shadow-xl relative overflow-hidden"
             >
-              <SkillModule category={cat} />
-            </div>
+              {/* Subtle top indicator glow bar */}
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div>
+                {/* Header with icon, title, and strength indicator */}
+                <div className="flex items-start justify-between gap-3 mb-4 pb-3.5 border-b border-white/[0.06]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-1.5 bg-[#0e0e0e] border border-white/[0.06] rounded-[4px] group-hover:border-emerald-500/30 transition-colors">
+                      {meta.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-mono text-xs font-bold text-white uppercase tracking-wider group-hover:text-emerald-300 transition-colors">
+                        {category.category}
+                      </h3>
+                      <span className="text-[9px] font-mono text-zinc-500 block">
+                        {meta.subtext}
+                      </span>
+                    </div>
+                  </div>
+
+                  <span className="text-[9px] font-mono text-emerald-400 bg-emerald-950/30 border border-emerald-500/20 px-2 py-0.5 rounded-[2px] whitespace-nowrap font-medium">
+                    {meta.strength}
+                  </span>
+                </div>
+
+                {/* Individual Technology Chips */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {category.skills.map((skill, sIdx) => (
+                    <SkillPill key={sIdx} skill={skill} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Status footer line */}
+              <div className="mt-5 pt-3 border-t border-white/[0.04] flex items-center justify-between text-[9px] font-mono text-zinc-500">
+                <span className="uppercase tracking-widest">MODULE // 0{idx + 1}</span>
+                <span className="text-emerald-400/80 font-medium">SYS_VERIFIED ✓</span>
+              </div>
+            </motion.div>
           );
         })}
-
       </div>
+
+      {/* 4. BOTTOM TERMINAL STRIP */}
+      <div className="bg-[#080808] border border-white/[0.08] hover:border-emerald-500/30 rounded-[6px] px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono select-none transition-all duration-300 shadow-lg">
+        <div className="flex items-center gap-2 text-zinc-300">
+          <span className="text-emerald-400 font-bold">&gt;</span>
+          <span className="tracking-wide">Always learning. Always building. Always shipping.</span>
+        </div>
+        <div className="flex items-center gap-1.5 text-zinc-400">
+          <span className="text-emerald-400 font-semibold">aadesh@portfolio:~$</span>
+          <span className="w-2 h-3.5 bg-emerald-400 animate-pulse inline-block" />
+        </div>
+      </div>
+
     </div>
   );
 };
+export default AiSkillMatrix;

@@ -10,7 +10,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { 
   ArrowRight, 
   Cpu, 
-  Code, 
   Award, 
   Terminal
 } from 'lucide-react';
@@ -150,24 +149,8 @@ export const HomeScroll: React.FC = () => {
       </section>
 
       {/* 3. SKILLS SECTION */}
-      <section id="skills" className="py-20 bg-black scroll-mt-12 text-left app-container">
-        <div className="space-y-10">
-          
-          {/* Section Header */}
-          <div className="flex items-center justify-between border-b border-border-grid/50 pb-4">
-            <div className="flex items-center gap-2.5">
-              <Code className="w-4 h-4 text-accent-cyan animate-pulse" />
-              <Text variant="label" className="text-accent-cyan font-bold tracking-[0.15em]">[ SYSTEMS // MODULE_02 ]</Text>
-            </div>
-            <span className="text-[10px] font-mono text-text-muted">SKILL MATRIX DISTRIBUTION</span>
-          </div>
-
-          {/* Detailed structured skills cards (AI Skill Matrix) */}
-          <div className="w-full">
-            <AiSkillMatrix skills={portfolioData.skills} />
-          </div>
-
-        </div>
+      <section id="skills" className="py-24 bg-black scroll-mt-12 text-left app-container">
+        <AiSkillMatrix skills={portfolioData.skills} />
       </section>
 
       {/* 4. CERTIFICATIONS SECTION */}

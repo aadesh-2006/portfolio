@@ -61,24 +61,28 @@ export const portfolioData: PortfolioData = {
   resume: "https://drive.google.com/file/d/1GdTcoSkrARVUdOOrpKRTbG1JMsLTuIXd/view?usp=sharing",
   skills: [
     {
-      category: "Data Science & ML",
-      skills: ["PyTorch", "YOLOv8", "Physics-Informed Neural Networks (PINN)", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "Seaborn", "Jupyter"]
-    },
-    {
       category: "Languages",
-      skills: ["Python", "Java", "SQL", "JavaScript (ES6+)", "C", "C++"]
+      skills: ["Python", "JavaScript", "TypeScript", "C++", "C", "Java", "SQL"]
     },
     {
-      category: "Web Development",
-      skills: ["React.js", "Node.js", "Express.js", "FastAPI", "Spring Boot", "HTML5", "CSS3"]
+      category: "Backend",
+      skills: ["FastAPI", "Node.js", "Express.js", "REST APIs", "Spring Boot"]
+    },
+    {
+      category: "Frontend",
+      skills: ["React", "HTML5", "CSS3"]
+    },
+    {
+      category: "Data Science & ML",
+      skills: ["PyTorch", "NumPy", "Pandas", "Matplotlib", "Scikit-learn", "Jupyter", "Physics-Informed Neural Networks (PINN)", "YOLOv8"]
     },
     {
       category: "Databases & Tools",
-      skills: ["MySQL", "MongoDB", "SUMO", "TraCI", "Git", "GitHub", "VS Code", "IntelliJ IDEA", "Vercel"]
+      skills: ["MySQL", "MongoDB", "SQLite", "Git", "GitHub", "VS Code", "IntelliJ IDEA", "Vercel"]
     },
     {
       category: "Core Concepts",
-      skills: ["Advanced Data Structures & Algorithms", "Object-Oriented Programming (OOP)", "System Design"]
+      skills: ["Data Structures & Algorithms", "Object-Oriented Programming", "System Design"]
     }
   ],
   projects: [
