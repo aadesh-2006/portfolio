@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { ArrowLeft } from 'lucide-react';
@@ -65,8 +65,8 @@ const ARCHIVE_PROJECTS: ProjectCardData[] = [
       'Integrated Groww API for syncing holdings, trades, transactions, and live market prices.',
       'Historical performance charts, income & expense monitoring, and transaction search with secure authentication.'
     ],
-    metricLabel: 'SYNC SYSTEM',
-    metricValue: 'Groww API Sync',
+    metricLabel: 'GROWW API',
+    metricValue: 'Live Port Sync',
     link: '/projects/wealthtrack',
     statusText: 'BUILDING // IN_DEVELOPMENT'
   },
@@ -93,19 +93,13 @@ const ARCHIVE_SCROLL_KEY = 'projects_archive_scroll_pos';
 export const ProjectsArchive: React.FC = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const savedPos = sessionStorage.getItem(ARCHIVE_SCROLL_KEY);
     if (savedPos !== null) {
       sessionStorage.removeItem(ARCHIVE_SCROLL_KEY);
       const targetY = parseFloat(savedPos);
       if (!isNaN(targetY)) {
-        window.scrollTo({ top: targetY, behavior: 'instant' });
-        requestAnimationFrame(() => {
-          window.scrollTo({ top: targetY, behavior: 'instant' });
-          setTimeout(() => {
-            window.scrollTo({ top: targetY, behavior: 'instant' });
-          }, 40);
-        });
+        window.scrollTo(0, targetY);
         return;
       }
     }

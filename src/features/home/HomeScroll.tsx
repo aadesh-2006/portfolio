@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { Hero } from './Hero';
 import { ThreeDCard } from '../../components/ThreeDCard';
 import { Text } from '../../components/Text';
@@ -20,8 +20,8 @@ const RESTORE_HOME_FLAG = 'restore_home_scroll';
 export const HomeScroll: React.FC = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Check if returning from Projects flow
+  // Synchronously restore scroll position BEFORE the browser paints the first frame
+  useLayoutEffect(() => {
     const shouldRestore = sessionStorage.getItem(RESTORE_HOME_FLAG);
     if (shouldRestore === 'true') {
       sessionStorage.removeItem(RESTORE_HOME_FLAG);
@@ -29,17 +29,14 @@ export const HomeScroll: React.FC = () => {
       if (savedPos) {
         const targetY = parseFloat(savedPos);
         if (!isNaN(targetY) && targetY > 0) {
-          window.scrollTo({ top: targetY, behavior: 'instant' });
-          requestAnimationFrame(() => {
-            window.scrollTo({ top: targetY, behavior: 'instant' });
-            setTimeout(() => {
-              window.scrollTo({ top: targetY, behavior: 'instant' });
-            }, 60);
-          });
+          window.scrollTo(0, targetY);
         }
       }
     }
+  }, []);
 
+  // Track scroll position on Home for session preservation
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
         sessionStorage.setItem(HOME_SCROLL_KEY, window.scrollY.toString());
