@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Hero } from './Hero';
 import { ThreeDCard } from '../../components/ThreeDCard';
 import { Text } from '../../components/Text';
@@ -11,7 +11,10 @@ import {
   ArrowRight, 
   Cpu, 
   Award, 
-  Terminal
+  Terminal,
+  Eye,
+  X,
+  ExternalLink
 } from 'lucide-react';
 
 const HOME_SCROLL_KEY = 'home_page_scroll_pos';
@@ -19,6 +22,7 @@ const RESTORE_HOME_FLAG = 'restore_home_scroll';
 
 export const HomeScroll: React.FC = () => {
   const navigate = useNavigate();
+  const [selectedProof, setSelectedProof] = useState<{ title: string; issuer: string; image: string } | null>(null);
 
   // Synchronously restore scroll position BEFORE the browser paints the first frame
   useLayoutEffect(() => {
@@ -213,22 +217,166 @@ export const HomeScroll: React.FC = () => {
             {portfolioData.certifications.map((cert, idx) => (
               <div 
                 key={idx}
-                className="flex items-start justify-between border border-border-grid bg-[#080808] p-4 rounded-[4px] hover:border-accent-cyan/30 transition-all font-mono"
+                className={`flex flex-col justify-between border border-border-grid bg-[#080808] p-4 rounded-[4px] hover:border-accent-cyan/40 transition-all duration-300 font-mono group ${
+                  cert.proofImage || cert.credentialUrl ? 'border-accent-cyan/30 shadow-[0_0_20px_rgba(6,182,212,0.06)]' : ''
+                }`}
               >
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-1 h-1 rounded-full bg-accent-cyan" />
-                    <span className="text-xs font-semibold text-text-main">{cert.title}</span>
+                <div className="space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className={`w-1.5 h-1.5 rounded-full ${cert.proofImage || cert.credentialUrl ? 'bg-accent-cyan animate-pulse' : 'bg-accent-cyan/70'}`} />
+                        <span className="text-xs font-semibold text-text-main group-hover:text-accent-cyan transition-colors">
+                          {cert.title}
+                        </span>
+                      </div>
+                      <span className="text-[9px] text-text-muted block pl-3">
+                        {cert.issuer.toUpperCase()}
+                      </span>
+                    </div>
+                    <span className="text-[9px] text-accent-cyan font-bold tracking-widest whitespace-nowrap">
+                      {cert.date.toUpperCase()}
+                    </span>
                   </div>
-                  <span className="text-[9px] text-text-muted block">{cert.issuer.toUpperCase()}</span>
+
+                  {/* Compact proof preview thumbnail for visual certificates (Goldman Sachs, Microsoft NLP) */}
+                  {cert.proofImage && (
+                    <div className="pt-1 pl-3 space-y-2">
+                      <div 
+                        onClick={() => setSelectedProof({ title: cert.title, issuer: cert.issuer, image: cert.proofImage! })}
+                        className="relative rounded-[3px] overflow-hidden border border-border-grid/80 hover:border-accent-cyan/60 bg-[#050505] cursor-pointer group/thumb transition-all duration-200"
+                      >
+                        <div className="h-28 w-full overflow-hidden relative">
+                          <img 
+                            src={cert.proofImage} 
+                            alt={`${cert.title} Proof`} 
+                            className="w-full h-full object-cover object-top opacity-85 group-hover/thumb:opacity-100 group-hover/thumb:scale-[1.02] transition-all duration-300"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end justify-between p-2">
+                            <span className="text-[8px] font-mono text-zinc-400 uppercase tracking-wider flex items-center gap-1">
+                              <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                              VERIFIED PROOF
+                            </span>
+                            <span className="inline-flex items-center gap-1 text-[9px] font-mono text-accent-cyan bg-black/80 border border-accent-cyan/40 px-2 py-0.5 rounded-[2px] backdrop-blur-sm group-hover/thumb:bg-accent-cyan group-hover/thumb:text-black font-semibold transition-all">
+                              <Eye className="w-2.5 h-2.5" />
+                              VIEW PROOF
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* External verification button for credentials with an official link */}
+                      {cert.credentialUrl && (
+                        <a
+                          href={cert.credentialUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full inline-flex items-center justify-center gap-1.5 text-[9px] font-mono text-accent-cyan hover:text-black bg-[#0a0a0a] hover:bg-accent-cyan border border-accent-cyan/40 px-3 py-1.5 rounded-[2px] transition-all font-bold tracking-wider uppercase group/btn cursor-pointer shadow-sm"
+                        >
+                          <span>VIEW CREDENTIAL</span>
+                          <ExternalLink className="w-2.5 h-2.5 transition-transform group-hover/btn:translate-x-0.5" />
+                        </a>
+                      )}
+                    </div>
+                  )}
+
+                  {/* For credentials with official link but without separate local image screenshot */}
+                  {!cert.proofImage && cert.credentialUrl && (
+                    <div className="pt-1 pl-3 space-y-2">
+                      <div className="h-28 w-full rounded-[3px] border border-border-grid/80 bg-[#050505] p-3 flex flex-col justify-between relative overflow-hidden">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[8px] font-mono text-accent-cyan uppercase tracking-wider">
+                            MS_LEARN // VERIFIED
+                          </span>
+                          <Award className="w-3.5 h-3.5 text-accent-cyan/80" />
+                        </div>
+                        <div className="space-y-0.5">
+                          <span className="text-[10px] font-bold text-text-main block line-clamp-1">
+                            {cert.title}
+                          </span>
+                          <span className="text-[8px] font-mono text-text-muted block">
+                            OFFICIAL DIGITAL RECORD
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1 text-[8px] font-mono text-zinc-400 uppercase tracking-wider">
+                          <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                          VERIFIED CREDENTIAL
+                        </div>
+                      </div>
+
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full inline-flex items-center justify-center gap-1.5 text-[9px] font-mono text-accent-cyan hover:text-black bg-[#0a0a0a] hover:bg-accent-cyan border border-accent-cyan/40 px-3 py-1.5 rounded-[2px] transition-all font-bold tracking-wider uppercase group/btn cursor-pointer shadow-sm"
+                      >
+                        <span>VIEW CREDENTIAL</span>
+                        <ExternalLink className="w-2.5 h-2.5 transition-transform group-hover/btn:translate-x-0.5" />
+                      </a>
+                    </div>
+                  )}
                 </div>
-                <span className="text-[9px] text-accent-cyan font-bold tracking-widest">{cert.date.toUpperCase()}</span>
               </div>
             ))}
           </div>
 
         </div>
       </section>
+
+      {/* Visual Proof Modal Viewer */}
+      {selectedProof && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md select-none"
+          onClick={() => setSelectedProof(null)}
+        >
+          <div 
+            className="relative max-w-2xl w-full bg-[#0a0a0a] border border-border-grid rounded-[6px] shadow-[0_0_50px_rgba(6,182,212,0.15)] overflow-hidden glass-panel"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="border-b border-border-grid/50 p-4 flex justify-between items-center bg-[#0d0d0d]">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse shadow-[0_0_8px_#06b6d4]" />
+                <span className="font-mono text-[10px] tracking-widest text-text-muted uppercase">
+                  VERIFIED_CREDENTIAL // PROOF_VIEWER
+                </span>
+              </div>
+              <button 
+                onClick={() => setSelectedProof(null)}
+                className="text-text-muted hover:text-accent-cyan transition-colors focus:outline-none p-1"
+                aria-label="Close proof viewer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Modal Content / Inspection */}
+            <div className="p-4 sm:p-6 bg-[#050505] flex flex-col items-center">
+              <div className="w-full max-h-[70vh] overflow-y-auto rounded-[4px] border border-border-grid/60 bg-[#070707] p-2 flex items-center justify-center">
+                <img 
+                  src={selectedProof.image} 
+                  alt={selectedProof.title} 
+                  className="max-w-full max-h-[65vh] w-auto h-auto object-contain rounded-[2px]"
+                />
+              </div>
+
+              <div className="w-full mt-4 pt-3 border-t border-border-grid/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-xs">
+                <div>
+                  <h4 className="text-text-main font-bold">{selectedProof.title}</h4>
+                  <span className="text-[10px] text-text-muted block uppercase mt-0.5">{selectedProof.issuer}</span>
+                </div>
+                <button
+                  onClick={() => setSelectedProof(null)}
+                  className="px-4 py-1.5 bg-white text-black hover:bg-accent-cyan hover:text-black font-mono text-[10px] uppercase tracking-wider font-bold rounded-[3px] transition-all cursor-pointer"
+                >
+                  CLOSE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 5. CONTACT SECTION (Interactive Terminal Theme) */}
       <section id="contact" className="py-20 bg-black scroll-mt-12 text-left app-container">

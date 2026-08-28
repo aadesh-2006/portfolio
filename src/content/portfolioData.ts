@@ -23,6 +23,8 @@ export interface Certification {
   title: string;
   issuer: string;
   date: string;
+  proofImage?: string;
+  credentialUrl?: string;
 }
 
 export interface PortfolioData {
@@ -174,7 +176,8 @@ export const portfolioData: PortfolioData = {
     {
       title: "Goldman Sachs Hackathon: Cleared Phase",
       issuer: "Goldman Sachs",
-      date: "June 2026"
+      date: "June 2026",
+      proofImage: "/goldman-sachs-hackathon-proof.png"
     },
     {
       title: "Oracle Java Foundations Associate",
@@ -183,23 +186,31 @@ export const portfolioData: PortfolioData = {
     },
     {
       title: "Introduction to Large Language Models",
-      issuer: "Google Cloud Certification",
-      date: "June 2026"
+      issuer: "GOOGLE CLOUD / SIMPLILEARN",
+      date: "June 2026",
+      proofImage: "/google-cloud-simplilearn-llm-certificate.png",
+      credentialUrl: "https://simpli-web.app.link/e/W6iZzMDkH3b"
     },
     {
       title: "Introduction to NLP Concepts",
-      issuer: "Microsoft Certification",
-      date: "June 2026"
+      issuer: "Microsoft Learn",
+      date: "June 2026",
+      proofImage: "/microsoft-nlp-certificate.png",
+      credentialUrl: "https://learn.microsoft.com/api/achievements/share/en-us/AadeshGund-8991/ABQWBS37?sharingId=4D67E1278FADBE76"
     },
     {
       title: "Introduction to Generative AI and Agents",
-      issuer: "Microsoft Certification",
-      date: "May 2026"
+      issuer: "Microsoft Learn",
+      date: "May 2026",
+      proofImage: "/microsoft-generative-ai-agents-certificate.png",
+      credentialUrl: "https://learn.microsoft.com/api/achievements/share/en-us/AadeshGund-8991/P6JN7EW4?sharingId=4D67E1278FADBE76"
     },
     {
       title: "HackerRank Problem Solving Skills Verification",
       issuer: "HackerRank",
-      date: "Aug. 2025"
+      date: "Aug. 2025",
+      proofImage: "/hackerrank-problem-solving-certificate.png",
+      credentialUrl: "https://www.hackerrank.com/certificates/iframe/13ab54f87f46"
     }
   ],
   achievements: [
