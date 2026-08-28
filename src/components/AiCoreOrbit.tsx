@@ -46,8 +46,8 @@ const ORBIT_CONFIG = [
 
 // Helper to determine skill tier sizing
 const getSkillSizeCategory = (text: string): 'large' | 'medium' | 'small' => {
-  const large = ['Python', 'PyTorch', 'React', 'FastAPI', 'TypeScript', 'YOLOv8'];
-  const medium = ['JavaScript', 'MongoDB', 'Git', 'Docker', 'Node.js', 'Linux'];
+  const large = ['Python', 'PyTorch', 'React', 'FastAPI', 'TypeScript', 'Node.js','SpringBoot'];
+  const medium = ['JavaScript', 'MongoDB', 'Git', 'Docker', 'YOLOv8', 'Linux'];
   if (large.includes(text)) return 'large';
   if (medium.includes(text)) return 'medium';
   return 'small';

@@ -16,11 +16,11 @@ export const WealthTrackCaseStudy: React.FC = () => {
 
   return (
     <div className="w-full flex-1 flex flex-col bg-surface-bg select-text">
-      {/* Back to Hub Nav */}
+      {/* Back to Archive Nav */}
       <div className="border-b border-border-grid px-6 py-4 flex items-center bg-canvas-bg/10 select-none">
-        <Button variant="link" to="/" className="inline-flex items-center gap-2">
+        <Button variant="link" to="/projects" className="inline-flex items-center gap-2">
           <ArrowLeft className="w-3.5 h-3.5" />
-          Back to Hub
+          Back to Archive
         </Button>
       </div>
 
