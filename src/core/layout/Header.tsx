@@ -62,6 +62,7 @@ export const Header: React.FC = () => {
       if (location.pathname === '/') {
         scrollToSection(sectionId);
       } else {
+        sessionStorage.removeItem('restore_home_scroll');
         sessionStorage.setItem(SCROLL_TARGET_KEY, sectionId);
         navigate('/');
       }
@@ -84,7 +85,17 @@ export const Header: React.FC = () => {
       
       {/* Brand logo & title */}
       <div className="flex items-center gap-3">
-        <Link to="/" className="focus:outline-none flex items-center gap-2">
+        <Link 
+          to="/" 
+          onClick={() => {
+            sessionStorage.removeItem('restore_home_scroll');
+            sessionStorage.removeItem('home_page_scroll_pos');
+            if (location.pathname === '/') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+          className="focus:outline-none flex items-center gap-2"
+        >
           <span className="font-syncopate text-xs font-bold tracking-widest text-text-main hover:text-accent-cyan transition-colors uppercase">
             {portfolioData.name}
           </span>
@@ -101,7 +112,13 @@ export const Header: React.FC = () => {
         {/* PROJECTS → navigates to /projects route */}
         <Link
           to="/projects"
-          onClick={() => sessionStorage.removeItem('projects_archive_scroll_pos')}
+          onClick={() => {
+            if (location.pathname === '/') {
+              sessionStorage.setItem('home_page_scroll_pos', window.scrollY.toString());
+              sessionStorage.setItem('restore_home_scroll', 'true');
+            }
+            sessionStorage.removeItem('projects_archive_scroll_pos');
+          }}
           className={`${baseClasses} ${isProjects ? activeClasses : inactiveClasses}`}
         >
           Projects

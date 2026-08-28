@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Hero } from './Hero';
 import { ThreeDCard } from '../../components/ThreeDCard';
 import { Text } from '../../components/Text';
@@ -14,8 +14,47 @@ import {
   Terminal
 } from 'lucide-react';
 
+const HOME_SCROLL_KEY = 'home_page_scroll_pos';
+const RESTORE_HOME_FLAG = 'restore_home_scroll';
+
 export const HomeScroll: React.FC = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if returning from Projects flow
+    const shouldRestore = sessionStorage.getItem(RESTORE_HOME_FLAG);
+    if (shouldRestore === 'true') {
+      sessionStorage.removeItem(RESTORE_HOME_FLAG);
+      const savedPos = sessionStorage.getItem(HOME_SCROLL_KEY);
+      if (savedPos) {
+        const targetY = parseFloat(savedPos);
+        if (!isNaN(targetY) && targetY > 0) {
+          window.scrollTo({ top: targetY, behavior: 'instant' });
+          requestAnimationFrame(() => {
+            window.scrollTo({ top: targetY, behavior: 'instant' });
+            setTimeout(() => {
+              window.scrollTo({ top: targetY, behavior: 'instant' });
+            }, 60);
+          });
+        }
+      }
+    }
+
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        sessionStorage.setItem(HOME_SCROLL_KEY, window.scrollY.toString());
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      if (window.scrollY > 0) {
+        sessionStorage.setItem(HOME_SCROLL_KEY, window.scrollY.toString());
+      }
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="w-full flex-1 flex flex-col divide-y divide-border-grid bg-black relative">
@@ -48,6 +87,8 @@ export const HomeScroll: React.FC = () => {
                 glowColor="rgba(6, 182, 212, 0.12)"
                 onClick={() => {
                   if (project.links.caseStudy) {
+                    sessionStorage.setItem(HOME_SCROLL_KEY, window.scrollY.toString());
+                    sessionStorage.setItem(RESTORE_HOME_FLAG, 'true');
                     navigate(project.links.caseStudy);
                   }
                 }}
@@ -131,7 +172,11 @@ export const HomeScroll: React.FC = () => {
                     <Link 
                       to={project.links.caseStudy}
                       className="inline-flex items-center gap-1 font-mono text-[10px] text-accent-cyan hover:text-text-main hover:translate-x-1 transition-all"
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        sessionStorage.setItem(HOME_SCROLL_KEY, window.scrollY.toString());
+                        sessionStorage.setItem(RESTORE_HOME_FLAG, 'true');
+                      }}
                     >
                       DIAGNOSE CASE <ArrowRight className="w-3 h-3" />
                     </Link>

@@ -56,6 +56,10 @@ export const Hero: React.FC = () => {
           <div className="flex flex-wrap gap-4 pt-2">
             <Link 
               to="/projects" 
+              onClick={() => {
+                sessionStorage.setItem('home_page_scroll_pos', window.scrollY.toString());
+                sessionStorage.setItem('restore_home_scroll', 'true');
+              }}
               className="flex items-center gap-2 px-5 py-2.5 bg-white text-black hover:bg-accent-cyan hover:text-black font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300 shadow-md focus:outline-none"
             >
               EXPLORE SCHEMATICS <ArrowRight className="w-3.5 h-3.5" />
