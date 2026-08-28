@@ -101,6 +101,7 @@ export const Header: React.FC = () => {
         {/* PROJECTS → navigates to /projects route */}
         <Link
           to="/projects"
+          onClick={() => sessionStorage.removeItem('projects_archive_scroll_pos')}
           className={`${baseClasses} ${isProjects ? activeClasses : inactiveClasses}`}
         >
           Projects

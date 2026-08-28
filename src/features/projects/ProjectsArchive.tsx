@@ -88,18 +88,45 @@ const ARCHIVE_PROJECTS: ProjectCardData[] = [
   }
 ];
 
+const ARCHIVE_SCROLL_KEY = 'projects_archive_scroll_pos';
+
 export const ProjectsArchive: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const savedPos = sessionStorage.getItem(ARCHIVE_SCROLL_KEY);
+    if (savedPos !== null) {
+      sessionStorage.removeItem(ARCHIVE_SCROLL_KEY);
+      const targetY = parseFloat(savedPos);
+      if (!isNaN(targetY)) {
+        window.scrollTo({ top: targetY, behavior: 'instant' });
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: targetY, behavior: 'instant' });
+          setTimeout(() => {
+            window.scrollTo({ top: targetY, behavior: 'instant' });
+          }, 40);
+        });
+        return;
+      }
+    }
     window.scrollTo(0, 0);
   }, []);
+
+  const handleOpenProject = (link: string) => {
+    sessionStorage.setItem(ARCHIVE_SCROLL_KEY, window.scrollY.toString());
+    navigate(link);
+  };
+
+  const handleBackToHub = () => {
+    sessionStorage.removeItem(ARCHIVE_SCROLL_KEY);
+    navigate('/');
+  };
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-black text-text-main select-text pb-24">
       {/* Back to Hub Nav */}
       <div className="border-b border-border-grid px-6 py-4 flex items-center bg-black select-none">
-        <Button variant="link" to="/" className="inline-flex items-center gap-2">
+        <Button variant="link" onClick={handleBackToHub} className="inline-flex items-center gap-2">
           <ArrowLeft className="w-3.5 h-3.5" />
           Back to Hub
         </Button>
@@ -140,7 +167,7 @@ export const ProjectsArchive: React.FC = () => {
           <div
             key={proj.title}
             className="group block border border-border-grid rounded-[4px] bg-[#080808] hover:border-accent-cyan/40 hover:-translate-y-1 transition-all duration-300 ease-damping p-6 md:p-8 space-y-6 text-left cursor-pointer"
-            onClick={() => navigate(proj.link)}
+            onClick={() => handleOpenProject(proj.link)}
           >
             {/* Top Bar with System ID */}
             <div className="flex justify-between items-center select-none">
@@ -222,9 +249,11 @@ export const ProjectsArchive: React.FC = () => {
                 </span>
                 <Button
                   variant="primary"
-                  to={proj.link}
                   className="group-hover:bg-accent-cyan group-hover:text-white transition-all duration-300"
-                  onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                  onClick={(e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    handleOpenProject(proj.link);
+                  }}
                 >
                   DIAGNOSE CASE →
                 </Button>
