@@ -89,6 +89,29 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
+      id: "codespeed",
+      title: "CodeSpeed",
+      tagline: "Type code. Track speed. Improve.",
+      description: "A developer-centric typing speed tracker designed specifically for programmers, benchmarking typing proficiency against real-world programming code snippets, syntax constructs, and indentation.",
+      technologies: ["React 19", "Vite", "Node.js", "Express", "MongoDB", "JWT", "MERN"],
+      bullets: [
+        "Engineered interactive code typing engine with character-level accuracy scoring, custom Tab indentation, and timer subsystems.",
+        "Constructed a 72-snippet taxonomy across 8 languages (JS, Python, Java, C++, C, HTML, CSS, SQL) and 3 difficulty tiers.",
+        "Implemented deterministic WPM and accuracy formulations with division-by-zero handling and anti-tamper backend validation.",
+        "Built stateless JWT authentication with bcryptjs password hashing and granular user privacy controls for practice statistics."
+      ],
+      links: {
+        github: "https://github.com/aadesh-2006/CodeSpeed",
+        caseStudy: "/projects/codespeed"
+      },
+      metrics: [
+        { label: "SNIPPETS", value: "72 Curated Codes" },
+        { label: "LANGUAGES", value: "8 Syntax Engines" },
+        { label: "AUTH STACK", value: "JWT + bcryptjs" }
+      ],
+      statusText: "FULL-STACK // ACTIVE"
+    },
+    {
       id: "urbancadastral-ai",
       title: "UrbanCadastral AI",
       tagline: "CPU-First Aerial Building Footprint Extraction",

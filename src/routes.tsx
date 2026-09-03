@@ -10,6 +10,7 @@ import { IntelliRAGCaseStudy } from './features/projects/IntelliRAGCaseStudy';
 import { PortfolioCaseStudy } from './features/projects/PortfolioCaseStudy';
 import { FinancialAnalystCaseStudy } from './features/projects/FinancialAnalystCaseStudy';
 import { UrbanCadastralCaseStudy } from './features/projects/UrbanCadastralCaseStudy';
+import { CodeSpeedCaseStudy } from './features/projects/CodeSpeedCaseStudy';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/" element={<HomeScroll />} />
       <Route path="/connect" element={<ConnectPage />} />
       <Route path="/projects" element={<ProjectsArchive />} />
+      <Route path="/projects/codespeed" element={<CodeSpeedCaseStudy />} />
       <Route path="/projects/urbancadastral-ai" element={<UrbanCadastralCaseStudy />} />
       <Route path="/projects/ai-financial-research-analyst" element={<FinancialAnalystCaseStudy />} />
       <Route path="/projects/flowsync" element={<ProjectCaseStudy />} />

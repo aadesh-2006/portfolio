@@ -20,6 +20,26 @@ interface ProjectCardData {
 
 const ARCHIVE_PROJECTS: ProjectCardData[] = [
   {
+    sysId: '● CODESPEED_SYS',
+    title: 'CodeSpeed',
+    subtitle: 'DEVELOPER-CENTRIC TYPING BENCHMARK PLATFORM',
+    description: 'A developer-centric typing speed tracker designed specifically for programmers, benchmarking typing proficiency against real-world programming code snippets, syntax constructs, and indentation.',
+    tags: ['React 19', 'Vite', 'Node.js', 'Express', 'MongoDB', 'JWT', 'MERN'],
+    highlights: [
+      'Engineered interactive code typing engine with character-level accuracy scoring, custom Tab indentation, and timer subsystems.',
+      'Constructed a 72-snippet taxonomy across 8 languages (JS, Python, Java, C++, C, HTML, CSS, SQL) and 3 difficulty tiers.',
+      'Implemented deterministic WPM and accuracy formulations with division-by-zero handling and anti-tamper backend validation.',
+      'Built stateless JWT authentication with bcryptjs password hashing and granular user privacy controls for practice statistics.',
+      'Engineered ranked performance tracking with WPM progression graphs, milestone badges, and public shareable profiles.',
+      'Implemented automated testing with Node native test runner (node:test) and mongodb-memory-server integration tests.'
+    ],
+    metricLabel: 'CORPUS',
+    metricValue: '72 Snippets / 8 Languages',
+    link: '/projects/codespeed',
+    statusText: 'FULL-STACK // ACTIVE',
+    github: 'https://github.com/aadesh-2006/CodeSpeed'
+  },
+  {
     sysId: '● URBANCADASTRAL_AI_SYS',
     title: 'UrbanCadastral AI',
     subtitle: 'CPU-FIRST AERIAL BUILDING FOOTPRINT EXTRACTION',
