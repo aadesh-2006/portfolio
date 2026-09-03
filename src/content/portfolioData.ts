@@ -89,6 +89,29 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
+      id: "urbancadastral-ai",
+      title: "UrbanCadastral AI",
+      tagline: "CPU-First Aerial Building Footprint Extraction",
+      description: "A lightweight, production-ready, CPU-first computer vision pipeline and interactive GIS workstation for automated Building Footprint Extraction from high-resolution aerial and satellite imagery.",
+      technologies: ["Python", "PyTorch", "FastAPI", "React", "TypeScript", "Vite", "Tailwind CSS"],
+      bullets: [
+        "Engineered custom LightUNet architecture with 1.94M parameters achieving 76.54% Mean Dice (±7.07) and 62.53% Mean IoU.",
+        "Optimized CPU-first inference achieving ~45.3 ms forward latency across 4 CPU threads on unseen SpaceNet 2 tiles.",
+        "Maintains full GeoTIFF geospatial integrity with WGS84 / EPSG:4326 GeoJSON vector export and pixel-coordinate fallback.",
+        "Developed an interactive GIS workstation with multi-layer rendering (RAW / MASK / OVERLAY) and dynamic opacity control."
+      ],
+      links: {
+        github: "https://github.com/aadesh-2006/UrbanCadastral-AI-ML",
+        caseStudy: "/projects/urbancadastral-ai"
+      },
+      metrics: [
+        { label: "DICE METRIC", value: "76.54% (±7.07)" },
+        { label: "CPU LATENCY", value: "~45.3 ms (4 Th)" },
+        { label: "MODEL SIZE", value: "7.78 MB Checkpoint" }
+      ],
+      statusText: "PRODUCTION-READY // COMPILED"
+    },
+    {
       id: "ai-financial-research-analyst",
       title: "AI Financial Research Analyst",
       tagline: "Modular Financial Intelligence Platform",

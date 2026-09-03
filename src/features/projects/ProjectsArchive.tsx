@@ -20,6 +20,26 @@ interface ProjectCardData {
 
 const ARCHIVE_PROJECTS: ProjectCardData[] = [
   {
+    sysId: '● URBANCADASTRAL_AI_SYS',
+    title: 'UrbanCadastral AI',
+    subtitle: 'CPU-FIRST AERIAL BUILDING FOOTPRINT EXTRACTION',
+    description: 'A lightweight, production-ready, CPU-first computer vision pipeline and interactive GIS workstation for automated Building Footprint Extraction from high-resolution aerial and satellite imagery.',
+    tags: ['Python', 'PyTorch', 'FastAPI', 'React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    highlights: [
+      'Engineered custom LightUNet architecture with 1.94M parameters achieving 76.54% Mean Dice (±7.07) and 62.53% Mean IoU.',
+      'Optimized CPU-first inference achieving ~45.3 ms forward latency across 4 CPU threads on unseen SpaceNet 2 tiles.',
+      'Maintains full GeoTIFF geospatial integrity with WGS84 / EPSG:4326 GeoJSON vector export and pixel-coordinate fallback.',
+      'Developed an interactive GIS workstation with multi-layer rendering (RAW / MASK / OVERLAY) and dynamic opacity control.',
+      'Integrated Ramer-Douglas-Peucker polygonization and morphological post-processing for clean boundary extraction.',
+      'Validated generalization via out-of-distribution UAV imagery extracting 13 valid polygons at 78.6% mean confidence.'
+    ],
+    metricLabel: 'PERFORMANCE',
+    metricValue: '76.54% Dice / ~45.3ms CPU',
+    link: '/projects/urbancadastral-ai',
+    statusText: 'PRODUCTION-READY // COMPILED',
+    github: 'https://github.com/aadesh-2006/UrbanCadastral-AI-ML'
+  },
+  {
     sysId: '● AI_FINANCIAL_RESEARCH_ANALYST_SYS',
     title: 'AI Financial Research Analyst',
     subtitle: 'MODULAR FINANCIAL INTELLIGENCE PLATFORM',
