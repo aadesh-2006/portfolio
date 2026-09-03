@@ -20,6 +20,26 @@ interface ProjectCardData {
 
 const ARCHIVE_PROJECTS: ProjectCardData[] = [
   {
+    sysId: '● AI_FINANCIAL_RESEARCH_ANALYST_SYS',
+    title: 'AI Financial Research Analyst',
+    subtitle: 'MODULAR FINANCIAL INTELLIGENCE PLATFORM',
+    description: 'A modular financial intelligence platform combining multi-source SEC EDGAR and market data ingestion, deterministic quantitative valuation analysis, and structured AI-powered research generation.',
+    tags: ['Python', 'FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'OpenAI', 'Docker'],
+    highlights: [
+      'Ingested multi-source financial data from SEC EDGAR, yfinance, and news sources into normalized company data.',
+      'Built a deterministic financial analysis engine covering growth, margins, returns, leverage, cash flow, valuation multiples, and financial health.',
+      'Implemented DCF and WACC valuation with 2D sensitivity analysis and explicit model assumptions.',
+      'Added a grounded LLM research layer that is prohibited from calculating or inventing financial numbers.',
+      'Built FastAPI REST endpoints for quantitative analysis, research generation, health checks, and historical analysis.',
+      'Added PostgreSQL persistence, Alembic migrations, reliability controls, credential masking, and Docker-based containerization.'
+    ],
+    metricLabel: 'SYSTEM METRIC',
+    metricValue: 'Deterministic Engine + Grounded AI',
+    link: '/projects/ai-financial-research-analyst',
+    statusText: 'PRODUCTION-ORIENTED // COMPILED',
+    github: 'https://github.com/aadesh-2006/ai-financial-research-analyst'
+  },
+  {
     sysId: '● FLOWSYNC_SYS',
     title: 'FlowSync',
     subtitle: 'AI-DRIVEN TRAFFIC SIGNAL OPTIMIZER',

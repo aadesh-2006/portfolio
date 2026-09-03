@@ -89,6 +89,29 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
+      id: "ai-financial-research-analyst",
+      title: "AI Financial Research Analyst",
+      tagline: "Modular Financial Intelligence Platform",
+      description: "A modular financial intelligence platform combining multi-source SEC EDGAR and market data ingestion, deterministic quantitative valuation analysis, and structured AI-powered research generation.",
+      technologies: ["Python", "FastAPI", "React", "TypeScript", "PostgreSQL", "OpenAI", "Docker"],
+      bullets: [
+        "Ingested multi-source financial data from SEC EDGAR, yfinance, and news sources into normalized company data.",
+        "Built a deterministic financial analysis engine covering growth, margins, returns, leverage, cash flow, valuation multiples, and financial health.",
+        "Implemented DCF and WACC valuation with 2D sensitivity analysis and explicit model assumptions.",
+        "Added a grounded LLM research layer that is prohibited from calculating or inventing financial numbers."
+      ],
+      links: {
+        github: "https://github.com/aadesh-2006/ai-financial-research-analyst",
+        caseStudy: "/projects/ai-financial-research-analyst"
+      },
+      metrics: [
+        { label: "ENGINE", value: "Deterministic Quant" },
+        { label: "SYNTHESIS", value: "Grounded LLM Layer" },
+        { label: "PERSISTENCE", value: "PostgreSQL 17" }
+      ],
+      statusText: "PRODUCTION-ORIENTED // COMPILED"
+    },
+    {
       id: "aerofind",
       title: "AeroFind",
       tagline: "Physics-Informed ML Satellite Tracking",

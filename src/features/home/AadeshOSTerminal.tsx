@@ -334,13 +334,19 @@ export const AadeshOSTerminal: React.FC = () => {
             if (line.isProjectList) {
               return (
                 <div key={idx} className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-1 select-none">
-                  {['FlowSync', 'AeroFind', 'WealthTrack', 'IntelliRAG', 'Portfolio'].map((proj) => (
+                  {[
+                    { label: 'FinAnalyst', slug: 'ai-financial-research-analyst' },
+                    { label: 'FlowSync', slug: 'flowsync' },
+                    { label: 'AeroFind', slug: 'aerofind' },
+                    { label: 'WealthTrack', slug: 'wealthtrack' },
+                    { label: 'IntelliRAG', slug: 'intellirag' }
+                  ].map((proj) => (
                     <button
-                      key={proj}
-                      onClick={() => navigate(`/projects/${proj.toLowerCase()}`)}
+                      key={proj.slug}
+                      onClick={() => navigate(`/projects/${proj.slug}`)}
                       className="border border-border-grid bg-[#0a0a0a] hover:border-accent-cyan/80 hover:text-accent-cyan px-2.5 py-1.5 rounded-[3px] text-center font-mono text-[10px] text-text-muted uppercase font-bold transition-all cursor-pointer"
                     >
-                      {proj}
+                      {proj.label}
                     </button>
                   ))}
                 </div>
