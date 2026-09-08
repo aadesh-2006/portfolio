@@ -81,7 +81,9 @@ export const HomeScroll: React.FC = () => {
 
           {/* Projects grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {portfolioData.projects.map((project: Project) => (
+            {portfolioData.projects
+              .filter((project: Project) => project.featured !== false)
+              .map((project: Project) => (
               <ThreeDCard
                 key={project.id}
                 className="h-full flex flex-col justify-between p-6 group glass-panel cursor-pointer"

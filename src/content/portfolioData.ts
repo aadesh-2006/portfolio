@@ -12,6 +12,7 @@ export interface Project {
   };
   metrics?: { label: string; value: string }[];
   statusText?: string;
+  featured?: boolean;
 }
 
 export interface SkillCategory {
@@ -109,7 +110,8 @@ export const portfolioData: PortfolioData = {
         { label: "LANGUAGES", value: "8 Syntax Engines" },
         { label: "AUTH STACK", value: "JWT + bcryptjs" }
       ],
-      statusText: "FULL-STACK // ACTIVE"
+      statusText: "FULL-STACK // ACTIVE",
+      featured: false
     },
     {
       id: "urbancadastral-ai",
