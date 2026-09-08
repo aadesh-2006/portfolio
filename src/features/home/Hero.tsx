@@ -62,13 +62,13 @@ export const Hero: React.FC = () => {
               }}
               className="flex items-center gap-2 px-5 py-2.5 bg-white text-black hover:bg-accent-cyan hover:text-black font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300 shadow-md focus:outline-none"
             >
-              INFO TERMINAL <ArrowRight className="w-3.5 h-3.5" />
+              MY WORK <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link 
               to="/connect" 
               className="flex items-center gap-2 px-5 py-2.5 border border-border-grid hover:border-accent-cyan bg-[#080808] text-text-main font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] transition-all duration-300 focus:outline-none"
             >
-              ASK THE TERMINAL
+              INFO TERMINAL
             </Link>
           </div>
         </div>
