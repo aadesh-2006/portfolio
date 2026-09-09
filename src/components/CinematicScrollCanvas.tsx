@@ -93,44 +93,34 @@ export const CinematicScrollCanvas: React.FC = () => {
       ctx.clearRect(0, 0, width, height);
 
       // -------------------------------------------------------------
-      // 1. Dynamic Accent Color Palette interpolation based on timeline
+      // 1. Dynamic Blue / Cyber Cyan Accent Palette across timeline
       // -------------------------------------------------------------
-      let r = 6, g = 182, b = 212; // Default Cyan: #06b6d4
-      let rSec = 14, gSec = 165, bSec = 233; // Sky
+      let r = 6, g = 182, b = 212; // Electric Cyan: #06b6d4
+      let rSec = 56, gSec = 189, bSec = 248; // Sky Cyan: #38bdf8
 
       if (scrollProgress < 0.25) {
         // Hero: Pure Electric Cyan (#06b6d4)
-        const t = scrollProgress / 0.25;
-        r = 6; g = Math.round(182 - t * 20); b = 212;
+        r = 6; g = 182; b = 212;
         rSec = 56; gSec = 189; bSec = 248;
       } else if (scrollProgress < 0.50) {
-        // Projects: Cyan to Sky / Architecture Teal (#0ea5e9 -> #14b8a6)
-        const t = (scrollProgress - 0.25) / 0.25;
-        r = Math.round(6 + t * 14);
-        g = Math.round(162 + t * 22);
-        b = Math.round(212 - t * 46);
-        rSec = 20; gSec = 184; bSec = 166;
+        // Projects: Deep Cyan / Cobalt (#0ea5e9)
+        r = 14; g = 165; b = 233;
+        rSec = 6; gSec = 182; bSec = 212;
       } else if (scrollProgress < 0.75) {
-        // Skills: Neural Emerald / Tech Green (#14b8a6 -> #10b981)
-        const t = (scrollProgress - 0.50) / 0.25;
-        r = Math.round(20 - t * 4);
-        g = Math.round(184 + t * 1);
-        b = Math.round(166 - t * 37);
-        rSec = 52; gSec = 211; bSec = 153;
+        // Skills: Computational Cyber Cyan (#06b6d4)
+        r = 6; g = 182; b = 212;
+        rSec = 56; gSec = 189; bSec = 248;
       } else if (scrollProgress < 0.90) {
-        // Credentials: Verification Teal-Cyan (#10b981 -> #06b6d4)
-        const t = (scrollProgress - 0.75) / 0.15;
-        r = Math.round(16 - t * 10);
-        g = Math.round(185 - t * 3);
-        b = Math.round(129 + t * 83);
+        // Credentials: Sky / Ice Cyan (#38bdf8)
+        r = 56; g = 189; b = 248;
         rSec = 6; gSec = 182; bSec = 212;
       } else {
-        // Ping: Terminal Cyan-Green (#06b6d4)
+        // Ping: Cyber Cyan (#06b6d4)
         r = 6; g = 182; b = 212;
-        rSec = 34; gSec = 197; bSec = 94;
+        rSec = 14; gSec = 165; bSec = 233;
       }
 
-      // Update root CSS variables for dynamic theme interpolation across UI
+      // Update root CSS variables for dynamic theme harmony across UI
       document.documentElement.style.setProperty('--dynamic-accent', `rgb(${r}, ${g}, ${b})`);
       document.documentElement.style.setProperty('--dynamic-glow', `rgba(${r}, ${g}, ${b}, 0.15)`);
       document.documentElement.style.setProperty('--dynamic-dim', `rgba(${r}, ${g}, ${b}, 0.08)`);
@@ -195,8 +185,8 @@ export const CinematicScrollCanvas: React.FC = () => {
       }
 
       // (B) Projects Phase: Architectural Bus Lines & Circuit Flow
-      if (scrollProgress > 0.15 && scrollProgress < 0.55) {
-        const projAlpha = Math.sin(((scrollProgress - 0.15) / 0.40) * Math.PI);
+      if (scrollProgress > 0.15 && scrollProgress < 0.38) {
+        const projAlpha = Math.sin(((scrollProgress - 0.15) / 0.23) * Math.PI);
         ctx.save();
         ctx.globalAlpha = projAlpha * 0.18;
 
