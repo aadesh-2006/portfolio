@@ -118,6 +118,16 @@ body {
   transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Precision Custom Reticle Cursor for fine-pointer desktop devices */
+@media (hover: hover) and (pointer: fine) {
+  html, body, a, button, [role="button"], .cursor-pointer, input[type="submit"] {
+    cursor: none !important;
+  }
+  input, textarea, select, [contenteditable="true"] {
+    cursor: text;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

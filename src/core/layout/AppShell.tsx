@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { ThreeDBackground } from '../../components/ThreeDBackground';
+import { CustomCursor } from '../../components/CustomCursor';
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -11,6 +12,9 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-canvas-bg flex flex-col transition-colors duration-400 relative">
       
+      {/* Precision Technical Custom Reticle Cursor */}
+      <CustomCursor />
+
       {/* Global Hardware-Accelerated 3D Background */}
       <ThreeDBackground />
 
