@@ -91,12 +91,30 @@ export const ThreeDCard: React.FC<ThreeDCardProps> = ({
         />
       )}
 
-      {/* Cyber ambient glow border indicator */}
-      {interactive && isHovered && (
-        <div
-          className="absolute inset-0 border border-accent-cyan/30 rounded-[4px] pointer-events-none transition-colors duration-300"
-          style={{ zIndex: 2 }}
-        />
+      {/* Cyber ambient glow border indicator & Inspection HUD */}
+      {interactive && (
+        <>
+          {/* Micro-brackets on 4 corners */}
+          <span className="absolute top-1.5 left-1.5 font-mono text-[9px] text-zinc-600 group-hover:text-[var(--dynamic-accent,#06b6d4)] transition-colors duration-300 pointer-events-none select-none">┌</span>
+          <span className="absolute top-1.5 right-1.5 font-mono text-[9px] text-zinc-600 group-hover:text-[var(--dynamic-accent,#06b6d4)] transition-colors duration-300 pointer-events-none select-none">┐</span>
+          <span className="absolute bottom-1.5 left-1.5 font-mono text-[9px] text-zinc-600 group-hover:text-[var(--dynamic-accent,#06b6d4)] transition-colors duration-300 pointer-events-none select-none">└</span>
+          <span className="absolute bottom-1.5 right-1.5 font-mono text-[9px] text-zinc-600 group-hover:text-[var(--dynamic-accent,#06b6d4)] transition-colors duration-300 pointer-events-none select-none">┘</span>
+
+          {/* Top Scanline pass on hover */}
+          {isHovered && (
+            <div
+              className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[var(--dynamic-accent,#06b6d4)] to-transparent pointer-events-none animate-pulse"
+              style={{ zIndex: 3 }}
+            />
+          )}
+
+          {isHovered && (
+            <div
+              className="absolute inset-0 border border-[var(--dynamic-accent,#06b6d4)]/30 rounded-[4px] pointer-events-none transition-colors duration-300"
+              style={{ zIndex: 2 }}
+            />
+          )}
+        </>
       )}
 
       {/* Content wrapper with translateZ to separate from card face */}

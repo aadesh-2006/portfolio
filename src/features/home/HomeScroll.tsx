@@ -16,6 +16,9 @@ import {
   X,
   ExternalLink
 } from 'lucide-react';
+import { CinematicScrollCanvas } from '../../components/CinematicScrollCanvas';
+import { CinematicHUD } from '../../components/CinematicHUD';
+import { TimelineGateway } from '../../components/TimelineGateway';
 
 const HOME_SCROLL_KEY = 'home_page_scroll_pos';
 const RESTORE_HOME_FLAG = 'restore_home_scroll';
@@ -60,14 +63,25 @@ export const HomeScroll: React.FC = () => {
   return (
     <div className="w-full flex-1 flex flex-col divide-y divide-border-grid bg-black relative">
       
-      {/* 3D Nebula particle background */}
-      {/* (Rendered underneath all content) */}
+      {/* Dynamic Background Telemetry & Kinetic Stream Canvas */}
+      <CinematicScrollCanvas />
+
+      {/* Floating System Timeline Telemetry HUD on desktop */}
+      <CinematicHUD />
 
       {/* 1. HERO SECTION */}
       <Hero />
 
+      {/* Transition Gateway: Hero -> Projects */}
+      <TimelineGateway 
+        sourceCode="01_INIT" 
+        targetCode="02_WORK" 
+        label="ARCHITECTURE_BUS" 
+        sublabel="DEPLOYING CORE WORKSPACE SCHEMATICS" 
+      />
+
       {/* 2. PROJECTS SECTION */}
-      <section id="projects" className="py-20 scroll-mt-12 text-left app-container bg-black">
+      <section id="projects" className="py-20 scroll-mt-12 text-left app-container bg-black relative z-10">
         <div className="space-y-10">
           
           {/* Section Header */}
@@ -196,13 +210,29 @@ export const HomeScroll: React.FC = () => {
         </div>
       </section>
 
+      {/* Transition Gateway: Projects -> Skills */}
+      <TimelineGateway 
+        sourceCode="02_WORK" 
+        targetCode="03_MATRIX" 
+        label="NEURAL_LATTICE" 
+        sublabel="SYNAPSE COMPILATION & STACK DYNAMICS" 
+      />
+
       {/* 3. SKILLS SECTION */}
-      <section id="skills" className="py-24 bg-black scroll-mt-12 text-left app-container">
+      <section id="skills" className="py-24 bg-black scroll-mt-12 text-left app-container relative z-10">
         <AiSkillMatrix skills={portfolioData.skills} />
       </section>
 
+      {/* Transition Gateway: Skills -> Certifications */}
+      <TimelineGateway 
+        sourceCode="03_MATRIX" 
+        targetCode="04_REGISTRY" 
+        label="CRYPTOGRAPHIC_REGISTRY" 
+        sublabel="IMMUTABLE VERIFICATION REPOSITORY" 
+      />
+
       {/* 4. CERTIFICATIONS SECTION */}
-      <section id="certifications" className="py-20 bg-black scroll-mt-12 text-left app-container">
+      <section id="certifications" className="py-20 bg-black scroll-mt-12 text-left app-container relative z-10">
         <div className="space-y-10">
           
           {/* Section Header */}
@@ -380,8 +410,16 @@ export const HomeScroll: React.FC = () => {
         </div>
       )}
 
+      {/* Transition Gateway: Certifications -> Contact */}
+      <TimelineGateway 
+        sourceCode="04_REGISTRY" 
+        targetCode="05_PING" 
+        label="CARRIER_CONVERGENCE" 
+        sublabel="PORT_8080 TCP INTERACTIVE TERMINAL ACCESS" 
+      />
+
       {/* 5. CONTACT SECTION (Interactive Terminal Theme) */}
-      <section id="contact" className="py-20 bg-black scroll-mt-12 text-left app-container">
+      <section id="contact" className="py-20 bg-black scroll-mt-12 text-left app-container relative z-10">
         <div className="max-w-5xl mx-auto space-y-10">
           
           {/* Section Header */}
