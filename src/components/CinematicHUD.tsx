@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Cpu, Terminal, Award, Layers, Sparkles } from 'lucide-react';
-import { ACCENT_PHASES, getInterpolatedAccent } from '../utils/accentPalette';
 
-const PHASE_ICONS: Record<string, React.ReactNode> = {
-  hero: <Sparkles className="w-3 h-3" />,
-  projects: <Cpu className="w-3 h-3" />,
-  skills: <Layers className="w-3 h-3" />,
-  certifications: <Award className="w-3 h-3" />,
-  contact: <Terminal className="w-3 h-3" />,
-};
+interface TimelinePhase {
+  id: string;
+  code: string;
+  label: string;
+  icon: React.ReactNode;
+  threshold: number;
+}
+
+const PHASES: TimelinePhase[] = [
+  { id: 'hero', code: '01', label: 'INIT', icon: <Sparkles className="w-3 h-3" />, threshold: 0.0 },
+  { id: 'projects', code: '02', label: 'WORK', icon: <Cpu className="w-3 h-3" />, threshold: 0.18 },
+  { id: 'skills', code: '03', label: 'MATRIX', icon: <Layers className="w-3 h-3" />, threshold: 0.45 },
+  { id: 'certifications', code: '04', label: 'REGISTRY', icon: <Award className="w-3 h-3" />, threshold: 0.72 },
+  { id: 'contact', code: '05', label: 'PING', icon: <Terminal className="w-3 h-3" />, threshold: 0.88 },
+];
 
 export const CinematicHUD: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -24,8 +31,15 @@ export const CinematicHUD: React.FC = () => {
       const progress = Math.min(Math.max(scrollY / totalScrollable, 0), 1);
       setScrollProgress(progress);
 
-      const { activePhaseIndex: currentIdx } = getInterpolatedAccent(progress);
-      setActivePhaseIndex(currentIdx);
+      // Determine active phase
+      let current = 0;
+      for (let i = PHASES.length - 1; i >= 0; i--) {
+        if (progress >= PHASES[i].threshold - 0.05) {
+          current = i;
+          break;
+        }
+      }
+      setActivePhaseIndex(current);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -44,7 +58,7 @@ export const CinematicHUD: React.FC = () => {
     }
   };
 
-  const activePhase = ACCENT_PHASES[activePhaseIndex] || ACCENT_PHASES[0];
+  const activePhase = PHASES[activePhaseIndex];
 
   return (
     <aside 
@@ -66,14 +80,14 @@ export const CinematicHUD: React.FC = () => {
         <div className="space-y-1">
           <div className="text-[9px] text-text-muted uppercase tracking-wider">ACTIVE_MODULE</div>
           <div className="text-xs font-bold text-text-main flex items-center justify-end gap-1.5 transition-colors">
-            <span className="text-[var(--dynamic-accent,#06b6d4)]">{PHASE_ICONS[activePhase.id]}</span>
+            <span className="text-[var(--dynamic-accent,#06b6d4)]">{activePhase.icon}</span>
             <span>[{activePhase.code} // {activePhase.label}]</span>
           </div>
         </div>
 
         {/* Phase Step Nodes (Clickable Navigation) */}
         <div className="space-y-1.5 pt-1">
-          {ACCENT_PHASES.map((phase, idx) => {
+          {PHASES.map((phase, idx) => {
             const isActive = idx === activePhaseIndex;
             return (
               <button

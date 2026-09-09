@@ -1,18 +1,16 @@
 import React, { useEffect, useRef } from 'react';
-import { getInterpolatedAccent, applyAccentToCssVariables } from '../utils/accentPalette';
 
 /**
  * CinematicScrollCanvas
  * 
  * An ultra-optimized, high-performance background telemetry stream canvas that
- * morphs continuously across the user's scroll timeline using a centralized
- * multi-accent color system:
+ * morphs continuously across the user's scroll timeline:
  * 
- * 01 // INIT     -> Electric Blue / Cyan    (Hero / System Init)
- * 02 // WORK     -> Sophisticated Amber     (Projects / Architecture)
- * 03 // MATRIX   -> Emerald Green          (Skills / ML / Computation)
- * 04 // REGISTRY -> Electric Violet/Purple (Credentials / Cryptographic Verification)
- * 05 // PING     -> Sophisticated Magenta   (Connect / Terminal / Link Carrier)
+ * Timeline Phase 0 (0.00 - 0.20): Hero // System Init (Orbital Telemetry & Signal Rings)
+ * Timeline Phase 1 (0.20 - 0.45): Projects // Architecture (Bus Splitter & System Data Flow)
+ * Timeline Phase 2 (0.45 - 0.70): Skills // Computation (Neural Graph Synapses & Vector Matrix)
+ * Timeline Phase 3 (0.70 - 0.88): Credentials // Verification (Cryptographic Hash Lattice)
+ * Timeline Phase 4 (0.88 - 1.00): Ping // Terminal (Transceiver Carrier Beam Convergence)
  */
 export const CinematicScrollCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -95,14 +93,47 @@ export const CinematicScrollCanvas: React.FC = () => {
       ctx.clearRect(0, 0, width, height);
 
       // -------------------------------------------------------------
-      // 1. Centralized Multi-Accent Continuous Palette Interpolation
+      // 1. Dynamic Accent Color Palette interpolation based on timeline
       // -------------------------------------------------------------
-      const { primary, secondary } = getInterpolatedAccent(scrollProgress);
-      const { r, g, b } = primary;
-      const { r: rSec, g: gSec, b: bSec } = secondary;
+      let r = 6, g = 182, b = 212; // Default Cyan: #06b6d4
+      let rSec = 14, gSec = 165, bSec = 233; // Sky
 
-      // Apply to root CSS variables for continuous site-wide harmony
-      applyAccentToCssVariables(primary, secondary);
+      if (scrollProgress < 0.25) {
+        // Hero: Pure Electric Cyan (#06b6d4)
+        const t = scrollProgress / 0.25;
+        r = 6; g = Math.round(182 - t * 20); b = 212;
+        rSec = 56; gSec = 189; bSec = 248;
+      } else if (scrollProgress < 0.50) {
+        // Projects: Cyan to Sky / Architecture Teal (#0ea5e9 -> #14b8a6)
+        const t = (scrollProgress - 0.25) / 0.25;
+        r = Math.round(6 + t * 14);
+        g = Math.round(162 + t * 22);
+        b = Math.round(212 - t * 46);
+        rSec = 20; gSec = 184; bSec = 166;
+      } else if (scrollProgress < 0.75) {
+        // Skills: Neural Emerald / Tech Green (#14b8a6 -> #10b981)
+        const t = (scrollProgress - 0.50) / 0.25;
+        r = Math.round(20 - t * 4);
+        g = Math.round(184 + t * 1);
+        b = Math.round(166 - t * 37);
+        rSec = 52; gSec = 211; bSec = 153;
+      } else if (scrollProgress < 0.90) {
+        // Credentials: Verification Teal-Cyan (#10b981 -> #06b6d4)
+        const t = (scrollProgress - 0.75) / 0.15;
+        r = Math.round(16 - t * 10);
+        g = Math.round(185 - t * 3);
+        b = Math.round(129 + t * 83);
+        rSec = 6; gSec = 182; bSec = 212;
+      } else {
+        // Ping: Terminal Cyan-Green (#06b6d4)
+        r = 6; g = 182; b = 212;
+        rSec = 34; gSec = 197; bSec = 94;
+      }
+
+      // Update root CSS variables for dynamic theme interpolation across UI
+      document.documentElement.style.setProperty('--dynamic-accent', `rgb(${r}, ${g}, ${b})`);
+      document.documentElement.style.setProperty('--dynamic-glow', `rgba(${r}, ${g}, ${b}, 0.15)`);
+      document.documentElement.style.setProperty('--dynamic-dim', `rgba(${r}, ${g}, ${b}, 0.08)`);
 
       // -------------------------------------------------------------
       // 2. Persistent Cybernetic Spine (Left Telemetry Axis)
@@ -234,8 +265,8 @@ export const CinematicScrollCanvas: React.FC = () => {
       }
 
       // (D) Credentials Phase: Cryptographic Verification Mesh
-      if (scrollProgress > 0.65 && scrollProgress < 0.90) {
-        const credAlpha = Math.sin(((scrollProgress - 0.65) / 0.25) * Math.PI);
+      if (scrollProgress > 0.65 && scrollProgress < 0.95) {
+        const credAlpha = Math.sin(((scrollProgress - 0.65) / 0.30) * Math.PI);
         ctx.save();
         ctx.globalAlpha = credAlpha * 0.15;
 
@@ -249,29 +280,6 @@ export const CinematicScrollCanvas: React.FC = () => {
           ctx.setLineDash([2, 14]);
           ctx.stroke();
         }
-        ctx.restore();
-      }
-
-      // (E) Ping Phase: Transceiver Carrier Signal & Concentric Wave Pulse
-      if (scrollProgress > 0.85) {
-        const pingAlpha = Math.min((scrollProgress - 0.85) / 0.15, 1);
-        ctx.save();
-        ctx.globalAlpha = pingAlpha * 0.18;
-
-        const pulseRadius = ((now * 0.04) % 180) + 40;
-        ctx.beginPath();
-        ctx.arc(width * 0.5, height * 0.5, pulseRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgb(${r}, ${g}, ${b})`;
-        ctx.lineWidth = 0.8;
-        ctx.setLineDash([4, 12]);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(width * 0.5, height * 0.5, Math.max(pulseRadius * 0.5, 10), 0, Math.PI * 2);
-        ctx.strokeStyle = `rgb(${rSec}, ${gSec}, ${bSec})`;
-        ctx.lineWidth = 0.5;
-        ctx.setLineDash([2, 6]);
-        ctx.stroke();
         ctx.restore();
       }
 

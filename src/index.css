@@ -86,19 +86,9 @@
   --text-main: #F4F4F5;                  /* Crisp Off-White */
   --text-muted: #A1A1AA;                 /* Zinc Muted Gray */
   --border-grid: rgba(255, 255, 255, 0.08); /* Subtle Dark Gray Grid Borders */
-  
-  /* Centralized Continuous Multi-Accent Palette System (Initial Phase: 01 // INIT) */
-  --dynamic-accent: rgb(6, 182, 212);
-  --dynamic-accent-secondary: rgb(14, 165, 233);
-  --dynamic-glow: rgba(6, 182, 212, 0.16);
-  --dynamic-glow-subtle: rgba(6, 182, 212, 0.05);
-  --dynamic-dim: rgba(6, 182, 212, 0.08);
-  --dynamic-border: rgba(6, 182, 212, 0.35);
-  --dynamic-border-hover: rgba(6, 182, 212, 0.6);
-
-  --accent-cobalt: var(--dynamic-accent);
-  --accent-cyan: var(--dynamic-accent);
-  --accent-purple: var(--dynamic-accent-secondary);
+  --accent-cobalt: #06B6D4;              /* Cyan */
+  --accent-cyan: #06B6D4;                /* Cyber Cyan Accent */
+  --accent-purple: #38BDF8;              /* Sky Cyan Accent */
 }
 
 /* Maintain light mode just in case toggle is pressed, but style it elegantly */
@@ -155,21 +145,21 @@ body {
 }
 
 .glass-panel:hover {
-  border-color: var(--dynamic-border);
-  box-shadow: 0 4px 24px 0 var(--dynamic-glow-subtle);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 4px 24px 0 rgba(6, 182, 212, 0.05);
 }
 
 /* Glowing text */
 .text-glow-indigo {
-  text-shadow: 0 0 10px var(--dynamic-glow);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
 }
 
 .text-glow-cyan {
-  text-shadow: 0 0 10px var(--dynamic-glow);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
 }
 
 .text-glow-purple {
-  text-shadow: 0 0 10px var(--dynamic-glow);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
 }
 
 /* Grid pattern */
