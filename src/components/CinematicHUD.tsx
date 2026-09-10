@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Cpu, Terminal, Award, Layers, Sparkles } from 'lucide-react';
+import { Cpu, Terminal, Award, Layers, Sparkles, Activity } from 'lucide-react';
 
 interface TimelinePhase {
   id: string;
@@ -11,10 +11,11 @@ interface TimelinePhase {
 
 const PHASES: TimelinePhase[] = [
   { id: 'hero', code: '01', label: 'INIT', icon: <Sparkles className="w-3 h-3" />, threshold: 0.0 },
-  { id: 'projects', code: '02', label: 'WORK', icon: <Cpu className="w-3 h-3" />, threshold: 0.18 },
-  { id: 'skills', code: '03', label: 'MATRIX', icon: <Layers className="w-3 h-3" />, threshold: 0.45 },
-  { id: 'certifications', code: '04', label: 'REGISTRY', icon: <Award className="w-3 h-3" />, threshold: 0.72 },
-  { id: 'contact', code: '05', label: 'PING', icon: <Terminal className="w-3 h-3" />, threshold: 0.88 },
+  { id: 'projects', code: '02', label: 'WORK', icon: <Cpu className="w-3 h-3" />, threshold: 0.15 },
+  { id: 'skills', code: '03', label: 'SKILLS', icon: <Layers className="w-3 h-3" />, threshold: 0.35 },
+  { id: 'metrics', code: '04', label: 'METRICS', icon: <Activity className="w-3 h-3" />, threshold: 0.55 },
+  { id: 'certifications', code: '05', label: 'REGISTRY', icon: <Award className="w-3 h-3" />, threshold: 0.75 },
+  { id: 'contact', code: '06', label: 'PING', icon: <Terminal className="w-3 h-3" />, threshold: 0.90 },
 ];
 
 export const CinematicHUD: React.FC = () => {
@@ -31,10 +32,16 @@ export const CinematicHUD: React.FC = () => {
       const progress = Math.min(Math.max(scrollY / totalScrollable, 0), 1);
       setScrollProgress(progress);
 
-      // Determine active phase
+      // Determine active phase by element position for accurate tracking
+      const sectionOffsets = PHASES.map(p => {
+        if (p.id === 'hero') return 0;
+        const el = document.getElementById(p.id);
+        return el ? el.offsetTop - 200 : Infinity;
+      });
+
       let current = 0;
-      for (let i = PHASES.length - 1; i >= 0; i--) {
-        if (progress >= PHASES[i].threshold - 0.05) {
+      for (let i = sectionOffsets.length - 1; i >= 0; i--) {
+        if (scrollY >= sectionOffsets[i]) {
           current = i;
           break;
         }
@@ -65,7 +72,7 @@ export const CinematicHUD: React.FC = () => {
       aria-label="System Timeline Telemetry"
       className="hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col items-end select-none pointer-events-none"
     >
-      <div className="bg-[#080808]/90 border border-border-grid/80 rounded-[4px] p-3 shadow-2xl backdrop-blur-md pointer-events-auto space-y-4 font-mono text-[10px] w-48 text-right glass-panel">
+      <div className="bg-[#080808]/90 border border-border-grid/80 rounded-[4px] p-3 shadow-2xl backdrop-blur-md pointer-events-auto space-y-3 font-mono text-[10px] w-48 text-right glass-panel">
         
         {/* Top Telemetry Header */}
         <div className="border-b border-border-grid/40 pb-2 flex items-center justify-between text-text-muted">
@@ -77,7 +84,7 @@ export const CinematicHUD: React.FC = () => {
         </div>
 
         {/* Active Phase Display */}
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           <div className="text-[9px] text-text-muted uppercase tracking-wider">ACTIVE_MODULE</div>
           <div className="text-xs font-bold text-text-main flex items-center justify-end gap-1.5 transition-colors">
             <span className="text-[var(--dynamic-accent,#06b6d4)]">{activePhase.icon}</span>
@@ -86,14 +93,14 @@ export const CinematicHUD: React.FC = () => {
         </div>
 
         {/* Phase Step Nodes (Clickable Navigation) */}
-        <div className="space-y-1.5 pt-1">
+        <div className="space-y-1 pt-0.5">
           {PHASES.map((phase, idx) => {
             const isActive = idx === activePhaseIndex;
             return (
               <button
                 key={phase.id}
                 onClick={() => scrollToPhase(phase.id)}
-                className={`w-full flex items-center justify-between px-2 py-1 rounded-[2px] transition-all duration-200 cursor-pointer text-[9px] ${
+                className={`w-full flex items-center justify-between px-2 py-0.5 rounded-[2px] transition-all duration-200 cursor-pointer text-[9px] ${
                   isActive
                     ? 'bg-[var(--dynamic-dim,rgba(6,182,212,0.1))] text-[var(--dynamic-accent,#06b6d4)] font-bold border-l-2 border-[var(--dynamic-accent,#06b6d4)]'
                     : 'text-text-muted hover:text-text-main hover:bg-[#111111]'
@@ -120,3 +127,4 @@ export const CinematicHUD: React.FC = () => {
     </aside>
   );
 };
+

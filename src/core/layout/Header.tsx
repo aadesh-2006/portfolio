@@ -71,7 +71,6 @@ export const Header: React.FC = () => {
   );
 
   // Derive active state for visual highlighting
-  const isHome = location.pathname === '/';
   const isProjects = location.pathname === '/projects' || location.pathname.startsWith('/projects/');
   const isConnect = location.pathname === '/connect';
 
@@ -128,9 +127,18 @@ export const Header: React.FC = () => {
         {/* SKILLS → smooth-scroll to #skills on home page */}
         <button
           onClick={() => handleSectionNav('skills')}
-          className={`${baseClasses} ${isHome ? inactiveClasses : inactiveClasses} cursor-pointer`}
+          className={`${baseClasses} ${inactiveClasses} cursor-pointer`}
         >
           Skills
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
+        </button>
+
+        {/* METRICS → smooth-scroll to #metrics on home page */}
+        <button
+          onClick={() => handleSectionNav('metrics')}
+          className={`${baseClasses} ${inactiveClasses} cursor-pointer`}
+        >
+          Metrics
           <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
         </button>
 
