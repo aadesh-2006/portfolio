@@ -5,6 +5,7 @@ import { Text } from '../../components/Text';
 import { portfolioData } from '../../content/portfolioData';
 import type { Project } from '../../content/portfolioData';
 import { AiSkillMatrix } from '../../components/AiSkillMatrix';
+import { MetricsSection } from './MetricsSection';
 import { AadeshOSTerminal } from './AadeshOSTerminal';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
@@ -196,7 +197,7 @@ export const HomeScroll: React.FC = () => {
                         sessionStorage.setItem(RESTORE_HOME_FLAG, 'true');
                       }}
                     >
-                      DIAGNOSE CASE <ArrowRight className="w-3 h-3" />
+                      DIAGNOSE CASE <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   ) : (
                     <span className="text-[9px] font-mono text-text-muted uppercase italic">
@@ -224,15 +225,26 @@ export const HomeScroll: React.FC = () => {
         <AiSkillMatrix skills={portfolioData.skills} />
       </section>
 
-      {/* Transition Gateway: Skills -> Certifications */}
+      {/* Transition Gateway: Skills -> Metrics */}
       <TimelineGateway 
         sourceCode="03_MATRIX" 
-        targetCode="04_REGISTRY" 
+        targetCode="04_SIGNALS" 
+        label="ENGINEERING_TELEMETRY" 
+        sublabel="ACTIVITY & REAL-TIME PERFORMANCE MATRIX" 
+      />
+
+      {/* 4. METRICS SECTION */}
+      <MetricsSection />
+
+      {/* Transition Gateway: Metrics -> Certifications */}
+      <TimelineGateway 
+        sourceCode="04_SIGNALS" 
+        targetCode="05_REGISTRY" 
         label="CRYPTOGRAPHIC_REGISTRY" 
         sublabel="IMMUTABLE VERIFICATION REPOSITORY" 
       />
 
-      {/* 4. CERTIFICATIONS SECTION */}
+      {/* 5. CERTIFICATIONS SECTION */}
       <section id="certifications" className="py-20 bg-black scroll-mt-12 text-left app-container relative z-10">
         <div className="space-y-10">
           
