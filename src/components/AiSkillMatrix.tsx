@@ -72,9 +72,42 @@ const categoryConfig: Record<string, { icon: React.ReactNode; strength: string; 
 
 const SkillPill: React.FC<{ skill: string; isParentActive?: boolean }> = ({ skill, isParentActive }) => {
   const projects = projectMap[skill];
+  const pillRef = useRef<HTMLDivElement>(null);
+  const [tooltipPos, setTooltipPos] = useState<{
+    horizontal: 'center' | 'left' | 'right';
+    vertical: 'top' | 'bottom';
+  }>({ horizontal: 'center', vertical: 'top' });
+
+  const handleMouseEnter = () => {
+    if (!pillRef.current) return;
+    const rect = pillRef.current.getBoundingClientRect();
+    const tooltipEstimatedWidth = 240;
+    const viewportWidth = window.innerWidth;
+    
+    // Check horizontal boundaries with safety margins
+    let horizontal: 'center' | 'left' | 'right' = 'center';
+    const centerX = rect.left + rect.width / 2;
+    if (centerX + tooltipEstimatedWidth / 2 > viewportWidth - 24) {
+      horizontal = 'right'; // align right edge to prevent right clipping
+    } else if (centerX - tooltipEstimatedWidth / 2 < 24) {
+      horizontal = 'left'; // align left edge to prevent left clipping
+    }
+
+    // Check vertical boundaries
+    let vertical: 'top' | 'bottom' = 'top';
+    if (rect.top < 90) {
+      vertical = 'bottom';
+    }
+
+    setTooltipPos({ horizontal, vertical });
+  };
 
   return (
-    <div className="relative group/pill z-10">
+    <div 
+      ref={pillRef}
+      onMouseEnter={handleMouseEnter}
+      className="relative group/pill z-10 hover:z-30"
+    >
       <motion.div
         whileHover={{ scale: 1.04 }}
         transition={{ duration: 0.15 }}
@@ -90,13 +123,26 @@ const SkillPill: React.FC<{ skill: string; isParentActive?: boolean }> = ({ skil
         <span>{skill}</span>
       </motion.div>
 
-      {/* Contextual Hover Tooltip */}
+      {/* Contextual Hover Tooltip with intelligent edge alignment */}
       {projects && projects.length > 0 && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[220px] bg-[#0a0a0a] border border-emerald-500/40 px-3 py-2 rounded-[3px] opacity-0 group-hover/pill:opacity-100 pointer-events-none transition-opacity duration-200 z-50 shadow-2xl backdrop-blur-md">
-          <span className="text-[8px] font-mono text-zinc-400 block mb-0.5 uppercase tracking-wider border-b border-white/[0.08] pb-1">
-            PROJECT INTEGRATION
-          </span>
-          <span className="text-[9px] font-mono text-emerald-400 font-semibold leading-tight block">
+        <div 
+          className={`absolute w-max max-w-[260px] sm:max-w-[300px] bg-[#0a0a0a]/95 border border-emerald-500/50 px-3.5 py-2.5 rounded-[4px] opacity-0 group-hover/pill:opacity-100 pointer-events-none transition-all duration-200 z-[60] shadow-[0_4px_24px_rgba(0,0,0,0.95),0_0_16px_rgba(16,185,129,0.18)] backdrop-blur-md ${
+            tooltipPos.vertical === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'
+          } ${
+            tooltipPos.horizontal === 'center'
+              ? 'left-1/2 -translate-x-1/2'
+              : tooltipPos.horizontal === 'left'
+              ? 'left-0 translate-x-0'
+              : 'right-0 left-auto translate-x-0'
+          }`}
+        >
+          <div className="flex items-center justify-between gap-2 border-b border-white/[0.08] pb-1 mb-1.5">
+            <span className="text-[8px] font-mono text-zinc-400 uppercase tracking-wider font-semibold">
+              PROJECT INTEGRATION
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          </div>
+          <span className="text-[10px] font-mono text-emerald-300 font-medium leading-relaxed block">
             Used in: {projects.join(", ")}
           </span>
         </div>
@@ -241,7 +287,7 @@ export const AiSkillMatrix: React.FC<AiSkillMatrixProps> = ({ skills }) => {
               data-skill-module-index={idx}
               onMouseEnter={() => setHoveredModuleIndex(idx)}
               onMouseLeave={() => setHoveredModuleIndex(null)}
-              className={`p-5 sm:p-6 rounded-[6px] transition-all duration-300 flex flex-col justify-between group shadow-xl relative overflow-hidden glass-panel ${
+              className={`p-5 sm:p-6 rounded-[6px] transition-all duration-300 flex flex-col justify-between group shadow-xl relative glass-panel ${
                 isHovered
                   ? 'border-emerald-400/60 bg-[#0a0a0a] shadow-[0_0_25px_rgba(16,185,129,0.14)]'
                   : isCurrentScanFocus
