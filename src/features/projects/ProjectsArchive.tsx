@@ -180,7 +180,7 @@ export const ProjectsArchive: React.FC = () => {
     <div className="w-full min-h-screen flex flex-col bg-black text-text-main select-text pb-24">
       {/* Back to Hub Nav */}
       <div className="border-b border-border-grid px-6 py-4 flex items-center bg-black select-none">
-        <Button variant="link" onClick={handleBackToHub} className="inline-flex items-center gap-2">
+        <Button variant="link" onClick={handleBackToHub} data-magnetic="true" className="inline-flex items-center gap-2">
           <ArrowLeft className="w-3.5 h-3.5" />
           Back to Hub
         </Button>
@@ -302,6 +302,7 @@ export const ProjectsArchive: React.FC = () => {
               <div className="shrink-0 ml-auto">
                 <Button
                   variant="primary"
+                  data-magnetic="true"
                   className="group-hover:bg-accent-cyan group-hover:text-white transition-all duration-300"
                   onClick={(e: React.MouseEvent) => {
                     e.stopPropagation();

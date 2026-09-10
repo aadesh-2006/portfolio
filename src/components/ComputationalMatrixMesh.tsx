@@ -11,7 +11,7 @@ interface ComputationalMatrixMeshProps {
  * 
  * High-performance vector/SVG computational bus architecture running behind
  * the Skills Matrix cards in the approved Emerald / Green + OLED Black theme.
- * Visualizes data flow conduits, neural synapse lines, and active node status.
+ * Visualizes data flow conduits, neural synapse lines, and reacts dynamically to cursor proximity.
  */
 export const ComputationalMatrixMesh: React.FC<ComputationalMatrixMeshProps> = ({
   activeModuleIndex,
@@ -20,6 +20,7 @@ export const ComputationalMatrixMesh: React.FC<ComputationalMatrixMeshProps> = (
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [nodes, setNodes] = useState<{ x: number; y: number; id: number }[]>([]);
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
 
   // Track the 6 card anchor positions dynamically
   useEffect(() => {
@@ -50,6 +51,30 @@ export const ComputationalMatrixMesh: React.FC<ComputationalMatrixMeshProps> = (
     };
   }, []);
 
+  // Track cursor position across the skills section for computational proximity
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      if (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      ) {
+        setMousePos({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        });
+      } else if (mousePos !== null) {
+        setMousePos(null);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mousePos]);
+
   // Predefined architectural bus conduits between skill modules
   const conduits = [
     { from: 0, to: 1, label: 'BUS_01' }, // Languages -> Backend
@@ -61,7 +86,7 @@ export const ComputationalMatrixMesh: React.FC<ComputationalMatrixMeshProps> = (
     { from: 4, to: 5, label: 'BUS_07' }, // Databases -> Core Concepts
   ];
 
-  // Map scanProgress so the scanline only travels across the computational cards (25% to 95%) and never over the heading
+  // Map scanProgress so the scanline only travels across the computational cards (28% to 98%) and never over the heading
   const scanLineTop = Math.min(Math.max(28 + scanProgress * 68, 28), 98);
 
   return (
@@ -115,14 +140,24 @@ export const ComputationalMatrixMesh: React.FC<ComputationalMatrixMeshProps> = (
             const n2 = nodes[conduit.to];
             if (!n1 || !n2) return null;
 
+            const midX = (n1.x + n2.x) / 2;
+            const midY = (n1.y + n2.y) / 2;
+
+            // Cursor proximity calculation to conduit midpoint
+            let isNearCursor = false;
+            if (mousePos) {
+              const distToMid = Math.hypot(mousePos.x - midX, mousePos.y - midY);
+              const distToN1 = Math.hypot(mousePos.x - n1.x, mousePos.y - n1.y);
+              const distToN2 = Math.hypot(mousePos.x - n2.x, mousePos.y - n2.y);
+              isNearCursor = distToMid < 95 || distToN1 < 80 || distToN2 < 80;
+            }
+
             const isHighlighted =
               hoveredModuleIndex === conduit.from ||
               hoveredModuleIndex === conduit.to ||
               activeModuleIndex === conduit.from ||
-              activeModuleIndex === conduit.to;
-
-            const midX = (n1.x + n2.x) / 2;
-            const midY = (n1.y + n2.y) / 2;
+              activeModuleIndex === conduit.to ||
+              isNearCursor;
 
             return (
               <g key={i}>
@@ -135,7 +170,7 @@ export const ComputationalMatrixMesh: React.FC<ComputationalMatrixMeshProps> = (
                   strokeDasharray={isHighlighted ? "4 4" : "2 8"}
                   className="transition-all duration-300"
                   filter={isHighlighted ? "url(#greenConduitGlow)" : undefined}
-                  opacity={isHighlighted ? 0.75 : 0.22}
+                  opacity={isHighlighted ? (isNearCursor ? 0.9 : 0.75) : 0.22}
                 />
 
                 {/* Flow Packet Node */}

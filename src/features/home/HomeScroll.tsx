@@ -188,6 +188,7 @@ export const HomeScroll: React.FC = () => {
                   {project.links.caseStudy ? (
                     <Link 
                       to={project.links.caseStudy}
+                      data-magnetic="true"
                       className="inline-flex items-center gap-1 font-mono text-[10px] text-accent-cyan hover:text-text-main hover:translate-x-1 transition-all"
                       onClick={(e) => {
                         e.stopPropagation();

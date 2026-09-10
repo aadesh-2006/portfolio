@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-interface ThreeDCardProps {
+interface ThreeDCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   glowColor?: string; // e.g. rgba(6, 182, 212, 0.12)
@@ -14,6 +14,7 @@ export const ThreeDCard: React.FC<ThreeDCardProps> = ({
   glowColor = 'rgba(6, 182, 212, 0.12)',
   onClick,
   interactive = true,
+  ...rest
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotateX, setRotateX] = useState<number>(0);
@@ -79,6 +80,7 @@ export const ThreeDCard: React.FC<ThreeDCardProps> = ({
       className={`glass-panel rounded-[4px] p-6 relative overflow-hidden select-none transition-all duration-300 ease-damping ${
         onClick ? 'cursor-pointer' : ''
       } ${className}`}
+      {...rest}
     >
       {/* Dynamic Sheen overlay */}
       {interactive && isHovered && (
