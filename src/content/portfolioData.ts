@@ -90,6 +90,32 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
+      id: "mockapilab",
+      title: "MockAPILab",
+      tagline: "Intelligent, stateful mock backend engine for modern frontend and full-stack development.",
+      description: "A developer productivity platform that transforms API contracts, OpenAPI specifications, natural-language API descriptions, or Spring Boot controller/model source code into locally runnable, realistic, stateful mock backends.",
+      technologies: ["Java 21", "Spring Boot 3.4", "Spring Security 6", "PostgreSQL 16", "Redis 7", "Apache Kafka 3.7", "Google Gemini API", "React 18", "TypeScript", "Docker"],
+      bullets: [
+        "Engineered modular monolith architecture across Auth, Project, Contract, AI, Scenario, and Stateful Runtime engines.",
+        "Implemented OpenAPI 3.x contract ingestion, versioning, and deterministic contract drift detection with breaking-change classification.",
+        "Integrated Gemini-assisted candidate contract extraction from natural language and Spring Boot source code with strict deterministic schema validation.",
+        "Built dynamic stateful REST runtime (/mock/{runtimeId}/**) with Redis-backed mutable state, CRUD lifecycle semantics, and in-memory test fallbacks.",
+        "Constructed scenario failure engine supporting FORCE_STATUS (401/429/500), configurable latency injection, and atomic execution limits.",
+        "Architected asynchronous mock dataset generation pipelines powered by Apache Kafka, PostgreSQL system of record, and 151 automated tests."
+      ],
+      links: {
+        github: "https://github.com/aadesh-2006/MockAPILab",
+        caseStudy: "/projects/mockapilab"
+      },
+      metrics: [
+        { label: "TEST SUITE", value: "151 Automated Tests" },
+        { label: "CORE RUNTIME", value: "Java 21 / Spring Boot 3" },
+        { label: "INFRASTRUCTURE", value: "Redis 7 + Kafka 3.7 + PG16" }
+      ],
+      statusText: "JAVA / SPRING BOOT // ACTIVE",
+      featured: true
+    },
+    {
       id: "codespeed",
       title: "CodeSpeed",
       tagline: "Type code. Track speed. Improve.",
@@ -240,7 +266,8 @@ export const portfolioData: PortfolioData = {
         { label: "PIPELINE", value: "Retrieval-Augmented Gen" },
         { label: "SEARCH ENGINE", value: "Semantic Vector Search" }
       ],
-      statusText: "BUILDING // IN_DEVELOPMENT"
+      statusText: "BUILDING // IN_DEVELOPMENT",
+      featured: false
     }
   ],
   certifications: [

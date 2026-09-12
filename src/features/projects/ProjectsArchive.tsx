@@ -20,6 +20,26 @@ interface ProjectCardData {
 
 const ARCHIVE_PROJECTS: ProjectCardData[] = [
   {
+    sysId: '● MOCKAPILAB_SYS',
+    title: 'MockAPILab',
+    subtitle: 'INTELLIGENT STATEFUL MOCK BACKEND ENGINE',
+    description: 'A developer productivity platform that transforms API contracts, OpenAPI specifications, natural-language API descriptions, or Spring Boot controller/model source code into locally runnable, realistic, stateful mock backends.',
+    tags: ['Java 21', 'Spring Boot 3.4', 'PostgreSQL 16', 'Redis 7', 'Apache Kafka 3.7', 'Docker'],
+    highlights: [
+      'Engineered modular monolith architecture across Auth, Project, Contract, AI, Scenario, and Stateful Runtime engines.',
+      'Implemented OpenAPI 3.x contract ingestion, versioning, and deterministic contract drift detection with breaking-change classification.',
+      'Integrated Gemini-assisted candidate contract extraction from natural language and Spring Boot source code with strict deterministic validation.',
+      'Built dynamic stateful REST runtime (/mock/{runtimeId}/**) with Redis-backed mutable state and CRUD lifecycle semantics.',
+      'Constructed scenario failure engine supporting FORCE_STATUS (401/429/500), configurable latency injection, and atomic execution limits.',
+      'Architected asynchronous mock dataset generation pipelines powered by Apache Kafka, PostgreSQL system of record, and 151 automated tests.'
+    ],
+    metricLabel: 'TEST SUITE',
+    metricValue: '151 Automated Tests / JUnit 5',
+    link: '/projects/mockapilab',
+    statusText: 'JAVA / SPRING BOOT // ACTIVE',
+    github: 'https://github.com/aadesh-2006/MockAPILab'
+  },
+  {
     sysId: '● CODESPEED_SYS',
     title: 'CodeSpeed',
     subtitle: 'DEVELOPER-CENTRIC TYPING BENCHMARK PLATFORM',
