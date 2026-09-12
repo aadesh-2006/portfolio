@@ -246,7 +246,8 @@ export const portfolioData: PortfolioData = {
         { label: "SYNC SYSTEM", value: "Groww API Sync" },
         { label: "STACK", value: "MERN Architecture" }
       ],
-      statusText: "BUILDING // IN_DEVELOPMENT"
+      statusText: "BUILDING // IN_DEVELOPMENT",
+      featured: false
     },
     {
       id: "intellirag",
@@ -267,7 +268,7 @@ export const portfolioData: PortfolioData = {
         { label: "SEARCH ENGINE", value: "Semantic Vector Search" }
       ],
       statusText: "BUILDING // IN_DEVELOPMENT",
-      featured: false
+      featured: true
     }
   ],
   certifications: [
