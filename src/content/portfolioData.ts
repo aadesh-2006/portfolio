@@ -77,7 +77,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       category: "Data Science & ML",
-      skills: ["PyTorch", "NumPy", "Pandas", "Matplotlib", "Scikit-learn", "Jupyter", "Physics-Informed Neural Networks (PINN)", "YOLOv8"]
+      skills: ["PyTorch", "NumPy", "Pandas", "Matplotlib", "Scikit-learn", "Jupyter"]
     },
     {
       category: "Databases & Tools",

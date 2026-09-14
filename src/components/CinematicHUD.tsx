@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Cpu, Terminal, Award, Layers, Sparkles, Activity } from 'lucide-react';
+import { Cpu, Terminal, Award, Layers, Sparkles, Activity, User } from 'lucide-react';
 
 interface TimelinePhase {
   id: string;
@@ -11,11 +11,12 @@ interface TimelinePhase {
 
 const PHASES: TimelinePhase[] = [
   { id: 'hero', code: '01', label: 'INIT', icon: <Sparkles className="w-3 h-3" />, threshold: 0.0 },
-  { id: 'projects', code: '02', label: 'WORK', icon: <Cpu className="w-3 h-3" />, threshold: 0.15 },
-  { id: 'skills', code: '03', label: 'SKILLS', icon: <Layers className="w-3 h-3" />, threshold: 0.35 },
-  { id: 'metrics', code: '04', label: 'METRICS', icon: <Activity className="w-3 h-3" />, threshold: 0.55 },
-  { id: 'certifications', code: '05', label: 'REGISTRY', icon: <Award className="w-3 h-3" />, threshold: 0.75 },
-  { id: 'contact', code: '06', label: 'PING', icon: <Terminal className="w-3 h-3" />, threshold: 0.90 },
+  { id: 'projects', code: '02', label: 'WORK', icon: <Cpu className="w-3 h-3" />, threshold: 0.14 },
+  { id: 'skills', code: '03', label: 'SKILLS', icon: <Layers className="w-3 h-3" />, threshold: 0.28 },
+  { id: 'about', code: '04', label: 'PROFILE', icon: <User className="w-3 h-3" />, threshold: 0.42 },
+  { id: 'metrics', code: '05', label: 'METRICS', icon: <Activity className="w-3 h-3" />, threshold: 0.58 },
+  { id: 'certifications', code: '06', label: 'REGISTRY', icon: <Award className="w-3 h-3" />, threshold: 0.76 },
+  { id: 'contact', code: '07', label: 'PING', icon: <Terminal className="w-3 h-3" />, threshold: 0.90 },
 ];
 
 export const CinematicHUD: React.FC = () => {

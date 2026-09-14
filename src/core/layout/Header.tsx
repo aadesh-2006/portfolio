@@ -133,6 +133,15 @@ export const Header: React.FC = () => {
           <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
         </button>
 
+        {/* ABOUT → smooth-scroll to #about on home page */}
+        <button
+          onClick={() => handleSectionNav('about')}
+          className={`${baseClasses} ${inactiveClasses} cursor-pointer`}
+        >
+          About
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-accent-cyan group-hover:w-3/4 transition-all duration-300" />
+        </button>
+
         {/* METRICS → smooth-scroll to #metrics on home page */}
         <button
           onClick={() => handleSectionNav('metrics')}

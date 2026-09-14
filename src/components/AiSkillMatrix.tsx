@@ -21,7 +21,6 @@ interface AiSkillMatrixProps {
 const projectMap: Record<string, string[]> = {
   "PyTorch": ["AeroFind"],
   "YOLOv8": ["FlowSync"],
-  "Physics-Informed Neural Networks (PINN)": ["AeroFind"],
   "React": ["FlowSync", "WealthTrack", "IntelliRAG", "Portfolio"],
   "FastAPI": ["FlowSync", "IntelliRAG"],
   "MongoDB": ["WealthTrack"],
@@ -56,7 +55,7 @@ const categoryConfig: Record<string, { icon: React.ReactNode; strength: string; 
   "Data Science & ML": {
     icon: <BrainCircuit className="w-4 h-4 text-emerald-400" />,
     strength: "Strength: Advanced",
-    subtext: "Neural Networks & Physics-ML"
+    subtext: "Neural Networks & Machine Learning"
   },
   "Databases & Tools": {
     icon: <Database className="w-4 h-4 text-emerald-400" />,

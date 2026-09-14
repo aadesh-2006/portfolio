@@ -5,6 +5,7 @@ import { Text } from '../../components/Text';
 import { portfolioData } from '../../content/portfolioData';
 import type { Project } from '../../content/portfolioData';
 import { AiSkillMatrix } from '../../components/AiSkillMatrix';
+import { AboutSection } from './AboutSection';
 import { MetricsSection } from './MetricsSection';
 import { AadeshOSTerminal } from './AadeshOSTerminal';
 import { Link, useNavigate } from 'react-router-dom';
@@ -225,26 +226,37 @@ export const HomeScroll: React.FC = () => {
         <AiSkillMatrix skills={portfolioData.skills} />
       </section>
 
-      {/* Transition Gateway: Skills -> Metrics */}
+      {/* Transition Gateway: Skills -> About */}
       <TimelineGateway 
-        sourceCode="03_MATRIX" 
-        targetCode="04_SIGNALS" 
+        sourceCode="03_SKILLS" 
+        targetCode="04_PROFILE" 
+        label="SYSTEM_IDENTITY" 
+        sublabel="CORE OPERATOR PROFILE & BACKGROUND" 
+      />
+
+      {/* 4. ABOUT SECTION */}
+      <AboutSection />
+
+      {/* Transition Gateway: About -> Metrics */}
+      <TimelineGateway 
+        sourceCode="04_PROFILE" 
+        targetCode="05_METRICS" 
         label="ENGINEERING_TELEMETRY" 
         sublabel="ACTIVITY & REAL-TIME PERFORMANCE MATRIX" 
       />
 
-      {/* 4. METRICS SECTION */}
+      {/* 5. METRICS SECTION */}
       <MetricsSection />
 
       {/* Transition Gateway: Metrics -> Certifications */}
       <TimelineGateway 
-        sourceCode="04_SIGNALS" 
-        targetCode="05_REGISTRY" 
+        sourceCode="05_METRICS" 
+        targetCode="06_REGISTRY" 
         label="CRYPTOGRAPHIC_REGISTRY" 
         sublabel="IMMUTABLE VERIFICATION REPOSITORY" 
       />
 
-      {/* 5. CERTIFICATIONS SECTION */}
+      {/* 6. CERTIFICATIONS SECTION */}
       <section id="certifications" className="py-20 bg-black scroll-mt-12 text-left app-container relative z-10">
         <div className="space-y-10">
           
@@ -425,13 +437,13 @@ export const HomeScroll: React.FC = () => {
 
       {/* Transition Gateway: Certifications -> Contact */}
       <TimelineGateway 
-        sourceCode="04_REGISTRY" 
-        targetCode="05_PING" 
+        sourceCode="06_REGISTRY" 
+        targetCode="07_PING" 
         label="CARRIER_CONVERGENCE" 
         sublabel="PORT_8080 TCP INTERACTIVE TERMINAL ACCESS" 
       />
 
-      {/* 5. CONTACT SECTION (Interactive Terminal Theme) */}
+      {/* 7. CONTACT SECTION (Interactive Terminal Theme) */}
       <section id="contact" className="py-20 bg-black scroll-mt-12 text-left app-container relative z-10">
         <div className="max-w-5xl mx-auto space-y-10">
           
