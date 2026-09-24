@@ -13,6 +13,7 @@ import { UrbanCadastralCaseStudy } from './features/projects/UrbanCadastralCaseS
 import { CodeSpeedCaseStudy } from './features/projects/CodeSpeedCaseStudy';
 import { MockAPILabCaseStudy } from './features/projects/MockAPILabCaseStudy';
 import { CrickXploreCaseStudy } from './features/projects/CrickXploreCaseStudy';
+import { GitPulseCaseStudy } from './features/projects/GitPulseCaseStudy';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/" element={<HomeScroll />} />
       <Route path="/connect" element={<ConnectPage />} />
       <Route path="/projects" element={<ProjectsArchive />} />
+      <Route path="/projects/gitpulse" element={<GitPulseCaseStudy />} />
       <Route path="/projects/crickxplore" element={<CrickXploreCaseStudy />} />
       <Route path="/projects/mockapilab" element={<MockAPILabCaseStudy />} />
       <Route path="/projects/codespeed" element={<CodeSpeedCaseStudy />} />

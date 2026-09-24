@@ -20,6 +20,26 @@ interface ProjectCardData {
 
 const ARCHIVE_PROJECTS: ProjectCardData[] = [
   {
+    sysId: '● GITPULSE_SYS',
+    title: 'GitPulse',
+    subtitle: 'EVENT-DRIVEN GIT REPOSITORY INTELLIGENCE PLATFORM',
+    description: 'An engineering-intelligence platform for analyzing Git repository history and deriving repository evolution, file hotspots, contributor ownership concentration, commit intelligence, and deterministic composite risk signals via asynchronous event-driven pipelines.',
+    tags: ['Java 21', 'Spring Boot 3.3.4', 'Apache Kafka 3.8', 'Redis 7', 'PostgreSQL 16', 'Flyway V1-V9', 'React 18', 'TypeScript', 'Vite 5', 'Recharts 3', 'Tailwind CSS'],
+    highlights: [
+      'Architected event-driven ingestion pipeline with Apache Kafka (KRaft mode) and Redis caching with Spring Boot 3.3.4.',
+      'Engineered multi-dimensional composite risk scoring (revision frequency, churn, 90-day half-life decay, and top contributor ownership share).',
+      'Constructed JGit-based commit intelligence engine extracting temporal change dynamics, commit cadence, and author networks.',
+      'Built modular analytical React 18 dashboard with Recharts visualizations, dark telemetry interface, and real-time ingestion indicators.',
+      'Implemented Flyway database schema evolution across V1-V9 migrations with PostgreSQL composite indices on analysis tables.',
+      'Created an end-to-end testing suite with 533 automated tests across JUnit 5, MockMvc, Mockito, Embedded Kafka, and H2 test profiles.'
+    ],
+    metricLabel: 'TEST SUITE',
+    metricValue: '533 Automated Tests / JUnit 5',
+    link: '/projects/gitpulse',
+    statusText: 'JAVA / SPRING BOOT // ACTIVE',
+    github: 'https://github.com/aadesh-2006/GitPulse'
+  },
+  {
     sysId: '● CRICKXPLORE_SYS',
     title: 'CrickXplore',
     subtitle: 'CINEMATIC SPATIAL CRICKET UNIVERSE & DIGITAL RELICS',
