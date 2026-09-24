@@ -20,6 +20,27 @@ interface ProjectCardData {
 
 const ARCHIVE_PROJECTS: ProjectCardData[] = [
   {
+    sysId: '● CRICKXPLORE_SYS',
+    title: 'CrickXplore',
+    subtitle: 'CINEMATIC SPATIAL CRICKET UNIVERSE & DIGITAL RELICS',
+    description: 'A cinematic, interactive cricket platform and digital museum that brings 147 years of cricket history to life through spatial eras, 457 provenance-tracked players, 457 deterministic holographic collectible cards, a 1v1 tactical card clash game, 9 long-form narrative stories, and Gemini AI qualitative scouting.',
+    tags: ['React 19', 'TypeScript', 'Tailwind CSS v4', 'Framer Motion', 'GSAP', 'Gemini 2.5 Flash', 'Spring Boot 3.3.5', 'Java 21', 'MongoDB'],
+    highlights: [
+      'Architected 147-year interactive spatial timeline across 6 epochs with dynamic Web Audio acoustic soundscapes.',
+      'Constructed 457-player catalog with SourcedValue provenance tracking (LIVE, FALLBACK, ENRICHED) and radar mastery breakdown.',
+      'Engineered 457 deterministic collectible relics with holographic CSS shaders, gyro-tilt physics, and 10 signature hero overrides.',
+      'Built 1v1 deterministic tactical card battle engine with pitch geology and weather condition multipliers.',
+      'Developed 9 long-form narrative retrospective essays with dynamic chapter jumpers, reading progress, and historical callouts.',
+      'Integrated Google Gemini 2.5 Flash serverless proxy with strict numeric preservation ensuring verified stats are never hallucinated.',
+      'Engineered Java 21 / Spring Boot 3.3.5 backend service with Spring Security, stateless JWT auth, and Spring Data MongoDB.'
+    ],
+    metricLabel: 'CATALOG & RELICS',
+    metricValue: '457 Players / 457 Cards / 6 Eras',
+    link: '/projects/crickxplore',
+    statusText: 'FULL-STACK // ACTIVE',
+    github: 'https://github.com/aadesh-2006/CrickXplore'
+  },
+  {
     sysId: '● MOCKAPILAB_SYS',
     title: 'MockAPILab',
     subtitle: 'INTELLIGENT STATEFUL MOCK BACKEND ENGINE',

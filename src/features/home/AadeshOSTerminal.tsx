@@ -333,8 +333,9 @@ export const AadeshOSTerminal: React.FC = () => {
             }
             if (line.isProjectList) {
               return (
-                <div key={idx} className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-2 pt-1 select-none">
+                <div key={idx} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-2 pt-1 select-none">
                   {[
+                    { label: 'CrickXplore', slug: 'crickxplore' },
                     { label: 'MockAPILab', slug: 'mockapilab' },
                     { label: 'CodeSpeed', slug: 'codespeed' },
                     { label: 'UrbanCadastral', slug: 'urbancadastral-ai' },

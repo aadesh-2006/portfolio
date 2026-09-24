@@ -269,6 +269,33 @@ export const portfolioData: PortfolioData = {
       ],
       statusText: "BUILDING // IN_DEVELOPMENT",
       featured: false
+    },
+    {
+      id: "crickxplore",
+      title: "CrickXplore",
+      tagline: "Cinematic Spatial Cricket Universe & Digital Relics",
+      description: "A cinematic, interactive cricket platform and museum-grade exploration universe featuring a 147-year spatial chronology, 457-player provenance-tracked catalog, 457 deterministic collectible cards with holographic shaders, 1v1 tactical card clash engine, stadium atlas, and Google Gemini scouting intelligence.",
+      technologies: ["React 19", "TypeScript", "Tailwind CSS v4", "Framer Motion", "GSAP", "Google Gemini 2.5 Flash", "Java 21", "Spring Boot 3.3.5", "Spring Security", "MongoDB"],
+      bullets: [
+        "Architected cinematic spatial digital universe featuring a 147-year timeline across 6 eras with adaptive acoustic soundscapes.",
+        "Curated 457-player master dataset with SourcedValue data provenance tracking (LIVE, FALLBACK, ENRICHED) and radar mastery metrics.",
+        "Engineered 457 deterministic digital collectible cards with tiered rarities and real-time CSS holographic prism and gyro-tilt shaders.",
+        "Constructed 1v1 Top-Trumps-style tactical card clash engine with pitch geology and weather condition multipliers.",
+        "Developed 9 long-form narrative retrospective stories with dynamic reading time estimation, chapter jumpers, and historical callouts.",
+        "Built serverless Google Gemini 2.5 Flash scouting proxy with strict numeric preservation boundaries preventing statistical hallucinations.",
+        "Engineered enterprise Spring Boot 3.3.5 Java 21 authentication service with stateless JWT validation and BCrypt password security."
+      ],
+      links: {
+        github: "https://github.com/aadesh-2006/CrickXplore",
+        caseStudy: "/projects/crickxplore"
+      },
+      metrics: [
+        { label: "PLAYER CATALOG", value: "457 Curated Records" },
+        { label: "COLLECTIBLE RELICS", value: "457 Deterministic Cards" },
+        { label: "HISTORICAL TIMELINE", value: "147 Years / 6 Eras" }
+      ],
+      statusText: "FULL-STACK // ACTIVE",
+      featured: false
     }
   ],
   certifications: [
