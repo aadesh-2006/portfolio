@@ -138,24 +138,29 @@ export const portfolioData: PortfolioData = {
       ]
     },
     {
-      id: "intellirag",
-      title: "IntelliRAG",
-      tagline: "Document Question Answering System",
-      description: "A document question-answering system using Retrieval-Augmented Generation (RAG). Extracts, chunks, embeds, and retrieves document content to generate answers grounded in retrieved document context.",
-      technologies: ["Python", "FastAPI", "React", "Vector DB", "LLM", "Embeddings", "RAG"],
+      id: "gitpulse",
+      title: "GitPulse",
+      tagline: "Event-Driven Git Repository Intelligence Platform",
+      description: "An engineering-intelligence platform for analyzing Git repository history and deriving evolution patterns, file hotspots, contributor ownership concentration, commit intelligence, and deterministic composite risk signals through asynchronous event-driven pipelines.",
+      technologies: ["Java 21", "Spring Boot 3.3.4", "Apache Kafka 3.8.0 KRaft", "Redis 7", "PostgreSQL 16", "Flyway V1-V9", "React 18", "TypeScript", "Vite 5", "Recharts 3", "Tailwind CSS"],
       bullets: [
-        "PDF text extraction, intelligent document chunking, and vector embedding storage for semantic similarity retrieval.",
-        "Grounded LLM-based answer generation with source/citation references and conversational document context.",
-        "Modular RAG pipeline architecture engineered for future hybrid retrieval and reranking extensions."
+        "Architected an event-driven repository ingestion pipeline utilizing Apache Kafka (KRaft mode) and Redis caching with Spring Boot 3.3.4.",
+        "Engineered multi-dimensional composite risk scoring (revision frequency, churn, 90-day half-life decay, and top contributor ownership share).",
+        "Constructed JGit-based commit intelligence engine extracting temporal change dynamics, commit cadence, and author networks.",
+        "Built modular analytical React 18 dashboard with Recharts visualizations, dark telemetry interface, and real-time ingestion status indicators.",
+        "Implemented Flyway database schema evolution across V1-V9 migrations with PostgreSQL composite indices on repository analysis tables.",
+        "Created an end-to-end testing suite with 533 automated tests across JUnit 5, MockMvc, Mockito, Embedded Kafka, and H2 test profiles."
       ],
       links: {
-        caseStudy: "/projects/intellirag"
+        github: "https://github.com/aadesh-2006/GitPulse",
+        caseStudy: "/projects/gitpulse"
       },
       metrics: [
-        { label: "PIPELINE", value: "Retrieval-Augmented Gen" },
-        { label: "SEARCH ENGINE", value: "Semantic Vector Search" }
+        { label: "TEST SUITE", value: "533 Automated Tests" },
+        { label: "CORE ARCHITECTURE", value: "Java 21 / Kafka / Redis" },
+        { label: "RISK MODEL", value: "Multi-Factor Composite" }
       ],
-      statusText: "BUILDING // IN_DEVELOPMENT",
+      statusText: "JAVA / SPRING BOOT // ACTIVE",
       featured: true
     },
     {
@@ -203,29 +208,24 @@ export const portfolioData: PortfolioData = {
       statusText: "PRODUCTION-ORIENTED // COMPILED"
     },
     {
-      id: "gitpulse",
-      title: "GitPulse",
-      tagline: "Event-Driven Git Repository Intelligence Platform",
-      description: "An engineering-intelligence platform for analyzing Git repository history and deriving evolution patterns, file hotspots, contributor ownership concentration, commit intelligence, and deterministic composite risk signals through asynchronous event-driven pipelines.",
-      technologies: ["Java 21", "Spring Boot 3.3.4", "Apache Kafka 3.8.0 KRaft", "Redis 7", "PostgreSQL 16", "Flyway V1-V9", "React 18", "TypeScript", "Vite 5", "Recharts 3", "Tailwind CSS"],
+      id: "intellirag",
+      title: "IntelliRAG",
+      tagline: "Document Question Answering System",
+      description: "A document question-answering system using Retrieval-Augmented Generation (RAG). Extracts, chunks, embeds, and retrieves document content to generate answers grounded in retrieved document context.",
+      technologies: ["Python", "FastAPI", "React", "Vector DB", "LLM", "Embeddings", "RAG"],
       bullets: [
-        "Architected an event-driven repository ingestion pipeline utilizing Apache Kafka (KRaft mode) and Redis caching with Spring Boot 3.3.4.",
-        "Engineered multi-dimensional composite risk scoring (revision frequency, churn, 90-day half-life decay, and top contributor ownership share).",
-        "Constructed JGit-based commit intelligence engine extracting temporal change dynamics, commit cadence, and author networks.",
-        "Built modular analytical React 18 dashboard with Recharts visualizations, dark telemetry interface, and real-time ingestion status indicators.",
-        "Implemented Flyway database schema evolution across V1-V9 migrations with PostgreSQL composite indices on repository analysis tables.",
-        "Created an end-to-end testing suite with 533 automated tests across JUnit 5, MockMvc, Mockito, Embedded Kafka, and H2 test profiles."
+        "PDF text extraction, intelligent document chunking, and vector embedding storage for semantic similarity retrieval.",
+        "Grounded LLM-based answer generation with source/citation references and conversational document context.",
+        "Modular RAG pipeline architecture engineered for future hybrid retrieval and reranking extensions."
       ],
       links: {
-        github: "https://github.com/aadesh-2006/GitPulse",
-        caseStudy: "/projects/gitpulse"
+        caseStudy: "/projects/intellirag"
       },
       metrics: [
-        { label: "TEST SUITE", value: "533 Automated Tests" },
-        { label: "CORE ARCHITECTURE", value: "Java 21 / Kafka / Redis" },
-        { label: "RISK MODEL", value: "Multi-Factor Composite" }
+        { label: "PIPELINE", value: "Retrieval-Augmented Gen" },
+        { label: "SEARCH ENGINE", value: "Semantic Vector Search" }
       ],
-      statusText: "JAVA / SPRING BOOT // ACTIVE",
+      statusText: "BUILDING // IN_DEVELOPMENT",
       featured: true
     },
     {
