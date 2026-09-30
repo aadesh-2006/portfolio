@@ -185,6 +185,27 @@ export const portfolioData: PortfolioData = {
       ]
     },
     {
+      id: "intellirag",
+      title: "IntelliRAG",
+      tagline: "Document Question Answering System",
+      description: "A document question-answering system using Retrieval-Augmented Generation (RAG). Extracts, chunks, embeds, and retrieves document content to generate answers grounded in retrieved document context.",
+      technologies: ["Python", "FastAPI", "React", "Vector DB", "LLM", "Embeddings", "RAG"],
+      bullets: [
+        "PDF text extraction, intelligent document chunking, and vector embedding storage for semantic similarity retrieval.",
+        "Grounded LLM-based answer generation with source/citation references and conversational document context.",
+        "Modular RAG pipeline architecture engineered for future hybrid retrieval and reranking extensions."
+      ],
+      links: {
+        caseStudy: "/projects/intellirag"
+      },
+      metrics: [
+        { label: "PIPELINE", value: "Retrieval-Augmented Gen" },
+        { label: "SEARCH ENGINE", value: "Semantic Vector Search" }
+      ],
+      statusText: "BUILDING // IN_DEVELOPMENT",
+      featured: true
+    },
+    {
       id: "ai-financial-research-analyst",
       title: "AI Financial Research Analyst",
       tagline: "Modular Financial Intelligence Platform",
@@ -205,27 +226,7 @@ export const portfolioData: PortfolioData = {
         { label: "SYNTHESIS", value: "Grounded LLM Layer" },
         { label: "PERSISTENCE", value: "PostgreSQL 17" }
       ],
-      statusText: "PRODUCTION-ORIENTED // COMPILED"
-    },
-    {
-      id: "intellirag",
-      title: "IntelliRAG",
-      tagline: "Document Question Answering System",
-      description: "A document question-answering system using Retrieval-Augmented Generation (RAG). Extracts, chunks, embeds, and retrieves document content to generate answers grounded in retrieved document context.",
-      technologies: ["Python", "FastAPI", "React", "Vector DB", "LLM", "Embeddings", "RAG"],
-      bullets: [
-        "PDF text extraction, intelligent document chunking, and vector embedding storage for semantic similarity retrieval.",
-        "Grounded LLM-based answer generation with source/citation references and conversational document context.",
-        "Modular RAG pipeline architecture engineered for future hybrid retrieval and reranking extensions."
-      ],
-      links: {
-        caseStudy: "/projects/intellirag"
-      },
-      metrics: [
-        { label: "PIPELINE", value: "Retrieval-Augmented Gen" },
-        { label: "SEARCH ENGINE", value: "Semantic Vector Search" }
-      ],
-      statusText: "BUILDING // IN_DEVELOPMENT",
+      statusText: "PRODUCTION-ORIENTED // COMPILED",
       featured: true
     },
     {
