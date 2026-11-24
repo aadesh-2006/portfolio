@@ -28,6 +28,7 @@ export interface Certification {
   credentialUrl?: string;
   actionLabel?: string;
   badgeCode?: string;
+  badgeImage?: string;
 }
 
 export interface PortfolioData {
@@ -341,7 +342,8 @@ export const portfolioData: PortfolioData = {
       date: "27 October 2026",
       credentialUrl: "https://catalog-education.oracle.com/ords/certview/sharebadge_m?id=655605ECE9A89232ECC3503CB6F448E0D56826F9920E4B8977A71CF838E9090B",
       actionLabel: "VERIFY CREDENTIAL",
-      badgeCode: "ORACLE // VERIFIED"
+      badgeCode: "ORACLE // VERIFIED",
+      badgeImage: "/images/certifications/oracle-java-foundations-associate-badge.png"
     },
     {
       title: "Introduction to Large Language Models",

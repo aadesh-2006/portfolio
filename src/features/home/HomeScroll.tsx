@@ -345,25 +345,49 @@ export const HomeScroll: React.FC = () => {
                         href={cert.credentialUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="h-28 w-full rounded-[3px] border border-border-grid/80 hover:border-accent-cyan/60 bg-[#050505] p-3 flex flex-col justify-between relative overflow-hidden group/box transition-all cursor-pointer block"
+                        className="h-28 w-full rounded-[3px] border border-border-grid/80 hover:border-accent-cyan/60 bg-[#050505] p-2.5 flex flex-col justify-between relative overflow-hidden group/box transition-all cursor-pointer block"
                       >
-                        <div className="flex items-center justify-between">
-                          <span className="text-[8px] font-mono text-accent-cyan uppercase tracking-wider">
+                        {/* Subtle ambient radial glow behind the badge */}
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.08)_0%,transparent_70%)] pointer-events-none" />
+
+                        <div className="flex items-center justify-between z-10 relative">
+                          <span className="text-[8px] font-mono text-accent-cyan uppercase tracking-wider font-semibold flex items-center gap-1">
+                            <span className="w-1 h-1 rounded-full bg-accent-cyan animate-pulse" />
                             {cert.badgeCode || (cert.issuer.toLowerCase().includes('microsoft') ? 'MS_LEARN // VERIFIED' : `${cert.issuer.toUpperCase()} // VERIFIED`)}
                           </span>
                           <Award className="w-3.5 h-3.5 text-accent-cyan/80 group-hover/box:text-accent-cyan transition-colors" />
                         </div>
-                        <div className="space-y-0.5">
-                          <span className="text-[10px] font-bold text-text-main group-hover/box:text-accent-cyan transition-colors block line-clamp-1">
-                            {cert.title}
+
+                        {cert.badgeImage ? (
+                          <div className="flex-1 flex items-center justify-center my-0.5 overflow-hidden z-10 relative">
+                            <img
+                              src={cert.badgeImage}
+                              alt="Oracle Java Certified Foundations Associate badge"
+                              className="h-full max-h-[64px] w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(6,182,212,0.2)] group-hover/box:scale-105 transition-all duration-300"
+                              loading="lazy"
+                            />
+                          </div>
+                        ) : (
+                          <div className="space-y-0.5 z-10 relative">
+                            <span className="text-[10px] font-bold text-text-main group-hover/box:text-accent-cyan transition-colors block line-clamp-1">
+                              {cert.title}
+                            </span>
+                            <span className="text-[8px] font-mono text-text-muted block">
+                              OFFICIAL DIGITAL RECORD
+                            </span>
+                          </div>
+                        )}
+
+                        <div className="flex items-center justify-between z-10 relative text-[8px] font-mono text-zinc-400 uppercase tracking-wider">
+                          <span className="flex items-center gap-1">
+                            <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                            VERIFIED CREDENTIAL
                           </span>
-                          <span className="text-[8px] font-mono text-text-muted block">
-                            OFFICIAL DIGITAL RECORD
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1 text-[8px] font-mono text-zinc-400 uppercase tracking-wider">
-                          <span className="w-1 h-1 rounded-full bg-emerald-400" />
-                          VERIFIED CREDENTIAL
+                          {cert.badgeImage && (
+                            <span className="text-[8px] font-mono text-text-muted">
+                              OFFICIAL BADGE
+                            </span>
+                          )}
                         </div>
                       </a>
 
