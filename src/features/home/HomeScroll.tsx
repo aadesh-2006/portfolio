@@ -331,7 +331,7 @@ export const HomeScroll: React.FC = () => {
                           rel="noopener noreferrer"
                           className="w-full inline-flex items-center justify-center gap-1.5 text-[9px] font-mono text-accent-cyan hover:text-black bg-[#0a0a0a] hover:bg-accent-cyan border border-accent-cyan/40 px-3 py-1.5 rounded-[2px] transition-all font-bold tracking-wider uppercase group/btn cursor-pointer shadow-sm"
                         >
-                          <span>VIEW CREDENTIAL</span>
+                          <span>{cert.actionLabel || 'VIEW CREDENTIAL'}</span>
                           <ExternalLink className="w-2.5 h-2.5 transition-transform group-hover/btn:translate-x-0.5" />
                         </a>
                       )}
@@ -341,15 +341,20 @@ export const HomeScroll: React.FC = () => {
                   {/* For credentials with official link but without separate local image screenshot */}
                   {!cert.proofImage && cert.credentialUrl && (
                     <div className="pt-1 pl-3 space-y-2">
-                      <div className="h-28 w-full rounded-[3px] border border-border-grid/80 bg-[#050505] p-3 flex flex-col justify-between relative overflow-hidden">
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="h-28 w-full rounded-[3px] border border-border-grid/80 hover:border-accent-cyan/60 bg-[#050505] p-3 flex flex-col justify-between relative overflow-hidden group/box transition-all cursor-pointer block"
+                      >
                         <div className="flex items-center justify-between">
                           <span className="text-[8px] font-mono text-accent-cyan uppercase tracking-wider">
-                            MS_LEARN // VERIFIED
+                            {cert.badgeCode || (cert.issuer.toLowerCase().includes('microsoft') ? 'MS_LEARN // VERIFIED' : `${cert.issuer.toUpperCase()} // VERIFIED`)}
                           </span>
-                          <Award className="w-3.5 h-3.5 text-accent-cyan/80" />
+                          <Award className="w-3.5 h-3.5 text-accent-cyan/80 group-hover/box:text-accent-cyan transition-colors" />
                         </div>
                         <div className="space-y-0.5">
-                          <span className="text-[10px] font-bold text-text-main block line-clamp-1">
+                          <span className="text-[10px] font-bold text-text-main group-hover/box:text-accent-cyan transition-colors block line-clamp-1">
                             {cert.title}
                           </span>
                           <span className="text-[8px] font-mono text-text-muted block">
@@ -360,7 +365,7 @@ export const HomeScroll: React.FC = () => {
                           <span className="w-1 h-1 rounded-full bg-emerald-400" />
                           VERIFIED CREDENTIAL
                         </div>
-                      </div>
+                      </a>
 
                       <a
                         href={cert.credentialUrl}
@@ -368,7 +373,7 @@ export const HomeScroll: React.FC = () => {
                         rel="noopener noreferrer"
                         className="w-full inline-flex items-center justify-center gap-1.5 text-[9px] font-mono text-accent-cyan hover:text-black bg-[#0a0a0a] hover:bg-accent-cyan border border-accent-cyan/40 px-3 py-1.5 rounded-[2px] transition-all font-bold tracking-wider uppercase group/btn cursor-pointer shadow-sm"
                       >
-                        <span>VIEW CREDENTIAL</span>
+                        <span>{cert.actionLabel || 'VIEW CREDENTIAL'}</span>
                         <ExternalLink className="w-2.5 h-2.5 transition-transform group-hover/btn:translate-x-0.5" />
                       </a>
                     </div>

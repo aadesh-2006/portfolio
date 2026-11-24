@@ -26,6 +26,8 @@ export interface Certification {
   date: string;
   proofImage?: string;
   credentialUrl?: string;
+  actionLabel?: string;
+  badgeCode?: string;
 }
 
 export interface PortfolioData {
@@ -334,9 +336,12 @@ export const portfolioData: PortfolioData = {
       proofImage: "/goldman-sachs-hackathon-proof.png"
     },
     {
-      title: "Oracle Java Foundations Associate",
-      issuer: "Oracle Professional Certification",
-      date: "May 2026"
+      title: "Java Certified Foundations Associate",
+      issuer: "Oracle",
+      date: "27 October 2026",
+      credentialUrl: "https://catalog-education.oracle.com/ords/certview/sharebadge_m?id=655605ECE9A89232ECC3503CB6F448E0D56826F9920E4B8977A71CF838E9090B",
+      actionLabel: "VERIFY CREDENTIAL",
+      badgeCode: "ORACLE // VERIFIED"
     },
     {
       title: "Introduction to Large Language Models",
