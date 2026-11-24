@@ -359,6 +359,17 @@ export const portfolioData: PortfolioData = {
       altText: "AWS Academy Graduate – Cloud Architecting Training Badge"
     },
     {
+      title: "AWS Academy Graduate – Cloud Foundations",
+      issuer: "Amazon Web Services Training and Certification",
+      date: "2 September 2026",
+      credentialUrl: "https://www.credly.com/badges/c20f0b02-3460-44fc-be05-f08e6f4630e2/public_url",
+      actionLabel: "VERIFY CREDENTIAL",
+      badgeCode: "AWS_ACADEMY // TRAINING_BADGE",
+      badgeImage: "/images/certifications/aws-academy-cloud-foundations.png",
+      badgeType: "TRAINING BADGE",
+      altText: "AWS Academy Graduate – Cloud Foundations Training Badge"
+    },
+    {
       title: "Introduction to Large Language Models",
       issuer: "GOOGLE CLOUD / SIMPLILEARN",
       date: "June 2026",

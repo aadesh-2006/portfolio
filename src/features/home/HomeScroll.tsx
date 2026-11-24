@@ -287,7 +287,7 @@ export const HomeScroll: React.FC = () => {
                           {cert.title}
                         </span>
                       </div>
-                      <div className="flex items-center gap-1.5 pl-3">
+                      <div className="flex items-center gap-1.5 pl-3 flex-wrap">
                         <span className="text-[9px] text-text-muted block">
                           {cert.issuer.toUpperCase()}
                         </span>
