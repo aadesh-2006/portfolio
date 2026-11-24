@@ -287,9 +287,16 @@ export const HomeScroll: React.FC = () => {
                           {cert.title}
                         </span>
                       </div>
-                      <span className="text-[9px] text-text-muted block pl-3">
-                        {cert.issuer.toUpperCase()}
-                      </span>
+                      <div className="flex items-center gap-1.5 pl-3">
+                        <span className="text-[9px] text-text-muted block">
+                          {cert.issuer.toUpperCase()}
+                        </span>
+                        {cert.badgeType && (
+                          <span className="text-[7.5px] font-mono text-accent-cyan/90 border border-accent-cyan/30 bg-accent-cyan/10 px-1 py-0.2 rounded-[2px] uppercase tracking-wider font-semibold">
+                            {cert.badgeType}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <span className="text-[9px] text-accent-cyan font-bold tracking-widest whitespace-nowrap">
                       {cert.date.toUpperCase()}
@@ -362,7 +369,7 @@ export const HomeScroll: React.FC = () => {
                           <div className="flex-1 flex items-center justify-center my-0.5 overflow-hidden z-10 relative">
                             <img
                               src={cert.badgeImage}
-                              alt="Oracle Java Certified Foundations Associate badge"
+                              alt={cert.altText || `${cert.title} badge`}
                               className="h-full max-h-[64px] w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(6,182,212,0.2)] group-hover/box:scale-105 transition-all duration-300"
                               loading="lazy"
                             />
@@ -385,7 +392,7 @@ export const HomeScroll: React.FC = () => {
                           </span>
                           {cert.badgeImage && (
                             <span className="text-[8px] font-mono text-text-muted">
-                              OFFICIAL BADGE
+                              {cert.badgeType || 'OFFICIAL BADGE'}
                             </span>
                           )}
                         </div>

@@ -29,6 +29,8 @@ export interface Certification {
   actionLabel?: string;
   badgeCode?: string;
   badgeImage?: string;
+  badgeType?: string;
+  altText?: string;
 }
 
 export interface PortfolioData {
@@ -344,6 +346,17 @@ export const portfolioData: PortfolioData = {
       actionLabel: "VERIFY CREDENTIAL",
       badgeCode: "ORACLE // VERIFIED",
       badgeImage: "/images/certifications/oracle-java-foundations-associate-badge.png"
+    },
+    {
+      title: "AWS Academy Graduate – Cloud Architecting",
+      issuer: "AWS Academy",
+      date: "23 October 2026",
+      credentialUrl: "https://www.credly.com/badges/201da498-92ec-442f-b37a-243806c3f430/public_url",
+      actionLabel: "VERIFY CREDENTIAL",
+      badgeCode: "AWS_ACADEMY // TRAINING_BADGE",
+      badgeImage: "/images/certifications/aws-academy-cloud-architecting.png",
+      badgeType: "TRAINING BADGE",
+      altText: "AWS Academy Graduate – Cloud Architecting Training Badge"
     },
     {
       title: "Introduction to Large Language Models",
